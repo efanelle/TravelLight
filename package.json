@@ -1,0 +1,22 @@
+{
+  "name": "travel-light",
+  "version": "1.0.0",
+  "description": "'Travel cost comparisons'",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4NonBlondesAndABlonde/TravelLight.git"
+  },
+  "keywords": [
+    "travel"
+  ],
+  "author": "4NBAAB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4NonBlondesAndABlonde/TravelLight/issues"
+  },
+  "homepage": "https://github.com/4NonBlondesAndABlonde/TravelLight#readme"
+}
