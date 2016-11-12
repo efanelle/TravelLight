@@ -8,7 +8,8 @@
     "module": "es6",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
-    "sourceMap": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"

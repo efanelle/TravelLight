@@ -4,7 +4,7 @@
 module.exports = function (config) {
   config.set({
     basePath: '.',
-    frameworks: ['jasmine', 'angular-cli'],
+    frameworks: ['jasmine','angular-cli'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
@@ -14,7 +14,6 @@ module.exports = function (config) {
     ],
     files: [
       { pattern: './src/test.ts', watched: false },
-
       // {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
 
       //this file ^^ causes max call size stack exceeded
@@ -27,7 +26,6 @@ module.exports = function (config) {
 
       // paths loaded via module imports
       {pattern: 'dist/**/*.js', included: false, watched: true},
-
       // paths to support debugging with source maps in dev tools
       {pattern: 'app/**/*.ts', included: false, watched: false},
       {pattern: 'dist/**/*.js.map', included: false, watched: false}
@@ -36,27 +34,32 @@ module.exports = function (config) {
     preprocessors: {
       './src/test.ts': ['angular-cli'],
       './src/*.ts': 'coverage',
-      './src/app/*.ts': 'coverage'
+      './src/app/*.ts': 'coverage',
+      'dist/**/!(*spec).ts': 'coverage'
     },
+    reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
+
+    coverageReporter: {
+      dir : 'coverage/',
+      reporters: [
+      // {type: 'html', subdir: 'report-html'},
+      {type: 'json', subdir: './', file: 'coverage-final.json'}
+      ]
+    },
+
     remapIstanbulReporter: {
+      src: './coverage/coverage-final.json',
       reports: {
         html: 'coverage',
         lcovonly: './coverage/coverage.lcov',
-        dir: 'coverage/'
+        // dir: 'coverage/'
       }
     },
     angularCli: {
       config: './angular-cli.json',
       environment: 'dev'
     },
-    coverageReporter: {
-    reporters:[
-        {type: 'json', subdir: 'coverage', file: 'coverage-final.json'}
-      ]
-    },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'coverage', 'karma-remap-istanbul']
-              : ['progress'],
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
