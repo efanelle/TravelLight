@@ -13,7 +13,7 @@
     "build": "rm -rf dist && tsc -p src",
     "pretest": "npm run build",
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
-    "coverage": "http-server -c-1 -o -p 9875 ./coverage"
+    "coverage": "http-server -c-1 -o -p 4001 ./coverage"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +50,7 @@
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
-    "webdriver-manager": "10.2.5"
+    "webdriver-manager": "10.2.5",
+    "zone.js": "^0.6.26"
   }
 }
