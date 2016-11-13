@@ -21,21 +21,22 @@ module.exports = function (config) {
       // {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-      {pattern: 'karma-test-shim.js', included: true, watched: true},
+      // {pattern: 'karma-test-shim.js', included: true, watched: true},
       {pattern: 'node_modules/lodash/lodash.js',included:true,watched:true},
 
       // paths loaded via module imports
       {pattern: 'dist/**/*.js', included: false, watched: true},
       // paths to support debugging with source maps in dev tools
-      {pattern: 'app/**/*.ts', included: false, watched: false},
+      // {pattern: 'app/**/*.ts', included: false, watched: false},
       {pattern: 'dist/**/*.js.map', included: false, watched: false}
 
     ],
     preprocessors: {
       './src/test.ts': ['angular-cli'],
-      './src/*.ts': 'coverage',
-      './src/app/*.ts': 'coverage',
-      'dist/**/!(*spec).ts': 'coverage'
+      // './src/*.ts': 'coverage',
+      // './src/app/*.ts': 'coverage',
+      './src/app/!(*spec).ts': 'coverage'
+      // 'dist/**/!(*spec).ts': 'coverage'
     },
     reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
 
