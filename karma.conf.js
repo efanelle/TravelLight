@@ -34,8 +34,8 @@ module.exports = function (config) {
     preprocessors: {
       './src/test.ts': ['angular-cli'],
       // './src/*.ts': 'coverage',
-      './src/app/*.ts': 'coverage',
-      './src//!(*spec).ts': 'coverage'
+      // './src/app/*.ts': 'coverage',
+      './src/app/!(*spec).ts': 'coverage'
       // 'dist/**/!(*spec).ts': 'coverage'
     },
     reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
