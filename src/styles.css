@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 html {
   background: url('./assets/TravelLight.jpg') no-repeat center center fixed;
@@ -6,4 +7,6 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: 'Courgette', cursive;
+  /*font-family: 'Calligraffitti', cursive;*/
 }
