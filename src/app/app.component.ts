@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Travel Light';
+  slogan = 'For those who want to travel with awareness';
 }

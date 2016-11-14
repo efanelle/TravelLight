@@ -1,8 +1,15 @@
 h1 {
-  font-family: 'Courgette', cursive;
-  /*font-family: 'Calligraffitti', cursive;*/
   font-size: 4.25em;
   text-align: center;
   color: #FBF3EC;
   text-shadow: 1px 1px 1px #938380;
+}
+
+h3 {
+  font-family: 'Lato';
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: #DEC2B3;
 }
