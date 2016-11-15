@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     h1 {
+      font-family: 'Courgette', cursive;
       font-size: 4.25em;
       text-align: center;
       color: #FBF3EC;

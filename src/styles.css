@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css?family=Courgette|Lato');
 
 html {
   background: url('./assets/TravelLight.jpg') no-repeat center center fixed;
@@ -6,6 +8,9 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: 'Courgette', cursive;
-  /*font-family: 'Calligraffitti', cursive;*/
+}
+
+body {
+  font-family: 'Lato';
+  background-color: transparent;
 }
