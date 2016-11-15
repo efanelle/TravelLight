@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ModalModule } from 'ng2-bootstrap/components/modal';
+import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -18,7 +20,9 @@ import { OptionsComponent } from './options/options.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ModalModule,
+    TypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
