@@ -22,7 +22,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create a header', () => {
     expect(component).toBeTruthy();
   });
 });
