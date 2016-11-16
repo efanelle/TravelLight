@@ -32,6 +32,7 @@ import { WalkCardComponent } from './secondPage/walk-card.component';
 import { routing } from './app.routing';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
