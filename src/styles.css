@@ -10,7 +10,7 @@ html {
   background-size: cover;
 }
 
-body {
+html body {
   font-family: 'Lato';
   background-color: transparent;
 }
