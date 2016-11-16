@@ -23,7 +23,8 @@ import { routing } from './app.routes';
     FormsModule,
     HttpModule,
     ModalModule,
-    TypeaheadModule
+    TypeaheadModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
