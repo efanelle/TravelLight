@@ -5,26 +5,59 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 
+//App Root
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header.component';
-import { SloganComponent } from './slogan.component';
-import { OptionsComponent } from './options/options.component';
+
+//Home page
+import { HeaderComponent } from './firstPage/header.component';
+import { SloganComponent } from './firstPage/slogan.component';
+import { OptionsComponent } from './firstPage/options.component';
+import { HomeComponent } from './firstPage/home.component';
+
+//Results page
+import { ResultsComponent } from './secondPage/second.page.component';
+import { BannerComponent } from './secondPage/banner.component';
+import { CarCardComponent } from './secondPage/car-card.component';
+import { AirplaneCardComponent } from './secondPage/airplane-card.component';
+import { SearchBarComponent} from './secondPage/search-bar.component';
+import { D3VisComponent } from './secondPage/d3-vis.component';
+import { CompStatsComponent } from './secondPage/comp-stats.component';
+import { BikeCardComponent } from './secondPage/bike-card.component';
+import { TrainCardComponent } from './secondPage/train-card.component';
+import { WalkCardComponent } from './secondPage/walk-card.component';
+
+
+
+
+import { routing } from './app.routing';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     HeaderComponent,
     SloganComponent,
-    OptionsComponent
+    OptionsComponent,
+    ResultsComponent,
+    BannerComponent,
+    CarCardComponent,
+    AirplaneCardComponent,
+    SearchBarComponent,
+    D3VisComponent,
+    CompStatsComponent,
+    BikeCardComponent,
+    TrainCardComponent,
+    WalkCardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     ModalModule,
-    TypeaheadModule
+    TypeaheadModule,
+    routing
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

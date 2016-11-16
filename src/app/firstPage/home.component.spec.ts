@@ -2,8 +2,8 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './frontpg/header.component';
-import { SloganComponent } from './frontpg/slogan.component';
+import { HeaderComponent } from './header.component';
+import { SloganComponent } from './slogan.component';
 import { OptionsComponent } from './options/options.component';
 
 describe('App: TravelLight', () => {
