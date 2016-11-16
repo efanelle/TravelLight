@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './second.page.component';
 import { BannerComponent } from './banner.component';
 import { CarCardComponent } from './car-card.component';
 import { AirplaneCardComponent } from './airplane-card.component';
