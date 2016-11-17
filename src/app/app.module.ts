@@ -9,9 +9,9 @@ import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { AppComponent } from './app.component';
 
 //Home page
-import { HeaderComponent } from './firstPage/header.component';
-import { SloganComponent } from './firstPage/slogan.component';
-import { OptionsComponent } from './firstPage/options.component';
+import { HeaderComponent } from './firstPage/header/header.component';
+import { SloganComponent } from './firstPage/slogan/slogan.component';
+import { OptionsComponent } from './firstPage/options/options.component';
 import { HomeComponent } from './firstPage/home.component';
 
 //Results page
