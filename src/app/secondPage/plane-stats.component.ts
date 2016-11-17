@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-plane-stats',
   template: `
     <div>
+    <h4>Travel by Plane</h4>
       <p>
         Cost: {{cost}} dollars
         <br />
@@ -15,12 +16,14 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [`
     div {
-      background-color: #ffebcd;
-      width: 50%;
+      // background-color: #ffebcd;
+      width: 100%;
       height: 18%;
-      margin: 0 0 0 15%;
-      text-aign: center;
+      margin-top: -50px;
+      margin-bottom:10px;
+      text-align: center;
       float: left;
+      font-family: Lucida Sans Grande;
     }
   `]
 })
