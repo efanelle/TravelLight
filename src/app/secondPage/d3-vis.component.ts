@@ -4,9 +4,6 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-d3-vis',
   template: `
     <div>
-      <p>
-        d3-vis Works!
-      </p>
       <app-radar-chart
       [transportMode]='transportMode'>
       </app-radar-chart>

@@ -6,9 +6,6 @@ import { TravelInfo } from './travelInfo';
 @Component({
   selector: 'app-radar-chart',
   template: `
-    <p>
-      radar-chart Works!
-    </p>
     <div style="display: block; width:400px">
     <canvas baseChart 
       [datasets]="radarChartData"
@@ -78,11 +75,11 @@ export class RadarChartComponent {
 
   // events
   public chartClicked(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
 
   public chartHovered(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
 
   ngOnInit() {
@@ -90,18 +87,17 @@ export class RadarChartComponent {
     .then(costs => {
       //Order data so current travel method is in front
       let index: number = 0;
-      costs.normalizedData.forEach((cost, i) => {
-        if (cost.label === this.transportMode) {
-          index = i;
-        }
+      let sortedNormalData: any[] = [];
+      let sortedData: any[] = [];
+      costs.normalizedData.forEach(cost => {
+        cost.label === this.transportMode ? 
+        sortedNormalData.unshift(cost) : sortedNormalData.push(cost)
       })
-      if (index !== 0) {
-        let temp: any = costs.normalizedData[0];
-        costs.normalizedData[0] = costs.normalizedData[index];
-        costs.normalizedData[index] = temp;
-        [costs.data[0], costs.data[index]] = [costs.data[index], costs.data[0]]
-      }
-      let normalizedData = costs.normalizedData.map(datum => {
+      costs.data.forEach(cost => {
+        cost.label === this.transportMode ? 
+        sortedData.unshift(cost) : sortedData.push(cost)
+      })
+      let normalizedData = sortedNormalData.map(datum => {
         // Set current data's color to green
         if (datum.label === this.transportMode) {
           datum.backgroundColor = 'rgba(0,153,51,0.5)';
@@ -114,7 +110,7 @@ export class RadarChartComponent {
       })
       // Set chart data, and display data for info / tooltip
       this.radarChartData = normalizedData
-      this.toolTipData = costs.data
+      this.toolTipData = sortedData
     })
 
   }
