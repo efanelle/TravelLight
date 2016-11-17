@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
+import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
 
 //App Root
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { HomeComponent } from './firstPage/home.component';
 import { HeaderComponent } from './firstPage/header/header.component';
 import { OptionsComponent } from './firstPage/options/options.component';
 import { LocInputComponent } from './firstPage/options/loc-input/loc-input.component';
+import { DateInputComponent } from './firstPage/options/date-input/date-input.component';
+import { TravelersComponent } from './firstPage/options/travelers/travelers.component';
 import { SloganComponent } from './firstPage/slogan/slogan.component';
 
 //Results page
@@ -50,13 +53,16 @@ import { routing } from './app.routing';
     BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
-    LocInputComponent
+    LocInputComponent,
+    DateInputComponent,
+    TravelersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ModalModule,
     TypeaheadModule,
+    DatepickerModule,
     routing
   ],
   bootstrap: [AppComponent]
