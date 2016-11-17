@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary center-block" (click)="smModal.show()">Start your journey</button>
+<button type="button" class="btn btn-primary center-block popup" (click)="smModal.show()">Start your journey</button>
 
 <div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
@@ -30,6 +30,11 @@
                 placeholder="Pick a location"
                 class="form-control">
         </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="smModal.hide()">
+          Submit
+        </button>
       </div>
     </div>
   </div>

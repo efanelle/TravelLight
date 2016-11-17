@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-options',
   templateUrl: './options.component.html',
   styleUrls: ['./options.component.css']
 })
-export class OptionsComponent implements OnInit {
+
+export class OptionsComponent {
   public statesComplex:Array<any> = [
     {id: 1, name: 'Alabama', region: 'South'}, {id: 2, name: 'Alaska', region: 'West'}, {id: 3, name: 'Arizona', region: 'West'},
     {id: 4, name: 'Arkansas', region: 'South'}, {id: 5, name: 'California', region: 'West'},
@@ -32,7 +32,9 @@ export class OptionsComponent implements OnInit {
     {id: 45, name: 'Utah', region: 'West'}, {id: 46, name: 'Vermont', region: 'Northeast'},
     {id: 47, name: 'Virginia', region: 'South'}, {id: 48, name: 'Washington', region: 'South'},
     {id: 49, name: 'West Virginia', region: 'South'}, {id: 50, name: 'Wisconsin', region: 'Midwest'},
-    {id: 51, name: 'Wyoming', region: 'West'}];
+    {id: 51, name: 'Wyoming', region: 'West'}
+  ];
+
   destinationSelectedState: any = null;
   public destinationStateSelected(state) {
     this.destinationSelectedState = state
@@ -42,10 +44,6 @@ export class OptionsComponent implements OnInit {
   public originStateSelected(state) {
     this.originSelectedState = state
     console.log(this.originSelectedState)
-  }
-  constructor() { }
-
-  ngOnInit() {
   }
 
 }
