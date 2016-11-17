@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [`
     div {
-      background-color: green;
+      background-color: #ffebcd;
       width: 50%;
       height: 15%;
       margin: 0 0 0 15%;
