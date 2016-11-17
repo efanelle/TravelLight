@@ -19,7 +19,8 @@ export class LocInputComponent {
     state: this.stateCtrl
   });
 
-  public dataSource:Observable<any>;
+  public dataSource1:Observable<any>;
+  public dataSource2:Observable<any>;
   public originAirport:string = '';
   public destinationAirport:string = '';
   public typeaheadOriginLoading:boolean = false;
@@ -28,7 +29,7 @@ export class LocInputComponent {
   public typeaheadDestinationNoResults:boolean = false;
   
   public constructor(private airportLocationService: AirportLocationService) {
-    this.dataSource = Observable.create((observer:any) => {
+    this.dataSource1 = Observable.create((observer:any) => {
       // Runs on every search
       this.airportLocationService
       .getAirports(this.originAirport)
@@ -40,6 +41,9 @@ export class LocInputComponent {
           }
         }))
       })
+    })
+    this.dataSource2 = Observable.create((observer:any) => {
+      // Runs on every search
       this.airportLocationService
       .getAirports(this.destinationAirport)
       .subscribe((result:any) => {
