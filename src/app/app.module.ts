@@ -7,6 +7,12 @@ import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
 import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 
+import {provide} from 'angular2/angular2';
+import {
+  ROUTER_PROVIDERS,
+  LocationStrategy,
+  HashLocationStrategy
+} from 'angular2/router';
 
 //App Root
 import { AppComponent } from './app.component';
@@ -39,6 +45,7 @@ import { PreferenceSliderContainerComponent } from './secondPage/preference-slid
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
 import { AirportLocationService } from './firstPage/airport-location.service';
+
 
 import { routing } from './app.routing';
 
