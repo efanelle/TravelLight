@@ -6,21 +6,23 @@ import { D3VisComponent } from './d3-vis.component'
   template: `
     <div class = 'outer'>
       <div class='tab'>
+        <img class='bigcar' src='../assets/car.jpeg'/>
         <p>CAR</p>
-        <img src='../assets/carIcon.png'/>
+        <img class='smcar' src='../assets/carIcon.png'/>
       </div>
-      <app-car-stats></app-car-stats>
       <app-d3-vis transportMode="car">
       </app-d3-vis>
+      <app-car-stats></app-car-stats>
   `,
   styles: [`    
    .outer {
-      height: 70vh;
+      min-height: 70vh;
       width: 40vw;
-      background-color:lightblue;
+      // background-color:lightblue;
       border: solid 1px black;
       border-radius: 10px;
       float:left;
+      margin-left:7%;
     }
     p{
       margin-right: 6%;
@@ -28,7 +30,7 @@ import { D3VisComponent } from './d3-vis.component'
       font-size:.5em;
       margin-bottom:0;
     }
-    img {
+    .smcar {
       height: 5%;
       width: 5%;
       margin-right: 5%;
@@ -37,6 +39,12 @@ import { D3VisComponent } from './d3-vis.component'
     .tab {
       float: right;
       width: 100%;
+    }
+      .bigcar {
+      height: 100px;
+      width:100%;
+      clear:both;
+      border-radius:10px;
     }
   `]
 })
