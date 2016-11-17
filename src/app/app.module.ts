@@ -4,7 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
+<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
+=======
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+>>>>>>> merge
 
 //App Root
 import { AppComponent } from './app.component';
@@ -30,6 +34,10 @@ import { PlaneStatsComponent } from './secondPage/plane-stats.component';
 import { BikeCardComponent } from './secondPage/bike-card.component';
 import { TrainCardComponent } from './secondPage/train-card.component';
 import { WalkCardComponent } from './secondPage/walk-card.component';
+import { RadarChartComponent } from './secondPage/radar-chart.component'
+
+//Services
+import { CostInfoService } from './secondPage/cost-info.service';
 
 
 import { routing } from './app.routing';
@@ -53,18 +61,28 @@ import { routing } from './app.routing';
     BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
+<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
     LocInputComponent,
     DateInputComponent,
     TravelersComponent
+=======
+    RadarChartComponent
+>>>>>>> merge
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ModalModule,
     TypeaheadModule,
+<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
     DatepickerModule,
     routing
+=======
+    routing,
+    ChartsModule
+>>>>>>> merge
   ],
+  providers: [CostInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

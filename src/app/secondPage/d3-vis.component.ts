@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-d3-vis',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
       <p>
         d3-vis Works!
       </p>
+      <app-radar-chart
+      [transportMode]='transportMode'>
+      </app-radar-chart>
     </div>
   `,
   styles: [`
@@ -22,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
 export class D3VisComponent implements OnInit {
 
   constructor() { }
-
+  @Input() transportMode: string;
   ngOnInit() {
   }
 
