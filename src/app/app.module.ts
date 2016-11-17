@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 
 
 //App Root
@@ -38,7 +38,7 @@ import { PreferenceSliderContainerComponent } from './secondPage/preference-slid
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
-
+import { AirportLocationService } from './firstPage/airport-location.service';
 
 import { routing } from './app.routing';
 
@@ -69,6 +69,7 @@ import { routing } from './app.routing';
     PreferenceSliderContainerComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     FormsModule,
     ModalModule,
@@ -77,7 +78,10 @@ import { routing } from './app.routing';
     routing,
     ChartsModule
   ],
-  providers: [CostInfoService],
+  providers: [
+    CostInfoService,
+    AirportLocationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
