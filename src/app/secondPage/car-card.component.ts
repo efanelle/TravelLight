@@ -6,13 +6,14 @@ import { D3VisComponent } from './d3-vis.component'
   template: `
     <div class = 'outer'>
       <div class='tab'>
-        <img class='bigcar' src='../assets/car.jpeg'/>
+        <img class='bigcar' src='../assets/road.png'/>
         <p>CAR</p>
         <img class='smcar' src='../assets/carIcon.png'/>
       </div>
       <app-d3-vis transportMode="car">
       </app-d3-vis>
       <app-car-stats></app-car-stats>
+    </div>
   `,
   styles: [`    
    .outer {
@@ -23,6 +24,9 @@ import { D3VisComponent } from './d3-vis.component'
       border-radius: 10px;
       float:left;
       margin-left:7%;
+    }
+    .outer:hover{
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
     p{
       margin-right: 6%;
@@ -36,6 +40,7 @@ import { D3VisComponent } from './d3-vis.component'
       margin-right: 5%;
       float: right;
     }
+
     .tab {
       float: right;
       width: 100%;

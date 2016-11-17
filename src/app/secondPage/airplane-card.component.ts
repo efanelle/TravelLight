@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class = 'outer'>
       <div class='tab'>
-        <img class='bigplane' src='../assets/airplane.jpeg'/>
+        <img class='bigplane' src='../assets/plane2.png'/>
         <p>PLANE</p>
         <img class='smplane' src='../assets/airplaneIcon.png'/>
       </div>
@@ -24,6 +24,9 @@ import { Component, OnInit } from '@angular/core';
       border-radius: 10px;
       float:left;
       margin-left:7%;
+    }
+    .outer:hover{
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
     p{
       margin-right: 5%;
