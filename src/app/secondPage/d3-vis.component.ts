@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
       width:70%;
       height:60%;
       background-color: #cdc0b0;
+      clear: both;
     }
   `]
 })
