@@ -88,14 +88,14 @@ export class RadarChartComponent {
   ngOnInit() {
     this.costInfoService.getCosts()
     .then(costs => {
-      // Order data so current travel method is in front
-      let index: number;
+      //Order data so current travel method is in front
+      let index: number = 0;
       costs.normalizedData.forEach((cost, i) => {
         if (cost.label === this.transportMode) {
           index = i;
         }
       })
-      if (index && index !== 0) {
+      if (index !== 0) {
         let temp: any = costs.normalizedData[0];
         costs.normalizedData[0] = costs.normalizedData[index];
         costs.normalizedData[index] = temp;
