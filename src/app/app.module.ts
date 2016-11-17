@@ -61,32 +61,21 @@ import { routing } from './app.routing';
     BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
-<<<<<<< ab00cf7e65f15db97c5e9b296f967ff152d2d056
-<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
     LocInputComponent,
     DateInputComponent,
-    TravelersComponent
-=======
-    RadarChartComponent
->>>>>>> merge
-=======
+    TravelersComponent,
     RadarChartComponent,
     PreferenceSliderComponent,
     PreferenceSliderContainerComponent
->>>>>>> starting slider
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ModalModule,
     TypeaheadModule,
-<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
     DatepickerModule,
-    routing
-=======
     routing,
     ChartsModule
->>>>>>> merge
   ],
   providers: [CostInfoService],
   bootstrap: [AppComponent]
