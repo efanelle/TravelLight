@@ -4,11 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
-<<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
-=======
 import { ChartsModule } from 'ng2-charts/ng2-charts';
->>>>>>> merge
+
 
 //App Root
 import { AppComponent } from './app.component';
@@ -35,6 +33,8 @@ import { BikeCardComponent } from './secondPage/bike-card.component';
 import { TrainCardComponent } from './secondPage/train-card.component';
 import { WalkCardComponent } from './secondPage/walk-card.component';
 import { RadarChartComponent } from './secondPage/radar-chart.component'
+import { PreferenceSliderComponent } from './secondPage/preference-slider.component'
+import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -61,6 +61,7 @@ import { routing } from './app.routing';
     BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
+<<<<<<< ab00cf7e65f15db97c5e9b296f967ff152d2d056
 <<<<<<< bdbcdefecea0477b07ed0e63d6a12e8bde18b3dd
     LocInputComponent,
     DateInputComponent,
@@ -68,6 +69,11 @@ import { routing } from './app.routing';
 =======
     RadarChartComponent
 >>>>>>> merge
+=======
+    RadarChartComponent,
+    PreferenceSliderComponent,
+    PreferenceSliderContainerComponent
+>>>>>>> starting slider
   ],
   imports: [
     BrowserModule,
