@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { D3VisComponent } from './d3-vis.component'
 
 @Component({
   selector: 'app-car-card',
@@ -9,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
         <img src='../assets/carIcon.png'/>
       </div>
       <app-car-stats></app-car-stats>
-      <app-d3-vis></app-d3-vis>
-    </div>
+      <app-d3-vis transportMode="car">
+      </app-d3-vis>
   `,
   styles: [`    
    .outer {

@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
         <img src='../assets/airplaneIcon.png'/>
       </div>
       <app-plane-stats></app-plane-stats>
-      <app-d3-vis></app-d3-vis>
+      <app-d3-vis
+      transportMode="plane">
+      </app-d3-vis>
     </div>
   `,
   styles: [`
@@ -42,7 +44,6 @@ import { Component, OnInit } from '@angular/core';
 export class AirplaneCardComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit() {
   }
 

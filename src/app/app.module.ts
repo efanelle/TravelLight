@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 
 //App Root
 import { AppComponent } from './app.component';
@@ -30,6 +32,12 @@ import { PlaneStatsComponent } from './secondPage/plane-stats.component';
 import { BikeCardComponent } from './secondPage/bike-card.component';
 import { TrainCardComponent } from './secondPage/train-card.component';
 import { WalkCardComponent } from './secondPage/walk-card.component';
+import { RadarChartComponent } from './secondPage/radar-chart.component'
+import { PreferenceSliderComponent } from './secondPage/preference-slider.component'
+import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
+
+//Services
+import { CostInfoService } from './secondPage/cost-info.service';
 
 
 import { routing } from './app.routing';
@@ -55,7 +63,10 @@ import { routing } from './app.routing';
     WalkCardComponent,
     LocInputComponent,
     DateInputComponent,
-    TravelersComponent
+    TravelersComponent,
+    RadarChartComponent,
+    PreferenceSliderComponent,
+    PreferenceSliderContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +74,10 @@ import { routing } from './app.routing';
     ModalModule,
     TypeaheadModule,
     DatepickerModule,
-    routing
+    routing,
+    ChartsModule
   ],
+  providers: [CostInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
