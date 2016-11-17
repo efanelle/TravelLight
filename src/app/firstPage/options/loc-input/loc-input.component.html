@@ -1,7 +1,7 @@
 <div class="origin">
   <label for="origin">Airport of Origin</label>
   <input [(ngModel)]="originAirport"
-        [typeahead]="dataSource"
+        [typeahead]="dataSource1"
         [typeaheadOptionField]="'Name'"
         [typeaheadOptionsLimit]="7"
         (typeaheadLoading)="changeTypeaheadOriginLoading($event)"
@@ -24,7 +24,7 @@
 <div class="destination">
   <label for="destination">Airport of Destination</label>
   <input [(ngModel)]="destinationAirport"
-        [typeahead]="dataSource"
+        [typeahead]="dataSource2"
         [typeaheadOptionField]="'Name'"
         [typeaheadOptionsLimit]="7"
         (typeaheadLoading)="changeTypeaheadDestinationLoading($event)"
