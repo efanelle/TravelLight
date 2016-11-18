@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="form-group travelers">
       <label for="travelers">Travelers</label>
-      <input type="number" class="form-control" id="travelers">
+      <input type="number" class="form-control" id="travelers" min="1" value="1">
     </div>
   `,
   styles: [`
