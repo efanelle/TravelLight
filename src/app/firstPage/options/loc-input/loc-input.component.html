@@ -1,10 +1,15 @@
-<div class="flex-container">	   
+<template #customItemTemplate let-model="item" let-index="index">
+  <h5> {{model.Name}}  ({{model.FAA_IATA}})</h5>
+</template>
+
+<div class="flex-container">
  <div class="origin flex-item">
   <label for="origin">Airport of Origin</label>
   <input [(ngModel)]="originAirport"
         [typeahead]="dataSource1"
         [typeaheadOptionField]="'Name'"
         [typeaheadOptionsLimit]="7"
+        [typeaheadItemTemplate]="customItemTemplate"
         (typeaheadLoading)="changeTypeaheadOriginLoading($event)"
         (typeaheadNoResults)="changeTypeaheadOriginNoResults($event)"
         (typeaheadOnSelect)="typeaheadOnSelect($event)"
@@ -28,6 +33,7 @@
         [typeahead]="dataSource2"
         [typeaheadOptionField]="'Name'"
         [typeaheadOptionsLimit]="7"
+        [typeaheadItemTemplate]="customItemTemplate"
         (typeaheadLoading)="changeTypeaheadDestinationLoading($event)"
         (typeaheadNoResults)="changeTypeaheadDestinationNoResults($event)"
         (typeaheadOnSelect)="typeaheadOnSelect($event)"
