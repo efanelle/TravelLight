@@ -4,13 +4,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-banner',
   template: `
-    <div class='container'>
-      <div class='banner'>
-        <p>
+    <div class='flex-container'>
+      <div class='banner flex-item'>
+        
           <a class='newsearch' routerLink="/home" routerLinkActive="active">
-            Travel Light
+           <p> Travel Light</p>
           </a>
-        </p>
+        
+        <app-search-bar></app-search-bar>
       </div>
     </div>
   `,
