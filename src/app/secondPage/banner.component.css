@@ -7,23 +7,31 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height:100%
+  height:100%;
+  width:100%;
+  /*display: inline-block;*/
 }
-.container {
+.flex-container {
   height: 150px;
-  width: 100%;
+  /*width: 100%;*/
   color: white;
-}
-p {
-  padding-top: 8%;
-  padding-left: 5%;
-  font-family: 'Lato';
-  font-size: 2em;
+  display: -webkit-flex;
+  align-content: stretch;
+  margin-bottom: 5%;
 }
 a {
+  padding-left: 5%;
+  font-family: 'Courgette';
+  font-size: 2.5em;
   text-decoration: none;
+  text-shadow: 1px 1px 1px #938380;
+}
+p {
+  display: inline-block;
+  padding-top: 5%;
   color:ivory;
 }
+
 /*.newsearch {
   float:right;
 }*/
