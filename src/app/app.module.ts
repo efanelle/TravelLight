@@ -40,7 +40,9 @@ import { PreferenceSliderContainerComponent } from './secondPage/preference-slid
 import { CostInfoService } from './secondPage/cost-info.service';
 import { AirportLocationService } from './firstPage/airport-location.service';
 
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
+import { ROUTER_PROVIDERS } from 'angular2/router';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -75,12 +77,13 @@ import { routing } from './app.routing';
     ModalModule,
     TypeaheadModule,
     DatepickerModule,
-    routing,
+    AppRoutingModule,
     ChartsModule
   ],
   providers: [
     CostInfoService,
-    AirportLocationService
+    AirportLocationService,
+    {provide:LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
