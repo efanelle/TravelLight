@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import{ ChartsModule } from '../../../node_modules/ng2-charts/ng2-charts'
-import { CostInfoService } from './cost-info.service'
 import { TravelInfo } from './travelInfo';
 
 @Component({
@@ -21,13 +20,20 @@ import { TravelInfo } from './travelInfo';
     p {
       display: inline-block;
     }
+    div {
+      margin-left: 8%;
+      width:70%;
+      height:60%;
+      // background-color: #cdc0b0;
+      clear: both;
+    }
   `]
 })
 export class RadarChartComponent {
 
-  constructor(private costInfoService: CostInfoService) {}
+  constructor() {}
+  @Input() costData: any;
   @Input() transportMode: string;
-
   public radarChartData: TravelInfo[] = [{data: [0, 0, 0], label: ''}];
   public toolTipData: TravelInfo[];
   // Radar
@@ -82,18 +88,17 @@ export class RadarChartComponent {
     //console.log(e);
   }
 
-  ngOnInit() {
-    this.costInfoService.getCosts()
-    .then(costs => {
+  ngOnChanges() {
+    if(this.costData) {
       //Order data so current travel method is in front
       let index: number = 0;
       let sortedNormalData: any[] = [];
       let sortedData: any[] = [];
-      costs.normalizedData.forEach(cost => {
+      this.costData.normalizedData.forEach(cost => {
         cost.label === this.transportMode ? 
         sortedNormalData.unshift(cost) : sortedNormalData.push(cost)
       })
-      costs.data.forEach(cost => {
+      this.costData.data.forEach(cost => {
         cost.label === this.transportMode ? 
         sortedData.unshift(cost) : sortedData.push(cost)
       })
@@ -111,7 +116,7 @@ export class RadarChartComponent {
       // Set chart data, and display data for info / tooltip
       this.radarChartData = normalizedData
       this.toolTipData = sortedData
-    })
+    }
 
   }
 }
