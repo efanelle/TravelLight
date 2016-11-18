@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CostInfoService } from './cost-info.service';
 
 @Component({
   selector: 'app-results',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./second.page.component.css']
 })
 export class ResultsComponent {
-  // we can pass information from here to the page as shown below:
-  // title = 'app works!'; //{{title}} in html
+  constructor(private costInfoService: CostInfoService) {}
+  private costData: any;
+  ngOnInit() {
+    this.costInfoService.getCosts()
+      .subscribe(costs => this.costData = costs)
+  }
 }

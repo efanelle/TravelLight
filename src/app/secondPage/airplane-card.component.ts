@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { D3VisComponent } from './d3-vis.component';
-import { CostInfoService } from './cost-info.service';
+import { Component, Input, OnChanges } from '@angular/core';
+import { RadarChartComponent } from './radar-chart.component';
 
 @Component({
   selector: 'app-airplane-card',
@@ -12,10 +11,13 @@ import { CostInfoService } from './cost-info.service';
         <p>PLANE</p>
         <img class='smplane' src='../assets/airplaneIcon.png'/>
       </div>
-      <app-d3-vis
+      <app-radar-chart 
+      [costData]="costData"
       transportMode="plane">
-      </app-d3-vis>
-      <app-plane-stats></app-plane-stats>
+      </app-radar-chart>
+      <app-plane-stats 
+      [costData]="costData">
+      </app-plane-stats>
     </div>
   `,
   styles: [`
@@ -56,22 +58,23 @@ import { CostInfoService } from './cost-info.service';
     }
   `]
 })
-export class AirplaneCardComponent implements OnInit {
+export class AirplaneCardComponent implements OnChanges {
 
-  constructor(private costInfoService: CostInfoService) { }
+  constructor() { }
+  @Input() costData: any;
   ranking: number = 0;
-  ngOnInit() {
-    this.costInfoService.getCosts()
-    .then(costs => {
-      let data: any[] = costs.normalizedData
+  ngOnChanges() {
+    // TODO: Ivey factor this out into it's own function
+    if (this.costData) {
+      let averageData: any[] = this.costData.normalizedData
       let index: number = 0;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].label === 'plane') {
+      for (var i = 0; i < averageData.length; i++) {
+        if (averageData[i].label === 'plane') {
           index = i;
           break;
         }
       }
-      let scores = data.map(methodData => 
+      let scores = averageData.map(methodData => 
         methodData.data.reduce((a, b) => a + b))
       let rankings = scores.map(score => {
         let rank = 1;
@@ -81,7 +84,7 @@ export class AirplaneCardComponent implements OnInit {
         return rank;
       })
       this.ranking = rankings[index]
-    })
+    }
   }
 
 }

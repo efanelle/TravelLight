@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CostInfoService } from './cost-info.service'
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-car-stats',
@@ -28,17 +27,17 @@ import { CostInfoService } from './cost-info.service'
     }
   `]
 })
-export class CarStatsComponent implements OnInit {
-  constructor(private costInfoService: CostInfoService) {}
-  cost= 178;
-  hours= 1;
-  minutes=10;
-  emissions= 76;
+export class CarStatsComponent implements OnChanges {
+  constructor() {}
+  @Input() costData: any;
+  private cost: number;
+  private hours: number;
+  private minutes: number;
+  private emissions: number;
 
-  ngOnInit() {
-    this.costInfoService.getCosts()
-    .then(costs => {
-      let data: any[] = costs.data
+  ngOnChanges() {
+    if (this.costData) {
+      let data: any[] = this.costData.data
       let index: number = 0;
       for (var i = 0; i < data.length; i++) {
         if (data[i].label === 'car') {
@@ -46,12 +45,11 @@ export class CarStatsComponent implements OnInit {
           break;
         }
       }
-      console.log(data, index)
       this.cost = data[index].data[0].toFixed(2)
       this.hours = Math.floor(data[index].data[1])
       this.minutes = Math.floor((data[index].data[1] % 1)*60) 
-      this.emissions = data[index].data[2]
-    })
+      this.emissions = data[index].data[2].toFixed(2)
+    }
   }
 
 }

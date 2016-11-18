@@ -26,7 +26,6 @@ import { BannerComponent } from './secondPage/banner.component';
 import { CarCardComponent } from './secondPage/car-card.component';
 import { AirplaneCardComponent } from './secondPage/airplane-card.component';
 import { SearchBarComponent} from './secondPage/search-bar.component';
-import { D3VisComponent } from './secondPage/d3-vis.component';
 import { CarStatsComponent } from './secondPage/car-stats.component';
 import { PlaneStatsComponent } from './secondPage/plane-stats.component';
 import { BikeCardComponent } from './secondPage/bike-card.component';
@@ -57,7 +56,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     CarCardComponent,
     AirplaneCardComponent,
     SearchBarComponent,
-    D3VisComponent,
     CarStatsComponent,
     PlaneStatsComponent,
     BikeCardComponent,
