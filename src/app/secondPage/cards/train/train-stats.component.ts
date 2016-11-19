@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-walk-stats',
+  selector: 'app-train-stats',
   template: `
     <div>
       <p>
@@ -27,9 +27,9 @@ import { Component, Input, OnChanges } from '@angular/core';
     p {
       font-size: 1.3em;
       padding-top: 10%;
-`]
+  `]
 })
-export class WalkStatsComponent implements OnChanges {
+export class TrainStatsComponent implements OnChanges {
   constructor() {}
   @Input() costData: any;
   private cost: number;
@@ -42,7 +42,7 @@ export class WalkStatsComponent implements OnChanges {
       let data: any[] = this.costData.data
       let index: number = 0;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].label === 'car') {
+        if (data[i].label === 'train') {
           index = i;
           break;
         }

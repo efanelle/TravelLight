@@ -1,69 +1,28 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { RadarChartComponent } from './radar-chart.component';
+// import { RadarChartComponent } from '../../radar-chart.component';
 
 @Component({
-  selector: 'app-car-card',
+  selector: 'app-walk-card',
   template: `
     <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
       <div [class]="hide">
-        <app-car-stats 
+        <div class='tab'>
+        </div>
+        <app-walk-stats 
         [costData]="costData">
-        </app-car-stats>
+        </app-walk-stats>
       </div>
       <div [class]="show">
-        <h3> Travel by Car</h3>
+        <h3> Travel by Foot</h3>
       </div>
     </div>
   `,
-      //   <p>Ranking: {{ ranking }}</p>
-  styles: [`    
-   .outer {
-     width:100%;
-     height:200px;
-      border: solid 1px black;
-      border-radius: 10px;
-      float:left;
-      background: url('./assets/drive.jpeg') no-repeat center center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      color:whitesmoke;
-      position:relative;
-    }
-    .outer:hover{
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    .smcar {
-      height: 5%;
-      width: 5%;
-      margin-right: 5%;
-      float: right;
-    }
-    .bigcar {
-      height: 20%;
-      width:100%;
-      clear:both;
-      border-radius:10px;
-    }
-    .hidden {
-      display: none;
-      position:absolute;
-    }
-    .show {
-      height:100%;
-      width:100%;
-      text-align:center;
-      position:absolute;
-    }
-  `]
+  styleUrls: ['./walk-card.component.css']
 })
-export class CarCardComponent implements OnChanges {
-
+export class WalkCardComponent implements OnChanges {
   constructor() { }
   hide: string = "hidden";
   show: string = "show";
-
   over() {
     this.hide = "show";
     this.show = "hidden"
@@ -80,7 +39,7 @@ export class CarCardComponent implements OnChanges {
       let averageData: any[] = this.costData.normalizedData
       let index: number = 0;
       for (var i = 0; i < averageData.length; i++) {
-        if (averageData[i].label === 'car') {
+        if (averageData[i].label === 'walk') {
           index = i;
           break;
         }

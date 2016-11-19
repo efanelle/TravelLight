@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, AfterViewInit } from '@angular/core';
-import { RadarChartComponent } from './radar-chart.component';
+// import { RadarChartComponent } from '../../radar-chart.component';
 
 @Component({
   selector: 'app-train-card',
@@ -17,58 +17,7 @@ import { RadarChartComponent } from './radar-chart.component';
       </div>
     </div>
   `,
-  styles: [`    
-   .outer {
-      width:100%;
-      height:200px;
-      border: solid 1px black;
-      border-radius: 10px;
-      float:left;
-      background: url('./assets/bigtrain.jpeg') no-repeat center center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      color:whitesmoke;
-      position: relative;
-    }
-    .outer:hover{
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    p{
-      display: inline;
-      margin-right: 5%;
-      text-align:right;
-      font-size:1.2em;
-      margin-bottom:0;
-    }
-    .smcar {
-      height: 5%;
-      width: 5%;
-      margin-right: 5%;
-      float: right;
-    }
-    .tab {
-      float: right;
-      width: 100%;
-    }
-      .bigcar {
-      height: 20%;
-      width:100%;
-      clear:both;
-      border-radius:10px;
-    }
-    .hidden {
-      display: none;
-      position: absolute;
-    }
-    .show {
-      height:100%;
-      width:100%;
-      position: absolute;
-      text-align:center;
-    }
-  `]
+  styleUrls: ['./train-card.component.css']
 })
 export class TrainCardComponent implements OnChanges {
 
@@ -84,8 +33,6 @@ export class TrainCardComponent implements OnChanges {
     this.hide = "hidden";
     this.show = "show";
   }
-
-
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {
@@ -94,7 +41,7 @@ export class TrainCardComponent implements OnChanges {
       let averageData: any[] = this.costData.normalizedData
       let index: number = 0;
       for (var i = 0; i < averageData.length; i++) {
-        if (averageData[i].label === 'car') {
+        if (averageData[i].label === 'train') {
           index = i;
           break;
         }

@@ -23,20 +23,19 @@ import { SloganComponent } from './firstPage/slogan/slogan.component';
 //Results page
 import { ResultsComponent } from './secondPage/second.page.component';
 import { BannerComponent } from './secondPage/banner.component';
-import { CarCardComponent } from './secondPage/car-card.component';
-import { AirplaneCardComponent } from './secondPage/airplane-card.component';
+import { CarCardComponent } from './secondPage/cards/car/car-card.component';
+import { AirplaneCardComponent } from './secondPage/cards/plane/airplane-card.component';
 import { SearchBarComponent} from './secondPage/search-bar.component';
-import { CarStatsComponent } from './secondPage/car-stats.component';
-import { TrainStatsComponent } from './secondPage/train-stats.component';
-import { WalkStatsComponent } from './secondPage/walk-stats.component';
-import { PlaneStatsComponent } from './secondPage/plane-stats.component';
-import { BikeCardComponent } from './secondPage/bike-card.component';
-import { TrainCardComponent } from './secondPage/train-card.component';
-import { WalkCardComponent } from './secondPage/walk-card.component';
+import { CarStatsComponent } from './secondPage/cards/car/car-stats.component';
+import { TrainStatsComponent } from './secondPage/cards/train/train-stats.component';
+import { WalkStatsComponent } from './secondPage/cards/walk/walk-stats.component';
+import { PlaneStatsComponent } from './secondPage/cards/plane/plane-stats.component';
+import { TrainCardComponent } from './secondPage/cards/train/train-card.component';
+import { WalkCardComponent } from './secondPage/cards/walk/walk-card.component';
 import { RadarChartComponent } from './secondPage/radar-chart.component'
 import { PreferenceSliderComponent } from './secondPage/preference-slider.component'
 import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
-import { CardsComponent } from './secondPage/cards.component'
+import { CardsComponent } from './secondPage/cards/cards.component'
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -63,7 +62,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     TrainStatsComponent,
     PlaneStatsComponent,
     WalkStatsComponent,
-    BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
     LocInputComponent,
