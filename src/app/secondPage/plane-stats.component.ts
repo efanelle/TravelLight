@@ -5,26 +5,27 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-plane-stats',
   template: `
     <div>
-    <h4>Travel by Plane</h4>
-      <p>
-        Cost: $ {{cost}}
-        <br />
-        Time: {{hours}} hours, {{ minutes }} minutes
-        <br />
-        Emissions: {{emissions}} lbs CO<sub>2</sub>
-      </p>
+      <p>Ranking: {{ ranking }}</p>
+      <h4>Travel by Plane</h4>
+        <p>
+          Cost: $ {{cost}}
+          <br />
+          Time: {{hours}} hours, {{ minutes }} minutes
+          <br />
+          Emissions: {{emissions}} lbs CO<sub>2</sub>
+        </p>
     </div>
   `,
   styles: [`
     div {
-      // background-color: #ffebcd;
       width: 100%;
-      height: 18%;
-      margin-top: -50px;
-      margin-bottom:10px;
+      height: 100%;
       text-align: center;
+      color:whitesmoke;
       float: left;
       font-family: Lucida Sans Grande;
+      background-color: rgba(0,0,0,0.5);
+      border-radius:10px;
     }
   `]
 })

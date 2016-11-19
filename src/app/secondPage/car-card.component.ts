@@ -4,31 +4,33 @@ import { RadarChartComponent } from './radar-chart.component';
 @Component({
   selector: 'app-car-card',
   template: `
-    <div class = 'outer'>
-      <div class='tab'>
-        <img class='bigcar' src='../assets/road.png'/>
-        <p>Ranking: {{ ranking }}</p>
-        <p>CAR</p>
-        <img class='smcar' src='../assets/carIcon.png'/>
+    <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
+      <div [class]="hide">
+        <app-car-stats 
+        [costData]="costData">
+        </app-car-stats>
       </div>
-      <app-radar-chart 
-      [costData]="costData"
-      transportMode="car">
-      </app-radar-chart>
-      <app-car-stats 
-      [costData]="costData">
-      </app-car-stats>
     </div>
   `,
+      //   <p>Ranking: {{ ranking }}</p>
+      // <p>CAR</p>
+      // <app-radar-chart 
+      // [costData]="costData"
+      // transportMode="car">
+      // </app-radar-chart>
   styles: [`    
    .outer {
-      min-height: 70vh;
-      width: 40vw;
-      // background-color:lightblue;
+     width:100%;
+     height:200px;
       border: solid 1px black;
       border-radius: 10px;
       float:left;
-      margin-left:7%;
+      background: url('./assets/drive.jpeg') no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      color:whitesmoke;
     }
     .outer:hover{
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
@@ -46,23 +48,36 @@ import { RadarChartComponent } from './radar-chart.component';
       margin-right: 5%;
       float: right;
     }
-
-    .tab {
-
-      float: right;
-      width: 100%;
-    }
-      .bigcar {
-      height: 100px;
+    // .tab {
+    //   float: right;
+    //   width: 100%;
+    // }
+    .bigcar {
+      height: 20%;
       width:100%;
       clear:both;
       border-radius:10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .show {
+      height:100%;
+      width:100%;
     }
   `]
 })
 export class CarCardComponent implements OnChanges {
 
   constructor() { }
+  hide: string = "hidden";
+
+  over() {
+    this.hide = "show";
+  }
+  out() {
+    this.hide = "hidden";
+  }
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {

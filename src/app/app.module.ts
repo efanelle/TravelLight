@@ -27,6 +27,8 @@ import { CarCardComponent } from './secondPage/car-card.component';
 import { AirplaneCardComponent } from './secondPage/airplane-card.component';
 import { SearchBarComponent} from './secondPage/search-bar.component';
 import { CarStatsComponent } from './secondPage/car-stats.component';
+import { TrainStatsComponent } from './secondPage/train-stats.component';
+import { WalkStatsComponent } from './secondPage/walk-stats.component';
 import { PlaneStatsComponent } from './secondPage/plane-stats.component';
 import { BikeCardComponent } from './secondPage/bike-card.component';
 import { TrainCardComponent } from './secondPage/train-card.component';
@@ -34,6 +36,7 @@ import { WalkCardComponent } from './secondPage/walk-card.component';
 import { RadarChartComponent } from './secondPage/radar-chart.component'
 import { PreferenceSliderComponent } from './secondPage/preference-slider.component'
 import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
+import { CardsComponent } from './secondPage/cards.component'
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -57,7 +60,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     AirplaneCardComponent,
     SearchBarComponent,
     CarStatsComponent,
+    TrainStatsComponent,
     PlaneStatsComponent,
+    WalkStatsComponent,
     BikeCardComponent,
     TrainCardComponent,
     WalkCardComponent,
@@ -66,7 +71,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     TravelersComponent,
     RadarChartComponent,
     PreferenceSliderComponent,
-    PreferenceSliderContainerComponent
+    PreferenceSliderContainerComponent,
+    CardsComponent
   ],
   imports: [
     HttpModule,
@@ -76,7 +82,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     TypeaheadModule,
     DatepickerModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [
     CostInfoService,

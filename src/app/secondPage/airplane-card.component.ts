@@ -4,38 +4,34 @@ import { RadarChartComponent } from './radar-chart.component';
 @Component({
   selector: 'app-airplane-card',
   template: `
-    <div class = 'outer'>
-      <div class='tab'>
-        <img class='bigplane' src='../assets/plane2.png'/>
-        <p>Ranking: {{ ranking }}</p>
-        <p>PLANE</p>
-        <img class='smplane' src='../assets/airplaneIcon.png'/>
+    <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
+      <div [class]="hide">
+        <app-plane-stats 
+        [costData]="costData">
+        </app-plane-stats>
       </div>
-      <app-radar-chart 
-      [costData]="costData"
-      transportMode="plane">
-      </app-radar-chart>
-      <app-plane-stats 
-      [costData]="costData">
-      </app-plane-stats>
     </div>
   `,
-  styles: [`
-    .outer {
-      min-height: 70vh;
-      width: 40vw;
-      // background-color:lightblue;
+  styles: [`    
+   .outer {
+      width:100%;
+      height:200px;
       border: solid 1px black;
       border-radius: 10px;
       float:left;
-      margin-left:7%;
+      background: url('./assets/plane4.jpeg') no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      color:whitesmoke;
     }
     .outer:hover{
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
     p{
       display: inline;
-      margin-right: 5%;
+      margin-right: 6%;
       text-align:right;
       font-size:1.2em;
       margin-bottom:0;
@@ -46,21 +42,36 @@ import { RadarChartComponent } from './radar-chart.component';
       margin-right: 5%;
       float: right;
     }
-    .tab {
-      float: right;
-      width: 100%;
-    }
+    // .tab {
+    //   float: right;
+    //   width: 100%;
+    // }
     .bigplane {
-      height: 100px;
+      height: 20%;
       width:100%;
       clear:both;
       border-radius:10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .show {
+      height:100%;
+      width:100%;
     }
   `]
 })
 export class AirplaneCardComponent implements OnChanges {
 
   constructor() { }
+  hide: string = "hidden";
+
+  over() {
+    this.hide = "show";
+  }
+  out() {
+    this.hide = "hidden";
+  }
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {

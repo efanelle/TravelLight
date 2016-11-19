@@ -4,6 +4,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-car-stats',
   template: `
     <div>
+       <p>Ranking: {{ ranking }}</p>
       <h4> Travel by Car</h4>
       <p>
         Cost: $ {{cost}}
@@ -16,14 +17,14 @@ import { Component, Input, OnChanges } from '@angular/core';
   `,
   styles: [`
     div {
-      // background-color: #ffebcd;
       width: 100%;
-      height: 18%;
-      margin-top: -50px;
-      margin-bottom:10px;
+      height: 100%;
+      color:whitesmoke;
       text-align: center;
       float: left;
       font-family: Lucida Sans Grande;
+      background-color: rgba(0,0,0,0.5);
+      border-radius:10px;
     }
   `]
 })
