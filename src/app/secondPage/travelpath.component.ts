@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
     .text {
       font-size: 2.5em;
       font-family: Lato;
-      margin: 10px 20px;
+      margin: 20px;
     }
   `]
 })

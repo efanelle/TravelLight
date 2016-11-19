@@ -38,6 +38,7 @@ import { PreferenceSliderComponent } from './secondPage/preference-slider.compon
 import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
 import { CardsComponent } from './secondPage/cards/cards.component'
 import { TravelpathComponent } from './secondPage/travelpath.component';
+import { ComparisonCardComponent } from './secondPage/comparison-card.component';
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -74,6 +75,7 @@ import { PassDataService } from './pass-data.service';
     PreferenceSliderContainerComponent,
     CardsComponent,
     TravelpathComponent,
+    ComparisonCardComponent,
     DriveLocInputComponent
   ],
   imports: [
