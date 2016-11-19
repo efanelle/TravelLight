@@ -5,8 +5,6 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-plane-stats',
   template: `
     <div>
-      <p>Ranking: {{ ranking }}</p>
-      <h4>Travel by Plane</h4>
         <p>
           Cost: $ {{cost}}
           <br />
@@ -27,6 +25,10 @@ import { Component, Input, OnChanges } from '@angular/core';
       background-color: rgba(0,0,0,0.5);
       border-radius:10px;
     }
+    p {
+      font-size: 1.3em;
+      padding-top: 10%;
+  }
   `]
 })
 export class PlaneStatsComponent implements OnChanges {
@@ -47,6 +49,7 @@ export class PlaneStatsComponent implements OnChanges {
           break;
         }
       }
+      console.log(data);
       this.cost = data[index].data[0].toFixed(2)
       this.hours = Math.floor(data[index].data[1])
       this.minutes = Math.floor((data[index].data[1] % 1)*60) 

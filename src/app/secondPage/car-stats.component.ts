@@ -4,8 +4,6 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-car-stats',
   template: `
     <div>
-       <p>Ranking: {{ ranking }}</p>
-      <h4> Travel by Car</h4>
       <p>
         Cost: $ {{cost}}
         <br />
@@ -26,6 +24,10 @@ import { Component, Input, OnChanges } from '@angular/core';
       background-color: rgba(0,0,0,0.5);
       border-radius:10px;
     }
+    p {
+      font-size: 1.3em;
+      padding-top: 10%;
+  }
   `]
 })
 export class CarStatsComponent implements OnChanges {

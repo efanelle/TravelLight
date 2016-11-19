@@ -10,14 +10,12 @@ import { RadarChartComponent } from './radar-chart.component';
         [costData]="costData">
         </app-car-stats>
       </div>
+      <div [class]="show">
+        <h3> Travel by Car</h3>
+      </div>
     </div>
   `,
       //   <p>Ranking: {{ ranking }}</p>
-      // <p>CAR</p>
-      // <app-radar-chart 
-      // [costData]="costData"
-      // transportMode="car">
-      // </app-radar-chart>
   styles: [`    
    .outer {
      width:100%;
@@ -31,16 +29,10 @@ import { RadarChartComponent } from './radar-chart.component';
       -o-background-size: cover;
       background-size: cover;
       color:whitesmoke;
+      position:relative;
     }
     .outer:hover{
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    p{
-      display: inline;
-      margin-right: 6%;
-      text-align:right;
-      font-size:1.2em;
-      margin-bottom:0;
     }
     .smcar {
       height: 5%;
@@ -48,10 +40,6 @@ import { RadarChartComponent } from './radar-chart.component';
       margin-right: 5%;
       float: right;
     }
-    // .tab {
-    //   float: right;
-    //   width: 100%;
-    // }
     .bigcar {
       height: 20%;
       width:100%;
@@ -60,10 +48,13 @@ import { RadarChartComponent } from './radar-chart.component';
     }
     .hidden {
       display: none;
+      position:absolute;
     }
     .show {
       height:100%;
       width:100%;
+      text-align:center;
+      position:absolute;
     }
   `]
 })
@@ -71,12 +62,15 @@ export class CarCardComponent implements OnChanges {
 
   constructor() { }
   hide: string = "hidden";
+  show: string = "show";
 
   over() {
     this.hide = "show";
+    this.show = "hidden"
   }
   out() {
     this.hide = "hidden";
+    this.show = "show";
   }
   @Input() costData: any;
   ranking: number = 0;

@@ -12,12 +12,11 @@ import { RadarChartComponent } from './radar-chart.component';
         [costData]="costData">
         </app-train-stats>
       </div>
+      <div [class]="show">
+        <h3> Travel by Train</h3>
+      </div>
     </div>
   `,
-      // <app-radar-chart 
-      // [costData]="costData"
-      // transportMode="car">
-      // </app-radar-chart>
   styles: [`    
    .outer {
       width:100%;
@@ -31,6 +30,7 @@ import { RadarChartComponent } from './radar-chart.component';
       -o-background-size: cover;
       background-size: cover;
       color:whitesmoke;
+      position: relative;
     }
     .outer:hover{
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
@@ -60,10 +60,13 @@ import { RadarChartComponent } from './radar-chart.component';
     }
     .hidden {
       display: none;
+      position: absolute;
     }
     .show {
       height:100%;
       width:100%;
+      position: absolute;
+      text-align:center;
     }
   `]
 })
@@ -71,12 +74,15 @@ export class TrainCardComponent implements OnChanges {
 
   constructor() { }
   hide: string = "hidden";
+  show: string = "show";
 
   over() {
     this.hide = "show";
+    this.show = "hidden"
   }
   out() {
     this.hide = "hidden";
+    this.show = "show";
   }
 
 
