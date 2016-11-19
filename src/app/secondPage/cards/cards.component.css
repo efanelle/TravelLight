@@ -1,0 +1,16 @@
+.flex-container {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content: space-around;
+  align-content: flex-start;
+  width:100%;
+}
+
+.flex-item {
+  width:22%;
+  height:22%;
+}

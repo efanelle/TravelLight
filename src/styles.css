@@ -14,3 +14,6 @@ html body {
   font-family: 'Lato';
   /*background-color: transparent;*/
 }
+html {
+  background: whitesmoke;
+}
