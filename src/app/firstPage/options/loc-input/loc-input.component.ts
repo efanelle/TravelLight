@@ -34,7 +34,7 @@ export class LocInputComponent {
   public typeaheadOriginNoResults:boolean = false;
   public typeaheadDestinationLoading:boolean = false;
   public typeaheadDestinationNoResults:boolean = false;
-  public information:Object = {};
+  public information:{date:string, travelers:number, originAirportCode:string, originLng:number, originLat:number, destinationAirportCode:string, destinationLat:number, destinationLng:number} = <any>{};
   
   public constructor(private airportLocationService: AirportLocationService) {
     this.dataSource1 = Observable.create((observer:any) => {

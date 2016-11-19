@@ -5,6 +5,6 @@ export class SendCostDataService {
   dataStore:Object[] = [];
   constructor() { }
   sendData(data: Object) {
-    this.dataStore.push(data)
+    this.dataStore.unshift(data)
   }
 }

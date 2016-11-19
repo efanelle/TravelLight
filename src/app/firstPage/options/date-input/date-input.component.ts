@@ -13,10 +13,7 @@ export class DateInputComponent {
   @Output() dateNotify: EventEmitter<string> = new EventEmitter<string>();
   
   ngDoCheck() {
-    let dateString: string;
-    dateString = (this.dt.getYear() + 1900).toString() + '-' + (this.dt.getMonth() + 1).toString() + '-' + this.dt.getDate();
-    console.log(dateString)
-    this.dateNotify.emit(dateString)
+    this.dateNotify.emit(this.selectedDate)
   }
   
   public showChildModal():void {
@@ -27,6 +24,7 @@ export class DateInputComponent {
     this.childModal.hide();
   }
 
+  public selectedDate: string;
   public dt:Date = new Date();
   public minDate:Date = void 0;
   public events:Array<any>;
