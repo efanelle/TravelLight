@@ -27,7 +27,7 @@ export class LocInputComponent {
   public typeaheadOriginNoResults:boolean = false;
   public typeaheadDestinationLoading:boolean = false;
   public typeaheadDestinationNoResults:boolean = false;
-  
+
   public constructor(private airportLocationService: AirportLocationService) {
     this.dataSource1 = Observable.create((observer:any) => {
       // Runs on every search
@@ -36,8 +36,8 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.originAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
+          if (!!item.City && !!item.FAA_IATA) {
+            return item.City.match(query) || item.FAA_IATA.match(query);
           }
         }))
       })
@@ -49,18 +49,18 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.destinationAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
+          if (!!item.City && !!item.FAA_IATA) {
+            return item.City.match(query) || item.FAA_IATA.match(query);
           }
         }))
       })
     })
   }
- 
+
   public changeTypeaheadOriginLoading(e:boolean):void {
     this.typeaheadOriginLoading = e;
   }
- 
+
   public changeTypeaheadOriginNoResults(e:boolean):void {
     this.typeaheadOriginNoResults = e;
   }
@@ -68,11 +68,11 @@ export class LocInputComponent {
   public changeTypeaheadDestinationLoading(e:boolean):void {
     this.typeaheadDestinationLoading = e;
   }
- 
+
   public changeTypeaheadDestinationNoResults(e:boolean):void {
     this.typeaheadDestinationNoResults = e;
   }
- 
+
   public typeaheadOnSelect(e:TypeaheadMatch):void {
     console.log('Selected value: ', e.value);
   }
