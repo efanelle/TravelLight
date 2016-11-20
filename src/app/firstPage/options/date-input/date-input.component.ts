@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, OnChanges, DoCheck } from '@angular/core';
 import { ModalDirective } from '../../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
 import * as moment from 'moment';
 
@@ -9,8 +9,13 @@ import * as moment from 'moment';
 })
 
 export class DateInputComponent {
-   @ViewChild('childModal') public childModal:ModalDirective;
- 
+  @ViewChild('childModal') public childModal:ModalDirective;
+  @Output() dateNotify: EventEmitter<string> = new EventEmitter<string>();
+  
+  ngDoCheck() {
+    this.dateNotify.emit(this.selectedDate)
+  }
+  
   public showChildModal():void {
     this.childModal.show();
   }
@@ -19,6 +24,7 @@ export class DateInputComponent {
     this.childModal.hide();
   }
 
+  public selectedDate: string;
   public dt:Date = new Date();
   public minDate:Date = void 0;
   public events:Array<any>;
