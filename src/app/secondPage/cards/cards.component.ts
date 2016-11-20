@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CostInfoService } from '../cost-info.service';
 
 @Component({
@@ -15,10 +15,9 @@ import { CostInfoService } from '../cost-info.service';
 })
 export class CardsComponent {
   constructor(private costInfoService: CostInfoService) {}
-    private costData: any;
+    @Input() costData: any;
     ngOnInit() {
       this.costInfoService.getCosts()
         .subscribe(costs => this.costData = costs)
     }
-
 }
