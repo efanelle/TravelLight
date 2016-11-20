@@ -1,0 +1,44 @@
+<template #customItemTemplate let-model="item" let-index="index">
+  <h5> {{model.Name}}  ({{model.FAA_IATA}})</h5>
+</template>
+
+<div class="flex-container">
+ <div class="origin flex-item">
+  <label for="origin">Starting Point</label>
+  <input placeholder="search a location" 
+    autocorrect="off" 
+    autocapitalize="off" 
+    spellcheck="off" 
+    type="text" 
+    class="form-control" 
+    #searchOrigin 
+    [formControl]="searchControlOrigin">
+  <div class="icons">
+    <div *ngIf="typeaheadOriginLoading===true">
+      <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+    </div>
+    <div *ngIf="typeaheadOriginNoResults===true" class="" style="">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+  </div>
+</div>
+<div class="destination flex-item">
+  <label for="destination">Ending Point</label>
+  <input placeholder="search a location" 
+    autocorrect="off" 
+    autocapitalize="off" 
+    spellcheck="off" 
+    type="text" 
+    class="form-control" 
+    #searchDestination 
+    [formControl]="searchControlDestination">
+  <div class="icons">
+    <div *ngIf="typeaheadDestinationLoading===true">
+      <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+    </div>
+    <div *ngIf="typeaheadDestinationNoResults===true" class="" style="">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+  </div>
+</div>
+</div>
