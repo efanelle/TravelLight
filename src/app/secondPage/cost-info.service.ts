@@ -41,12 +41,16 @@ export class CostInfoService {
     )
     .map(results => results.map(res => res.json()))
     .map(result => {
-      for (var i = 0; i <= result.length - 2; i++) {
-        this.travelInfo.push({
-          data: [result[i].cost, result[i].time, result[i].emissions],
-          label: result[i].mode
-        })
-      }
+      console.log(result)
+      this.travelInfo.push({
+        data: [result[0].car.cost, result[0].car.time, result[0].car.emissions],
+        label: result[0].car.mode
+      })
+      this.travelInfo.push({
+        data: [result[0].carToAir.cost + result[1].cost, result[0].carToAir.time + result[1].time, result[0].carToAir.emissions + result[1].emissions],
+        label: result[1].mode
+      })
+      console.log(this.travelInfo)
       let averages = result[result.length - 1]
       this.averageData = {
         distance: averages.distance,
