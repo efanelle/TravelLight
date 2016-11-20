@@ -15,6 +15,10 @@
   text-align: center;
 }
 
+.pac-container {
+  z-index: 2000;
+}
+
 .flex-container {
   display: -webkit-flex; /* Safari */
   display: flex;

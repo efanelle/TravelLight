@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
 import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
-
+import { AgmCoreModule } from 'angular2-google-maps/core'
 
 //App Root
 import { AppComponent } from './app.component';
@@ -78,11 +78,16 @@ import { PassDataService } from './pass-data.service';
     HttpModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule,
     TypeaheadModule,
     DatepickerModule,
     AppRoutingModule,
     ChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDeVMNxaPKG4Z9pzCGVf0FVOUmSGYXhTEs',
+      libraries: ['places']
+    })
   ],
   providers: [
     CostInfoService,

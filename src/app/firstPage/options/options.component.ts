@@ -12,21 +12,16 @@ import { Router } from '@angular/router'
 })
 
 export class OptionsComponent {
-  // information = {
-  //   originLat: 35.04,
-  //   originLng: -106.609,
-  //   destinationLat:37.618,
-  //   destinationLng:-122.374,
-  //   travelers: 2,
-  //   date: '2016-11-20',
-  //   originAirportCode: 'ABQ',
-  //   destinationAirportCode: 'SFO'
-  // };
+
   private information:any = {};
   constructor(private costInfoService: CostInfoService, 
   private sendCostDataService: SendCostDataService,
   private router: Router) {
 
+  }
+
+  onDriveLocNotify(payload:Object) {
+    this.information = Object.assign(this.information, payload)
   }
 
   onLocNotify(payload:Object) {

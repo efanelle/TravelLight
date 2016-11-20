@@ -1,10 +1,8 @@
-import { Component, OnInit, EventEmitter, DoCheck, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, DoCheck, Output, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AirportLocationService } from '../../airport-location.service';
+import { MapsAPILoader } from 'angular2-google-maps/core';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import { TypeaheadMatch } from '../../../../../node_modules/ng2-bootstrap/components/typeahead/typeahead-match.class';
 
 @Component({
   selector: 'app-drive-loc-input',
@@ -12,93 +10,51 @@ import { TypeaheadMatch } from '../../../../../node_modules/ng2-bootstrap/compon
   styleUrls: ['./drive-loc-input.component.css']
 })
 
-export class DriveLocInputComponent {
+export class DriveLocInputComponent implements OnInit {
 
-  @Output() locNotify: EventEmitter<any> = new EventEmitter();
+  @Output() driveLocNotify: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild('searchOrigin') 
+  public searchOriginElementRef: ElementRef;
+  @ViewChild('searchDestination')
+  public searchDestinationElementRef: ElementRef;
 
   ngDoCheck() {
-    this.locNotify.emit(this.information)
+    this.driveLocNotify.emit(this.information)
   }
 
-  public stateCtrl:FormControl = new FormControl();
+  public searchControlOrigin: FormControl;
+  public searchControlDestination: FormControl;
 
-  public myForm:FormGroup = new FormGroup({
-    state: this.stateCtrl
-  });
-
-  public dataSource1:Observable<any>;
-  public dataSource2:Observable<any>;
-  public originAirport:string = '';
-  public destinationAirport:string = '';
-  public typeaheadOriginLoading:boolean = false;
-  public typeaheadOriginNoResults:boolean = false;
-  public typeaheadDestinationLoading:boolean = false;
-  public typeaheadDestinationNoResults:boolean = false;
-  public information:{date:string, travelers:number, originAirportCode:string, originLng:number, originLat:number, destinationAirportCode:string, destinationLat:number, destinationLng:number} = <any>{};
+  public information:{originDriveLatitude: number, originDriveLongitude: number, destinationDriveLatitude: number, destinationDriveLongitude: number} = <any>{};
   
-  public constructor(private airportLocationService: AirportLocationService) {
-    this.dataSource1 = Observable.create((observer:any) => {
-      // Runs on every search
-      this.airportLocationService
-      .getAirports(this.originAirport)
-      .subscribe((result:any) => {
-        observer.next(result.filter(item => {
-          let query = new RegExp(this.originAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
-          }
-        }))
+  public constructor(private airportLocationService: AirportLocationService, 
+  private mapsAPILoader: MapsAPILoader) {}
+
+  ngOnInit() {
+    this.searchControlOrigin = new FormControl()
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchOriginElementRef.nativeElement, {
+        types: ['address']
       })
-    })
-    this.dataSource2 = Observable.create((observer:any) => {
-      // Runs on every search
-      this.airportLocationService
-      .getAirports(this.destinationAirport)
-      .subscribe((result:any) => {
-        observer.next(result.filter(item => {
-          let query = new RegExp(this.destinationAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
-          }
-        }))
+      autocomplete.addListener('place_changed', () => {
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+        this.information.originDriveLatitude = place.geometry.location.lat();
+        this.information.originDriveLongitude = place.geometry.location.lng();
       })
-    })
+    });
+    this.searchControlDestination = new FormControl()
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchDestinationElementRef.nativeElement, {
+        types: ['address']
+      })
+      autocomplete.addListener('place_changed', () => {
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+        this.information.destinationDriveLatitude = place.geometry.location.lat();
+        this.information.destinationDriveLongitude = place.geometry.location.lng();
+      })
+    });
   }
 
-  onDateNotify(payload:string) {
-    this.information.date = payload;
-  }
-
-  onTravelersNotify(payload:number) {
-    this.information.travelers = payload;
-  }
  
-  public changeTypeaheadOriginLoading(e:boolean):void {
-    this.typeaheadOriginLoading = e;
-  }
- 
-  public changeTypeaheadOriginNoResults(e:boolean):void {
-    this.typeaheadOriginNoResults = e;
-  }
-
-  public changeTypeaheadDestinationLoading(e:boolean):void {
-    this.typeaheadDestinationLoading = e;
-  }
- 
-  public changeTypeaheadDestinationNoResults(e:boolean):void {
-    this.typeaheadDestinationNoResults = e;
-  }
- 
-  public typeaheadOnSelect(e:TypeaheadMatch):void {
-    let type:string;
-    if (e.value === this.originAirport) {
-      this.information.originAirportCode = e.item.FAA_IATA
-      this.information.originLat = e.item.Latitude
-      this.information.originLng = e.item.Longitude
-    } else if (e.value === this.destinationAirport) {
-      this.information.destinationAirportCode = e.item.FAA_IATA
-      this.information.destinationLat = e.item.Latitude
-      this.information.destinationLng = e.item.Longitude
-    }
-  }
 }

@@ -17,3 +17,6 @@ html body {
 html {
   background: whitesmoke;
 }
+.pac-container {
+  z-index: 2000;
+}

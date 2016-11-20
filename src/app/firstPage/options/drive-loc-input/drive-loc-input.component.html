@@ -5,18 +5,14 @@
 <div class="flex-container">
  <div class="origin flex-item">
   <label for="origin">Starting Point</label>
-  <input [(ngModel)]="originAirport"
-        [typeahead]="dataSource1"
-        [typeaheadOptionField]="'Name'"
-        [typeaheadOptionsLimit]="7"
-        [typeaheadItemTemplate]="customItemTemplate"
-        (typeaheadLoading)="changeTypeaheadOriginLoading($event)"
-        (typeaheadNoResults)="changeTypeaheadOriginNoResults($event)"
-        (typeaheadOnSelect)="typeaheadOnSelect($event)"
-        [typeaheadWaitMs]="300"
-        placeholder="Pick a location"
-        class="form-control"
-        id="origin">
+  <input placeholder="search a location" 
+    autocorrect="off" 
+    autocapitalize="off" 
+    spellcheck="off" 
+    type="text" 
+    class="form-control" 
+    #searchOrigin 
+    [formControl]="searchControlOrigin">
   <div class="icons">
     <div *ngIf="typeaheadOriginLoading===true">
       <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
@@ -28,18 +24,14 @@
 </div>
 <div class="destination flex-item">
   <label for="destination">Ending Point</label>
-  <input [(ngModel)]="destinationAirport"
-        [typeahead]="dataSource2"
-        [typeaheadOptionField]="'Name'"
-        [typeaheadOptionsLimit]="7"
-        [typeaheadItemTemplate]="customItemTemplate"
-        (typeaheadLoading)="changeTypeaheadDestinationLoading($event)"
-        (typeaheadNoResults)="changeTypeaheadDestinationNoResults($event)"
-        (typeaheadOnSelect)="typeaheadOnSelect($event)"
-        [typeaheadWaitMs]="300"
-        placeholder="Pick a location"
-        class="form-control"
-        id="destination">
+  <input placeholder="search a location" 
+    autocorrect="off" 
+    autocapitalize="off" 
+    spellcheck="off" 
+    type="text" 
+    class="form-control" 
+    #searchDestination 
+    [formControl]="searchControlDestination">
   <div class="icons">
     <div *ngIf="typeaheadDestinationLoading===true">
       <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
