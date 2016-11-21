@@ -4,7 +4,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-airplane-card',
   template: `
-    <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
+    <div class = 'outer'>
       <div [class]="stats">
       <h3> Travel by Plane</h3>
         <app-plane-stats 
@@ -17,16 +17,6 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class AirplaneCardComponent implements OnChanges {
   constructor() { }
-  // hide: string = "hidden";
-  // show: string = "show";
-  // over() {
-  //   this.hide = "show";
-  //   this.show = "hidden"
-  // }
-  // out() {
-  //   this.hide = "hidden";
-  //   this.show = "show";
-  // }
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {

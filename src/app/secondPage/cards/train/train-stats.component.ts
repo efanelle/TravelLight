@@ -14,7 +14,6 @@ import { Component, Input, OnChanges } from '@angular/core';
     </div>
   `,
   styles: [`
-  @import url('https://fonts.googleapis.com/css?family=Courgette|Lato');
     div {
       width: 100%;
       color:whitesmoke;
