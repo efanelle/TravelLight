@@ -33,6 +33,7 @@ h3 {
 
 ol {
   font-size: 1.25em;
+  color: #625949;
 }
 
 li:first-letter {
@@ -44,7 +45,7 @@ li:first-letter {
 }
 
 .rank-item:hover {
-  color: #DEC2B3;
+  color: black;
 }
 
 /*styles: [`
