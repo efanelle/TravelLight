@@ -6,12 +6,15 @@ import { RadarChartComponent } from './radar-chart.component';
   templateUrl: './comparison-card.component.html',
   styleUrls: ['./comparison-card.component.css']
 })
-export class ComparisonCardComponent {
+export class ComparisonCardComponent implements OnChanges {
   constructor() { }
   @Input() costData: any;
-  ranking: number = 0;
+  planeRank: number = 0;
+  carRank: number = 0;
+  first: string = '';
+  second: string = '';
+  travelMode:string = '';
 
-  public travelMode:string = 'plane';
 
   public changeTravelMode():void {
     if (this.travelMode === 'plane') {
@@ -21,15 +24,17 @@ export class ComparisonCardComponent {
     }
   }
 
-  ngDoCheck() {
-    // TODO: Ivey factor this out into it's own function
+  ngOnChanges() {
     if (this.costData) {
       let averageData: any[] = this.costData.normalizedData
-      let index: number = 0;
+      let planeIndex: number = 0;
+      let carIndex: number = 0;
       for (var i = 0; i < averageData.length; i++) {
         if (averageData[i].label === 'plane') {
-          index = i;
-          break;
+          planeIndex = i;
+        }
+        if (averageData[i].label === 'car') {
+          carIndex = i;
         }
       }
       let scores = averageData.map(methodData => 
@@ -41,7 +46,16 @@ export class ComparisonCardComponent {
         })
         return rank;
       })
-      this.ranking = rankings[index]
+      this.planeRank = rankings[planeIndex];
+      this.carRank = rankings[carIndex];
+      if (this.planeRank < this.carRank) {
+        this.first = 'plane';
+        this.second = 'car';
+      } else {
+        this.first = 'car';
+        this.second = 'plane';
+      }
+      this.travelMode = this.first;
     }
   }
 }

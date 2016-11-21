@@ -1,24 +1,29 @@
-<div class="left">
-  <h3>Transportation Information</h3>
-  <app-radar-chart 
-    [costData]="costData"
-    transportMode="plane"
-    (click)="changeTravelMode()">
-  </app-radar-chart>
-</div>
-<div class="right">
-  <div class="stats">
-    <h3>Statistics</h3>
-    <div *ngIf="travelMode==='plane'">
-      <app-plane-stats></app-plane-stats>
-    </div>
-    <div *ngIf="travelMode==='car'">
-      <app-car-stats></app-car-stats>
-    </div>
+<div class="main">
+  <div class="left">
+    <h3>Transportation Information</h3>
+    <app-radar-chart 
+      [costData]="costData"
+      transportMode="{{this.first}}"
+      (click)="changeTravelMode()">
+    </app-radar-chart>
   </div>
-  <div class="ranks">
-    <h3>Ranking</h3>
-    <p>{{ranking}}</p>
+  <div class="right">
+    <div class="stats">
+      <h3>Statistics</h3>
+      <div *ngIf="travelMode==='plane'">
+        <app-plane-stats [costData]="costData" class="info"></app-plane-stats>
+      </div>
+      <div *ngIf="travelMode==='car'">
+        <app-car-stats [costData]="costData" class="info"></app-car-stats>
+      </div>
+    </div>
+    <div class="ranks">
+      <h3>Ranking</h3>
+      <ol>
+        <li>{{this.first}}</li>
+        <li>{{this.second}}</li>
+      </ol>
+    </div>
   </div>
 </div>
 

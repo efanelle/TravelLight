@@ -6,37 +6,39 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 70vh;
+  min-height: 60vh;
   width: 50vw;
   border: solid 1px black;
   border-radius: 10px;
   float: left;
   margin-top: 3%;
   margin-left: 5%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .stats, .ranks {
-  min-height: 32vh;
+  min-height: 30vh;
   width: 35vw;
   border: solid 1px black;
   border-radius: 10px;
   float: right;
-  margin: 3% 5%;
+  margin: 3% 5% 0 3%;
+}
+
+.left:hover, .stats:hover, .ranks:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-p {
-  display: inline;
-  margin-right: 6%;
-  text-align:right;
-  font-size:1.2em;
-  /*margin-bottom: 0;*/
+.main {
+  margin-bottom: 20px;
 }
 
-.tab {
-  float: right;
-  width: 100%;
+.info {
+  background-color: whitesmoke !important;
+  color: black !important;
+}
+
+li:first-letter {
+  text-transform: capitalize;
 }
 
 /*styles: [`
