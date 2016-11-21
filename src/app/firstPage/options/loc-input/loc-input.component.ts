@@ -44,8 +44,8 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.originAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
+          if (!!item.City && !!item.FAA_IATA && !!item.Name) {
+            return item.FAA_IATA.match(query) || item.City.match(query) || item.Name.match(query);
           }
         }))
       })
@@ -57,8 +57,8 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.destinationAirport, 'ig');
-          if (!!item.City) {
-            return item.City.match(query);
+          if (!!item.City && !!item.FAA_IATA && !!item.Name) {
+            return item.FAA_IATA.match(query) || item.City.match(query) || item.Name.match(query);
           }
         }))
       })
