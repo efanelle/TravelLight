@@ -20,6 +20,14 @@ export class CostInfoService {
   private carInfoUrl: string;
 
   constructor(private http: Http, private _ngZone:NgZone) { }
+
+  // Get stub data
+  sendStubData() {
+    return new Observable(observer => {
+      console.log({data: TRAVELDATA, normalizedData: NORMALIZERS})
+      observer.next({data: TRAVELDATA, normalizedData: NORMALIZERS})
+    })
+  }
    
 
   sendUserInput(userInput:{originLat:Number, originLng:Number, destinationLat:Number, destinationLng:Number, originDriveLatitude:Number, originDriveLongitude:Number, destinationDriveLatitude:Number, destinationDriveLongitude:Number, travelers:Number, date:string, originAirportCode:string, destinationAirportCode:string}) {

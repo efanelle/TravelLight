@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CostInfoService } from '../cost-info.service';
+//import { CostInfoService } from '../cost-info.service';
+import { SendCostDataService } from '../../send-cost-data.service'
 
 @Component({
   selector: 'app-cards',
@@ -14,10 +15,10 @@ import { CostInfoService } from '../cost-info.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent {
-  constructor(private costInfoService: CostInfoService) {}
+  constructor(private sendCostDataService: SendCostDataService) {}
     @Input() costData: any;
     ngOnInit() {
-      this.costInfoService.getCosts()
-        .subscribe(costs => this.costData = costs)
+      console.log(this.sendCostDataService.dataStore[0])
+      this.costData = this.sendCostDataService.dataStore[0]
     }
 }
