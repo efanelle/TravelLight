@@ -5,15 +5,11 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-walk-card',
   template: `
     <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
-      <div [class]="hide">
-        <div class='tab'>
-        </div>
+      <div [class]="stats">
+        <h3> Travel by Foot</h3>
         <app-walk-stats 
         [costData]="costData">
         </app-walk-stats>
-      </div>
-      <div [class]="show">
-        <h3> Travel by Foot</h3>
       </div>
     </div>
   `,
@@ -21,16 +17,16 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class WalkCardComponent implements OnChanges {
   constructor() { }
-  hide: string = "hidden";
-  show: string = "show";
-  over() {
-    this.hide = "show";
-    this.show = "hidden"
-  }
-  out() {
-    this.hide = "hidden";
-    this.show = "show";
-  }
+  // hide: string = "hidden";
+  // show: string = "show";
+  // over() {
+  //   this.hide = "show";
+  //   this.show = "hidden"
+  // }
+  // out() {
+  //   this.hide = "hidden";
+  //   this.show = "show";
+  // }
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {

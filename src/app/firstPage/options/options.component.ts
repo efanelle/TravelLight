@@ -38,7 +38,8 @@ export class OptionsComponent {
 
   onClick() {
     console.log('sending ' + this.information)
-    this.costInfoService.sendUserInput(this.information)
+    //this.costInfoService.sendUserInput(this.information)
+    this.costInfoService.sendStubData()
     .subscribe(results => {
       this.sendCostDataService.sendData(results)
       this.router.navigate(['results'])

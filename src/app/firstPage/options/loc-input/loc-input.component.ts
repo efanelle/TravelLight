@@ -36,7 +36,7 @@ export class LocInputComponent {
   public typeaheadDestinationNoResults:boolean = false;
 
   public information:{date:string, travelers:number, originAirportCode:string, originLng:number, originLat:number, destinationAirportCode:string, destinationLat:number, destinationLng:number} = <any>{};
-  
+
   public constructor(private airportLocationService: AirportLocationService) {
     this.dataSource1 = Observable.create((observer:any) => {
       // Runs on every search
@@ -45,8 +45,9 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.originAirport, 'ig');
-          if (!!item.City && !!item.FAA_IATA) {
-            return item.City.match(query) || item.FAA_IATA.match(query);
+
+          if (!!item.City && !!item.FAA_IATA && !!item.Name) {
+            return item.FAA_IATA.match(query) || item.City.match(query) || item.Name.match(query);
           }
         }))
       })
@@ -58,8 +59,9 @@ export class LocInputComponent {
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.destinationAirport, 'ig');
-          if (!!item.City && !!item.FAA_IATA) {
-            return item.City.match(query) || item.FAA_IATA.match(query);
+
+          if (!!item.City && !!item.FAA_IATA && !!item.Name) {
+            return item.FAA_IATA.match(query) || item.City.match(query) || item.Name.match(query);
           }
         }))
       })
