@@ -4,7 +4,7 @@
   border: solid 1px black;
   border-radius: 10px;
   float:left;
-  background: url('../../assets/drive.jpeg') no-repeat center center;
+  background: url('../../assets/bigtrain.jpeg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -14,6 +14,12 @@
     }
 .outer:hover{
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bigtrain.jpeg');
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bigtrain.jpeg');
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bigtrain.jpeg');
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bigtrain.jpeg');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.5))), url('../../assets/bigtrain.jpeg');
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/bigtrain.jpeg');
 }
 .smcar {
   height: 5%;

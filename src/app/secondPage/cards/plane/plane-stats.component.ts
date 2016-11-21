@@ -22,7 +22,6 @@ import { Component, Input, OnChanges } from '@angular/core';
       color:whitesmoke;
       float: left;
       font-family: Lucida Sans Grande;
-      background-color: rgba(0,0,0,0.5);
       border-radius:10px;
     }
     p {

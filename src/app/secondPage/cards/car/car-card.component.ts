@@ -6,7 +6,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   template: `
     <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
       <div [class]="hide">
-        <app-car-stats 
+        <app-car-stats
         [costData]="costData">
         </app-car-stats>
       </div>
