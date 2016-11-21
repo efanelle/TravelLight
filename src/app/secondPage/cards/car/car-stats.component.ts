@@ -39,6 +39,7 @@ export class CarStatsComponent implements OnChanges {
   private emissions: number;
 
   ngOnChanges() {
+    console.log(this.costData)
     if (this.costData) {
       let data: any[] = this.costData.data
       let index: number = 0;
