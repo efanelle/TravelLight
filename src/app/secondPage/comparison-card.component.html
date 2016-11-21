@@ -10,10 +10,10 @@
   <div class="right">
     <div class="stats">
       <h3>Statistics</h3>
-      <div *ngIf="travelMode==='plane'">
+      <div *ngIf="travelMode==='plane'" class="info">
         <app-plane-stats [costData]="costData"></app-plane-stats>
       </div>
-      <div *ngIf="travelMode==='car'">
+      <div *ngIf="travelMode==='car'" class="info">
         <app-car-stats [costData]="costData"></app-car-stats>
       </div>
     </div>
