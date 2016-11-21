@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Lato');
+
 .outer {
   width:100%;
-  height:200px;
+  height:100%;
   border: solid 1px black;
   border-radius: 10px;
   float:left;
@@ -11,6 +13,10 @@
   background-size: cover;
   color:whitesmoke;
   position:relative;
+  text-align: center;
+  font-size: 1.2em;
+  font-family: Lato;
+  text-shadow: 1px 1px 1px black;
     }
 .outer:hover{
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
@@ -20,8 +26,16 @@
   background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/drive.jpeg');
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.5))), url('../../assets/drive.jpeg');
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/drive.jpeg');
+  z-index: 1;
 }
-.smcar {
+.stats {
+  height:100%;
+  width:100%;
+  text-align:center;
+  position:absolute;
+  z-index:100;
+}
+/*.smcar {
   height: 5%;
   width: 5%;
   margin-right: 5%;
@@ -32,14 +46,8 @@
   width:100%;
   clear:both;
   border-radius:10px;
-}
-.hidden {
+}*/
+/*.hidden {
   display: none;
   position:absolute;
-}
-.show {
-  height:100%;
-  width:100%;
-  text-align:center;
-  position:absolute;
-}
+}*/

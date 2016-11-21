@@ -5,13 +5,11 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-car-card',
   template: `
     <div class = 'outer' (mouseover)='over()' (mouseout)='out()'>
-      <div [class]="hide">
+      <div [class]="stats">
+        <h3> Travel by Car</h3>
         <app-car-stats
         [costData]="costData">
         </app-car-stats>
-      </div>
-      <div [class]="show">
-        <h3> Travel by Car</h3>
       </div>
     </div>
   `,
@@ -20,16 +18,16 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class CarCardComponent implements OnChanges {
   constructor() { }
-  hide: string = "hidden";
-  show: string = "show";
-  over() {
-    this.hide = "show";
-    this.show = "hidden"
-  }
-  out() {
-    this.hide = "hidden";
-    this.show = "show";
-  }
+  // hide: string = "hidden";
+  // show: string = "show";
+  // over() {
+  //   // this.hide = "show";
+  //   // this.show = "hidden"
+  // }
+  // out() {
+  //   // this.hide = "hidden";
+  //   // this.show = "show";
+  // }
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {

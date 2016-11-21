@@ -17,17 +17,10 @@ import { Component, Input, OnChanges } from '@angular/core';
   styles: [`
     div {
       width: 100%;
-      height: 100%;
-      text-align: center;
       color:whitesmoke;
-      float: left;
-      font-family: Lucida Sans Grande;
+      font-family: Lato;
       border-radius:10px;
     }
-    p {
-      font-size: 1.3em;
-      padding-top: 10%;
-  }
   `]
 })
 export class PlaneStatsComponent implements OnChanges {
