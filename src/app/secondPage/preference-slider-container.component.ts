@@ -5,17 +5,13 @@ import { MdSlider } from '@angular2-material/slider'
   selector: 'app-preference-slider-container',
   template: `
   <span>Cost</span><br/>
-  <md-slider min="0" max="5" value=3></md-slider><br/>
+  <md-slider min="0" max="5" value=3 id='teal-slider'></md-slider><br/>
   <span>Time</span><br/>
   <md-slider min="0" max="5" value=3></md-slider><br/>
   <span>Environmental Impact</span><br/>
   <md-slider min="0" max="5" value=3></md-slider><br/>
   `,
-  styles: [
-  `md-slider {
-    width: 30%;
-    min-width: 200px;
-  }`]
+  styleUrls: ['./preference-slider-container.component.css']
 })
 export class PreferenceSliderContainerComponent {
   @ViewChildren(MdSlider)

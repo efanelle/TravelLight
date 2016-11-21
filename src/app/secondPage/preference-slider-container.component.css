@@ -1,0 +1,7 @@
+md-slider {
+  min-width: 200px;
+  width: 30%
+}
+md-slider:first-child {
+  background-color: teal;
+}
