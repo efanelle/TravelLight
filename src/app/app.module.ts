@@ -37,6 +37,8 @@ import { RadarChartComponent } from './secondPage/radar-chart.component'
 import { PreferenceSliderComponent } from './secondPage/preference-slider.component'
 import { PreferenceSliderContainerComponent } from './secondPage/preference-slider-container.component'
 import { CardsComponent } from './secondPage/cards/cards.component'
+import { TravelpathComponent } from './secondPage/travelpath.component';
+import { ComparisonCardComponent } from './secondPage/comparison-card.component';
 
 //Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -72,6 +74,8 @@ import { PassDataService } from './pass-data.service';
     PreferenceSliderComponent,
     PreferenceSliderContainerComponent,
     CardsComponent,
+    TravelpathComponent,
+    ComparisonCardComponent,
     DriveLocInputComponent
   ],
   imports: [
