@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, DoCheck } from '@angular/core';
 import { MdSlider } from '@angular2-material/slider'
 
 @Component({
@@ -17,13 +17,23 @@ import { MdSlider } from '@angular2-material/slider'
     min-width: 200px;
   }`]
 })
-export class PreferenceSliderContainerComponent implements AfterViewInit {
+export class PreferenceSliderContainerComponent {
   @ViewChildren(MdSlider)
   private mdSlider: QueryList<ElementRef>;
+  private costPreference: number;
+  private timePreference: number;
+  private environmentPreference: number;
   constructor() { }
 
-  ngAfterViewInit() {
-    setInterval(() => console.log(this.mdSlider._results[0].value, this.mdSlider._results[1].value, this.mdSlider._results[2].value), 5000)
+  ngDoCheck() {
+    if (this.mdSlider) {
+      let total: number = this.mdSlider._results.map(mdslider => mdslider.value).reduce((a, b) => a + b)
+      this.costPreference = this.mdSlider._results[0].value / total
+      this.timePreference = this.mdSlider._results[1].value / total
+      this.environmentPreference = this.mdSlider._results[2].value / total
+      console.log(this.costPreference, this.timePreference, this.environmentPreference)
+    }
   }
+
 
 }
