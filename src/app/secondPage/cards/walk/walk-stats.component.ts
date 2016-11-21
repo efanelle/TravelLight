@@ -14,19 +14,13 @@ import { Component, Input, OnChanges } from '@angular/core';
     </div>
   `,
   styles: [`
-    div {
+    @import url('https://fonts.googleapis.com/css?family=Courgette|Lato');
+     div {
       width: 100%;
-      height: 100%;
       color:whitesmoke;
-      text-align: center;
-      float: left;
-      font-family: Lucida Sans Grande;
-      background-color: rgba(0,0,0,0.5);
+      font-family: Lato;
       border-radius:10px;
     }
-    p {
-      font-size: 1.3em;
-      padding-top: 10%;
 `]
 })
 export class WalkStatsComponent implements OnChanges {
