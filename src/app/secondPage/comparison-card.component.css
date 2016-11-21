@@ -1,5 +1,6 @@
 h3 {
   text-align: center;
+  color: #625949;
 }
 
 .left {
@@ -8,37 +9,42 @@ h3 {
   align-items: center;
   min-height: 60vh;
   width: 50vw;
-  border: solid 1px black;
+  border: solid 1px #625949;
   border-radius: 10px;
   float: left;
-  margin-top: 3%;
   margin-left: 5%;
 }
 
 .stats, .ranks {
-  min-height: 30vh;
   width: 35vw;
-  border: solid 1px black;
+  border: solid 1px #625949;
   border-radius: 10px;
   float: right;
-  margin: 3% 5% 0 3%;
+  margin: 0 5% 0 3%;
+}
+
+.ranks {
+  margin-top: 3%;
 }
 
 .left:hover, .stats:hover, .ranks:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-.main {
-  margin-bottom: 20px;
-}
-
-.info {
-  background-color: whitesmoke !important;
-  color: black !important;
+ol {
+  font-size: 1.25em;
 }
 
 li:first-letter {
   text-transform: capitalize;
+}
+
+.rank-item {
+  cursor: pointer;
+}
+
+.rank-item:hover {
+  color: #DEC2B3;
 }
 
 /*styles: [`

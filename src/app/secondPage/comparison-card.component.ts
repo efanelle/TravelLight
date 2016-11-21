@@ -14,7 +14,14 @@ export class ComparisonCardComponent implements OnChanges {
   first: string = '';
   second: string = '';
   travelMode:string = '';
+  
+  public toFirst():void {
+    this.travelMode = this.first;
+  }
 
+  public toSecond():void {
+    this.travelMode = this.second;
+  }
 
   public changeTravelMode():void {
     if (this.travelMode === 'plane') {

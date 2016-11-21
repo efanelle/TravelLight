@@ -11,17 +11,17 @@
     <div class="stats">
       <h3>Statistics</h3>
       <div *ngIf="travelMode==='plane'">
-        <app-plane-stats [costData]="costData" class="info"></app-plane-stats>
+        <app-plane-stats [costData]="costData"></app-plane-stats>
       </div>
       <div *ngIf="travelMode==='car'">
-        <app-car-stats [costData]="costData" class="info"></app-car-stats>
+        <app-car-stats [costData]="costData"></app-car-stats>
       </div>
     </div>
     <div class="ranks">
       <h3>Ranking</h3>
       <ol>
-        <li>{{this.first}}</li>
-        <li>{{this.second}}</li>
+        <li (click)="toFirst()" class="rank-item">{{this.first}}</li>
+        <li (click)="toSecond()" class="rank-item">{{this.second}}</li>
       </ol>
     </div>
   </div>

@@ -26,6 +26,7 @@ import { Component, OnInit } from '@angular/core';
       font-size: 2.5em;
       font-family: Lato;
       margin: 20px;
+      color: #625949;
     }
   `]
 })
