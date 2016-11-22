@@ -3,17 +3,18 @@
     <h3>Transportation Information</h3>
     <app-radar-chart 
       [costData]="costData"
-      transportMode="{{this.first}}"
+      transportMode="{{this.travelMode}}"
       (click)="changeTravelMode()">
     </app-radar-chart>
   </div>
   <div class="right">
     <div class="stats">
-      <h3>Statistics</h3>
       <div *ngIf="travelMode==='plane'" class="info">
+        <h3><img src="../../assets/airplaneIcon.png" alt="Plane"> Flying Statistics <img src="../../assets/airplaneIcon.png" alt="Plane"></h3>
         <app-plane-stats [costData]="costData"></app-plane-stats>
       </div>
       <div *ngIf="travelMode==='car'" class="info">
+        <h3><img src="../../assets/carIcon.png" alt="Car"> Driving Statistics <img src="../../assets/carIcon.png" alt="Car"></h3>     
         <app-car-stats [costData]="costData"></app-car-stats>
       </div>
     </div>
@@ -24,18 +25,8 @@
         <li (click)="toSecond()" class="rank-item">{{this.second}}</li>
       </ol>
     </div>
+    <div class="sliders">
+      <h3>Preferences</h3>
+    </div>
   </div>
 </div>
-
-<!--<div class = 'outer'>
-      <p>Ranking: {{ ranking }}</p>
-      <p>PLANE</p>
-      <app-radar-chart 
-      [costData]="costData"
-      transportMode="plane">
-      </app-radar-chart>
-      <app-plane-stats 
-      [costData]="costData">
-      </app-plane-stats>
-    </div>
-  `,-->
