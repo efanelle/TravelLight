@@ -5,7 +5,7 @@ import { Component, OnInit, EventEmitter, Output, DoCheck } from '@angular/core'
   template: `
     <div class="form-group travelers">
       <label for="travelers">Travelers</label>
-      <input [(ngModel)]="numTravelers" type="number" class="form-control" id="travelers">
+      <input [(ngModel)]="numTravelers" type="number" class="form-control" id="travelers" min="1" ng-init="1">
     </div>
   `,
   styles: [`
