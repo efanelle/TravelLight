@@ -4,12 +4,13 @@ import { MdSlider } from '@angular2-material/slider'
 @Component({
   selector: 'app-preference-slider-container',
   template: `
-  <span>Cost</span><br/>
-  <md-slider min="0" max="5" value=3 id='teal-slider'></md-slider><br/>
-  <span>Time</span><br/>
-  <md-slider min="0" max="5" value=3></md-slider><br/>
-  <span>Environmental Impact</span><br/>
-  <md-slider min="0" max="5" value=3></md-slider><br/>
+  <h3>Preferences</h3>
+  <h4>Cost</h4><br/>
+  <md-slider class="flex-item" min="0" max="5" value=3 id='teal-slider'></md-slider><br/>
+  <h4>Time</h4><br/>
+  <md-slider class="flex-item" min="0" max="5" value=3></md-slider><br/>
+  <h4>Environmental Impact</h4><br/>
+  <md-slider class="flex-item" min="0" max="5" value=3></md-slider><br/>
   `,
   styleUrls: ['./preference-slider-container.component.css']
 })
