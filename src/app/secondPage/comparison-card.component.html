@@ -1,6 +1,6 @@
 <div class="main">
   <div class="left">
-    <h3>Transportation Information</h3>
+    <h3>At A Glance</h3>
     <app-radar-chart 
       [costData]="costData"
       transportMode="{{this.travelMode}}"
@@ -10,23 +10,23 @@
   <div class="right">
     <div class="stats">
       <div *ngIf="travelMode==='plane'" class="info">
-        <h3><img src="../../assets/airplaneIcon.png" alt="Plane"> Flying Statistics <img src="../../assets/airplaneIcon.png" alt="Plane"></h3>
+        <h3><img src="../../assets/airplaneIcon.png" alt="Plane"> Your Flight</h3>
         <app-plane-stats [costData]="costData"></app-plane-stats>
       </div>
       <div *ngIf="travelMode==='car'" class="info">
-        <h3><img src="../../assets/carIcon.png" alt="Car"> Driving Statistics <img src="../../assets/carIcon.png" alt="Car"></h3>     
+        <h3><img src="../../assets/carIcon.png" alt="Car"> Your Drive</h3>     
         <app-car-stats [costData]="costData"></app-car-stats>
       </div>
     </div>
     <div class="ranks">
-      <h3>Ranking</h3>
+      <h3>Best Choice for You</h3>
       <ol>
         <li (click)="toFirst()" class="rank-item">{{this.first}}</li>
         <li (click)="toSecond()" class="rank-item">{{this.second}}</li>
       </ol>
     </div>
     <div class="sliders">
-      <h3>Preferences</h3>
+      <h3>Travel Light on...</h3>
     </div>
   </div>
 </div>
