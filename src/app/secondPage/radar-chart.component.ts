@@ -21,9 +21,9 @@ import { TravelInfo } from './travelInfo';
       display: inline-block;
     }
     div {
-      margin-left: 8%;
-      width:70%;
-      height:60%;
+      width:50%;
+      height:50%;
+      margin-top: 3%;
       // background-color: #cdc0b0;
       clear: both;
     }

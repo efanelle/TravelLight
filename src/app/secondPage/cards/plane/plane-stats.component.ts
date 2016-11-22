@@ -17,8 +17,6 @@ import { Component, Input, OnChanges } from '@angular/core';
   styles: [`
     div {
       width: 100%;
-      color:whitesmoke;
-      font-family: Lato;
       border-radius:10px;
     }
   `]
