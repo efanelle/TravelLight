@@ -46,10 +46,10 @@ export class CostInfoService {
   }
 
   getCosts() { return Observable.forkJoin(
+      this.http.get(this.transitUrl),
       this.http.get(this.carInfoUrl),
       this.http.get(this.planeInfoUrl),
-      this.http.get(this.averagesUrl),
-      this.http.get(this.transitUrl)
+      this.http.get(this.averagesUrl)
     )
     .map(results => results.map(res => res.json()))
     .map(result => {
