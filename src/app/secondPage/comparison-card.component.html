@@ -3,7 +3,7 @@
     <h3>At A Glance</h3>
     <app-radar-chart 
       [costData]="costData"
-      transportMode="{{this.travelMode}}"
+      [transportMode]="travelMode"
       (click)="changeTravelMode()">
     </app-radar-chart>
   </div>
@@ -27,7 +27,9 @@
     </div>
     <div class="sliders">
       <h3>Travel Light on...</h3>
-      <app-preference-slider-container class="flex-container"></app-preference-slider-container>
+      <app-preference-slider-container 
+        class="flex-container"
+        (preferenceNotify)="onPreferenceNotify($event)"></app-preference-slider-container>
     </div>
   </div>
 </div>
@@ -42,7 +44,6 @@
       <app-plane-stats 
       [costData]="costData">
       </app-plane-stats>
->>>>>>> Move preference sliders under ranking card
     </div>
   </div>
-</div>
+</div>-->

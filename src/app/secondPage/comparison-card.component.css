@@ -1,6 +1,7 @@
 h3 {
   text-align: center;
   color: #625949;
+  margin-bottom: 30px;
 }
 
 app-preference-slider-container {
