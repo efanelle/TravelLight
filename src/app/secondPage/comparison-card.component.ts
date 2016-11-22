@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, NgZone } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { RadarChartComponent } from './radar-chart.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { RadarChartComponent } from './radar-chart.component';
   styleUrls: ['./comparison-card.component.css']
 })
 export class ComparisonCardComponent implements OnChanges {
-  constructor(private ngZone: NgZone) { }
+  constructor() { }
   @Input() costData: any;
   planeRank: number = 0;
   carRank: number = 0;
