@@ -40,7 +40,14 @@ export class CostInfoService {
       this.averagesUrl = this.averagesBaseUrl + `/${userInput.travelers}/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}`;
       this.carInfoUrl = this.carBaseUrl + `/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
       this.transitUrl = this.transitBaseUrl + `/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
-      this.getCosts()
+      let urlArray = [];
+      if (userInput.tripType === 'distant') {
+        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.planeInfoUrl), this.http.get(this.averagesUrl))
+      } else if (userInput.tripType === 'local') {
+        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.transitUrl), this.http.get(this.averagesUrl))
+      }
+      console.log(urlArray)
+      this.getCosts(urlArray)
       .subscribe(data => observer.next(data))
     })
   }
@@ -63,14 +70,11 @@ export class CostInfoService {
     return distance
   }
 
-  getCosts() { return Observable.forkJoin(
-      this.http.get(this.transitUrl),
-      this.http.get(this.carInfoUrl),
-      this.http.get(this.planeInfoUrl),
-      this.http.get(this.averagesUrl)
-    )
+  getCosts(urlArray:any[]) { 
+    return Observable.forkJoin(urlArray)
     .map(results => results.map(res => res.json()))
     .map(result => {
+      console.log(result)
       this.travelInfo = [];
       this.travelInfo.push({
         data: [result[0].car.cost, result[0].car.time, result[0].car.emissions],
