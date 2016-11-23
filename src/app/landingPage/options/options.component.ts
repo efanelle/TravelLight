@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input, Output, DoCheck } from '@angular/core';
 import { ModalDirective } from '../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
 import { FormBuilder, Validators, FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AirportLocationService } from '../airport-location.service';
@@ -18,20 +18,22 @@ export class OptionsComponent {
   private information:any = {};
   private showLocalFields:boolean = false;
   private showAirportFields:boolean = false;
-
+  private valid:boolean = false;
 
   constructor(private costInfoService: CostInfoService, 
   private sendCostDataService: SendCostDataService,
-  private router: Router,
-  public fb: FormBuilder) {
-    this.tripForm = this.fb.group({
-      driveOrigin: ['', Validators.required],
-      driveDestination: ['', Validators.required]
-    })
-    setInterval(() => {
-      console.log(this.tripForm)
-    }, 10000)
+  private router: Router) { }
 
+  ngDoCheck() {
+    if (this.information.tripType && this.information.date && this.information.travelers) {
+      if (this.information.tripType === 'distant') {
+        if (this.information.originAirportCode && this.information.destinationAirportCode) {
+          this.valid = true;
+        }
+      } else {
+        this.valid = true;
+      }
+    }
   }
 
   onDriveLocNotify(payload:Object) {
@@ -46,6 +48,8 @@ export class OptionsComponent {
         this.showAirportFields = false;
         this.information.tripType = 'local';
       }
+    } else {
+      this.showLocalFields = false;
     }
 }
 
