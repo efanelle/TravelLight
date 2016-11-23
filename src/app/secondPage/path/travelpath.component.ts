@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-travelpath',
   template: `
     <div class="path flex-container">
-      <h3 class="flex-item text">{{Origin}}</h3>
+      <h3 class="flex-item text">{{origin}}</h3>
       <img class="flex-item arrow" src='../assets/arrow.png'/>
-      <h3 class="flex-item text">{{Destination}}</h3>
+      <h3 class="flex-item text">{{destination}}</h3>
     </div>
   `,
   styles: [`
@@ -31,8 +31,8 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class TravelpathComponent implements OnInit {
-  Origin = 'Philadelphia';
-  Destination = 'Atlanta';
+  origin:string = 'Philadelphia';
+  destination:string = 'Atlanta';
 
   constructor() { }
 
