@@ -3,8 +3,7 @@
     <h3>At A Glance</h3>
     <app-radar-chart 
       [costData]="costData"
-      [transportMode]="travelMode"
-      (click)="changeTravelMode()">
+      [transportMode]="travelMode">
     </app-radar-chart>
   </div>
   <div class="right">
@@ -33,17 +32,3 @@
     </div>
   </div>
 </div>
-
-<!--<div class = 'outer'>
-      <p>Ranking: {{ ranking }}</p>
-      <p>PLANE</p>
-      <app-radar-chart 
-      [costData]="costData"
-      transportMode="plane">
-      </app-radar-chart>
-      <app-plane-stats 
-      [costData]="costData">
-      </app-plane-stats>
-    </div>
-  </div>
-</div>-->
