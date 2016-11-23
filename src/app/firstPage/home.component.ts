@@ -9,8 +9,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 export class HomeComponent {
   private viewContainerRef: ViewContainerRef;
 
-  public constructor(viewContainerRef:ViewContainerRef) {
-    // You need this small hack in order to catch application root view container ref
+  public constructor(viewContainerRef: ViewContainerRef) {
     this.viewContainerRef = viewContainerRef;
   }
 }

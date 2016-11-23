@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { RadarChartComponent } from './radar-chart.component';
+import { RadarChartComponent } from './chart/radar-chart.component';
 
 @Component({
   selector: 'app-comparison-card',
