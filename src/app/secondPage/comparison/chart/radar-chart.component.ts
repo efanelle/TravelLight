@@ -5,27 +5,27 @@ import { TravelInfo } from '../../travelInfo';
 @Component({
   selector: 'app-radar-chart',
   template: `
-    <div style="display: block; width:400px">
-    <canvas baseChart 
-      [datasets]="radarChartData"
-      [labels]="radarChartLabels"
-      [chartType]="radarChartType"
-      [options]="radarChartOptions"
-      [colors]="[[0,153,51], [58, 79, 66]]"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)"></canvas>
+    <div>
+      <canvas baseChart 
+        [datasets]="radarChartData"
+        [labels]="radarChartLabels"
+        [chartType]="radarChartType"
+        [options]="radarChartOptions"
+        [colors]="[[0,153,51], [58, 79, 66]]"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
     </div>
   `,
   styles: [`
-    p {
-      display: inline-block;
-    }
     div {
-      width:50%;
-      height:50%;
-      margin-top: 3%;
-      // background-color: #cdc0b0;
-      clear: both;
+      margin-top: 2%;
+    }
+    canvas {
+      width: 80% !important;
+      height: 80% !important;
+      margin-bottom: -18%;
+      margin-left: 10%;
     }
   `]
 })
