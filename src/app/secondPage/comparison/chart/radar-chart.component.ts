@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import{ ChartsModule } from '../../../node_modules/ng2-charts/ng2-charts'
-import { TravelInfo } from './travelInfo';
+import{ ChartsModule } from '../../../../../node_modules/ng2-charts/ng2-charts'
+import { TravelInfo } from '../../travelInfo';
 
 @Component({
   selector: 'app-radar-chart',
@@ -36,11 +36,10 @@ export class RadarChartComponent {
   @Input() transportMode: string;
   public radarChartData: TravelInfo[] = [{data: [0, 0, 0], label: ''}];
   public toolTipData: TravelInfo[];
+
   // Radar
   public radarChartLabels:string[] = ['Cost', 'Time', 'Emissions'];
-
   public radarChartType:string = 'radar';
-
   public radarChartOptions:any = {
     tooltips: {
         callbacks: {
@@ -96,12 +95,12 @@ export class RadarChartComponent {
       let sortedData: any[] = [];
       this.costData.normalizedData.forEach(cost => {
         cost.label === this.transportMode ? 
-        sortedNormalData.unshift(cost) : sortedNormalData.push(cost)
-      })
+        sortedNormalData.unshift(cost) : sortedNormalData.push(cost);
+      });
       this.costData.data.forEach(cost => {
         cost.label === this.transportMode ? 
-        sortedData.unshift(cost) : sortedData.push(cost)
-      })
+        sortedData.unshift(cost) : sortedData.push(cost);
+      });
       let normalizedData = sortedNormalData.map(datum => {
         // Set current data's color to green
         if (datum.label === this.transportMode) {
@@ -111,12 +110,11 @@ export class RadarChartComponent {
           datum.backgroundColor = 'rgba(58, 79, 66,0.5)';
           datum.borderColor = 'rgba(58, 79, 66,1)';
         }
-        return datum
+        return datum;
       })
       // Set chart data, and display data for info / tooltip
-      this.radarChartData = normalizedData
-      this.toolTipData = sortedData
+      this.radarChartData = normalizedData;
+      this.toolTipData = sortedData;
     }
-
   }
 }

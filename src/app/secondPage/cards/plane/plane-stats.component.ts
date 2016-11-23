@@ -39,7 +39,6 @@ export class PlaneStatsComponent implements OnChanges {
           break;
         }
       }
-      console.log(data);
       this.cost = data[index].data[0].toFixed(2)
       this.hours = Math.floor(data[index].data[1])
       this.minutes = Math.floor((data[index].data[1] % 1)*60) 
