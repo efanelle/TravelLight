@@ -5,27 +5,27 @@ import { TravelInfo } from '../../travelInfo';
 @Component({
   selector: 'app-radar-chart',
   template: `
-    <div style="display: block; width:400px">
-    <canvas baseChart 
-      [datasets]="radarChartData"
-      [labels]="radarChartLabels"
-      [chartType]="radarChartType"
-      [options]="radarChartOptions"
-      [colors]="[[0,153,51], [58, 79, 66]]"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)"></canvas>
+    <div>
+      <canvas baseChart 
+        [datasets]="radarChartData"
+        [labels]="radarChartLabels"
+        [chartType]="radarChartType"
+        [options]="radarChartOptions"
+        [colors]="[[0,153,51], [58, 79, 66]]"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
     </div>
   `,
   styles: [`
-    p {
-      display: inline-block;
-    }
     div {
-      width:50%;
-      height:50%;
-      margin-top: 3%;
-      // background-color: #cdc0b0;
-      clear: both;
+      margin-top: 2%;
+    }
+    canvas {
+      width: 80% !important;
+      height: 80% !important;
+      margin-bottom: -18%;
+      margin-left: 10%;
     }
   `]
 })
@@ -44,18 +44,19 @@ export class RadarChartComponent {
     tooltips: {
         callbacks: {
           title: (toolTipItem, data) => {
-            return `${data.datasets[toolTipItem[0].datasetIndex].label} ${data.labels[toolTipItem[0].index]}` 
+            let label = data.datasets[toolTipItem[0].datasetIndex].label;
+            return `${label.charAt(0).toUpperCase() + label.slice(1)} ${data.labels[toolTipItem[0].index]}` 
           },
           label: (toolTipItem, data) => {
             let dataType = data.labels[toolTipItem.index]
             let number = this.toolTipData[toolTipItem.datasetIndex].data[toolTipItem.index]
             let display: string;
             if (dataType === 'Emissions') {
-              display = `${number} Pounds CO2`
+              display = `${number.toFixed(2)} Pounds CO2`
             } else if (dataType === 'Time') {
-              display = `${number} Hours`
+              display = `${Math.floor(number)} Hours, ${Math.floor((number % 1)*60)} Minutes`
             } else if (dataType === 'Cost') {
-              display = `$${number}`
+              display = `$${number.toFixed(2)}`
             }
             return display
           }
