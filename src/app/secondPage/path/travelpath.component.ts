@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-travelpath',
   template: `
     <div class="path flex-container">
-      <h3 class="flex-item text">{{origin}}</h3>
+      <h3 class="flex-item text">{{cities.origin}}</h3>
       <img class="flex-item arrow" src='../assets/arrow.png'/>
-      <h3 class="flex-item text">{{destination}}</h3>
+      <h3 class="flex-item text">{{cities.destination}}</h3>
     </div>
   `,
   styles: [`
@@ -31,8 +31,7 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class TravelpathComponent implements OnInit {
-  origin:string = 'Philadelphia';
-  destination:string = 'Atlanta';
+  @Input() cities:{destination:string, origin:string};
 
   constructor() { }
 

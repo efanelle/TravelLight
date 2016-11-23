@@ -16,6 +16,7 @@ export class CostInfoService {
   private travelInfo: TravelInfo[] = [];
   private averageData: { data: any[], distance: number };
   private normalizedData: TravelInfo[];
+  private cityNames: {destination: string, origin:string};
   private planeInfoUrl: string;
   private averagesUrl: string;
   private carInfoUrl: string;
@@ -30,7 +31,7 @@ export class CostInfoService {
       observer.next({data: TRAVELDATA, normalizedData: NORMALIZERS})
     })
   }
-   
+
 
   sendUserInput(userInput:{originLat:Number, originLng:Number, destinationLat:Number, destinationLng:Number, originDriveLatitude:Number, originDriveLongitude:Number, destinationDriveLatitude:Number, destinationDriveLongitude:Number, travelers:Number, date:string, originAirportCode:string, destinationAirportCode:string, tripType:string}) {
     return new Observable(observer => {
@@ -70,11 +71,12 @@ export class CostInfoService {
     return distance
   }
 
-  getCosts(urlArray:any[]) { 
+  getCosts(urlArray:any[]) {
     return Observable.forkJoin(urlArray)
     .map(results => results.map(res => res.json()))
     .map(result => {
       console.log(result)
+      this.cityNames = result[0].tripInfo
       this.travelInfo = [];
       this.travelInfo.push({
         data: [result[0].car.cost, result[0].car.time, result[0].car.emissions],
@@ -99,9 +101,9 @@ export class CostInfoService {
         return {
           data: travelData,
           label: travelMethod.label
-        }        
+        }
       })
-      return {data: this.travelInfo, normalizedData: this.normalizedData}
+      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames}
     })
   }
 }
