@@ -7,6 +7,7 @@ import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
 import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 import { AgmCoreModule } from 'angular2-google-maps/core'
+import { MdSliderModule } from '@angular2-material/slider'
 
 //App Root
 import { AppComponent } from './app.component';
@@ -88,6 +89,7 @@ import { PassDataService } from './pass-data.service';
     DatepickerModule,
     AppRoutingModule,
     ChartsModule,
+    MdSliderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDeVMNxaPKG4Z9pzCGVf0FVOUmSGYXhTEs',
       libraries: ['places']

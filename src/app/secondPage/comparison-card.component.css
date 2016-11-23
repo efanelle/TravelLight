@@ -1,6 +1,14 @@
 h3 {
   text-align: center;
   color: #625949;
+  margin-bottom: 30px;
+}
+
+app-preference-slider-container {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main {
@@ -33,13 +41,15 @@ h3 {
   border: solid 1px #625949;
   border-radius: 10px;
   float: right;
+  padding-bottom: 15px;
 }
 
 .ranks, .sliders {
   margin-top: 3%;
 }
 
-.ranks:hover, .sliders:hover {
+
+.left:hover, .stats:hover, .ranks:hover, .sliders:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
