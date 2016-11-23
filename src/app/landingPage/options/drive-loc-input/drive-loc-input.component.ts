@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, DoCheck, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, DoCheck, Input, Output, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AirportLocationService } from '../../airport-location.service';
 import { MapsAPILoader } from 'angular2-google-maps/core';
@@ -12,8 +12,6 @@ import { MapsAPILoader } from 'angular2-google-maps/core';
 
 export class DriveLocInputComponent implements OnInit {
 
-  @Input('group') driveForm: FormGroup
-
   @Output() driveLocNotify: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('searchOrigin') 
@@ -22,20 +20,21 @@ export class DriveLocInputComponent implements OnInit {
   public searchDestinationElementRef: ElementRef;
 
   ngDoCheck() {
-    console.log('checking')
     this.driveLocNotify.emit(this.information)
   }
+
 
   public searchControlOrigin: FormControl;
   public searchControlDestination: FormControl;
 
   public information:{originDriveLatitude: number, originDriveLongitude: number, destinationDriveLatitude: number, destinationDriveLongitude: number} = <any>{};
   
-  public constructor(private airportLocationService: AirportLocationService, 
-  private mapsAPILoader: MapsAPILoader) {}
+  public constructor(
+    private airportLocationService: AirportLocationService, 
+    private mapsAPILoader: MapsAPILoader,
+    public zone:NgZone) {}
 
   ngOnInit() {
-    console.log(this.driveForm)
     this.searchControlOrigin = new FormControl()
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchOriginElementRef.nativeElement, {
@@ -45,7 +44,9 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.originDriveLatitude = place.geometry.location.lat();
         this.information.originDriveLongitude = place.geometry.location.lng();
-        this.driveLocNotify.emit(this.information)
+        this.zone.run(() => {
+          this.driveLocNotify.emit(this.information)
+        })
       })
     });
     this.searchControlDestination = new FormControl()
@@ -57,8 +58,9 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.destinationDriveLatitude = place.geometry.location.lat();
         this.information.destinationDriveLongitude = place.geometry.location.lng();
-        console.log('about to send ------------------------------------')
-        this.driveLocNotify.emit(this.information)
+        this.zone.run(() => {
+          this.driveLocNotify.emit(this.information)
+        })
       })
     });
   }

@@ -6,9 +6,9 @@
       <div class="modal-header">
         <h4 class="modal-title">Journey Details</h4>
       </div>
-      <form [formGroup]="tripForm" #tabselect>
+      <form>
         <div class="modal-body" >
-          <app-drive-loc-input [group]="tripForm" (driveLocNotify)='onDriveLocNotify($event)'></app-drive-loc-input>
+          <app-drive-loc-input (driveLocNotify)='onDriveLocNotify($event)'></app-drive-loc-input>
           <app-loc-input *ngIf="showAirportFields" (locNotify)='onLocNotify($event)'></app-loc-input>
           <div *ngIf="showLocalFields" class="flex-container" id="additional-inputs">
             <app-date-input class="date flex-item" (dateNotify)='onDateNotify($event)'></app-date-input>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" [disabled]="!showLocalFields" (click)="mdModal.hide(); onClick($event)">
+          <button class="btn btn-primary" [disabled]="!valid" (click)="mdModal.hide(); onClick($event)">
             Submit
           </button>
         </div>
