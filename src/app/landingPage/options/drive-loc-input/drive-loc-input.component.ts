@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, DoCheck, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, DoCheck, Input, Output, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AirportLocationService } from '../../airport-location.service';
 import { MapsAPILoader } from 'angular2-google-maps/core';
@@ -12,6 +12,8 @@ import { MapsAPILoader } from 'angular2-google-maps/core';
 
 export class DriveLocInputComponent implements OnInit {
 
+  @Input('group') driveForm: FormGroup
+
   @Output() driveLocNotify: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('searchOrigin') 
@@ -20,6 +22,7 @@ export class DriveLocInputComponent implements OnInit {
   public searchDestinationElementRef: ElementRef;
 
   ngDoCheck() {
+    console.log('checking')
     this.driveLocNotify.emit(this.information)
   }
 
@@ -32,6 +35,7 @@ export class DriveLocInputComponent implements OnInit {
   private mapsAPILoader: MapsAPILoader) {}
 
   ngOnInit() {
+    console.log(this.driveForm)
     this.searchControlOrigin = new FormControl()
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchOriginElementRef.nativeElement, {
@@ -41,6 +45,7 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.originDriveLatitude = place.geometry.location.lat();
         this.information.originDriveLongitude = place.geometry.location.lng();
+        this.driveLocNotify.emit(this.information)
       })
     });
     this.searchControlDestination = new FormControl()
@@ -52,6 +57,8 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.destinationDriveLatitude = place.geometry.location.lat();
         this.information.destinationDriveLongitude = place.geometry.location.lng();
+        console.log('about to send ------------------------------------')
+        this.driveLocNotify.emit(this.information)
       })
     });
   }

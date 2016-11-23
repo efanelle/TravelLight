@@ -65,13 +65,6 @@ export class LocInputComponent {
     })
   }
 
-  onDateNotify(payload:string) {
-    this.information.date = payload;
-  }
-
-  onTravelersNotify(payload:number) {
-    this.information.travelers = payload;
-  }
  
   public changeTypeaheadOriginLoading(e:boolean):void {
     this.typeaheadOriginLoading = e;

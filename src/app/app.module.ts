@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/components/modal';
 import { TypeaheadModule } from 'ng2-bootstrap/components/typeahead';
 import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
+import { ButtonsModule } from 'ng2-bootstrap/components/buttons'
 import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 import { AgmCoreModule } from 'angular2-google-maps/core'
 import { MdSliderModule } from '@angular2-material/slider'
@@ -12,15 +13,17 @@ import { MdSliderModule } from '@angular2-material/slider'
 // App Root
 import { AppComponent } from './app.component';
 
-// Home page
-import { HomeComponent } from './firstPage/home.component';
-import { HeaderComponent } from './firstPage/header/header.component';
-import { OptionsComponent } from './firstPage/options/options.component';
-import { DriveLocInputComponent } from './firstPage/options/drive-loc-input/drive-loc-input.component';
-import { LocInputComponent } from './firstPage/options/loc-input/loc-input.component';
-import { DateInputComponent } from './firstPage/options/date-input/date-input.component';
-import { TravelersComponent } from './firstPage/options/travelers/travelers.component';
-import { SloganComponent } from './firstPage/slogan/slogan.component';
+
+//Home page
+import { HomeComponent } from './landingPage/home.component';
+import { HeaderComponent } from './landingPage/header/header.component';
+import { OptionsComponent } from './landingPage/options/options.component';
+import { DriveLocInputComponent } from './landingPage/options/drive-loc-input/drive-loc-input.component'
+import { LocInputComponent } from './landingPage/options/loc-input/loc-input.component';
+import { DateInputComponent } from './landingPage/options/date-input/date-input.component';
+import { TravelersComponent } from './landingPage/options/travelers/travelers.component';
+import { SloganComponent } from './landingPage/slogan/slogan.component';
+
 
 // Results page
 import { ResultsComponent } from './secondPage/second.page.component';
@@ -43,8 +46,8 @@ import { ComparisonCardComponent } from './secondPage/comparison/comparison-card
 
 // Services
 import { CostInfoService } from './secondPage/cost-info.service';
-import { AirportLocationService } from './firstPage/airport-location.service';
-import { SendCostDataService } from './send-cost-data.service';
+import { AirportLocationService } from './landingPage/airport-location.service';
+import { SendCostDataService } from './send-cost-data.service'
 import { AppRoutingModule } from './app-routing.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PassDataService } from './pass-data.service';
@@ -84,6 +87,7 @@ import { PassDataService } from './pass-data.service';
     FormsModule,
     ReactiveFormsModule,
     ModalModule,
+    ButtonsModule,
     TypeaheadModule,
     DatepickerModule,
     AppRoutingModule,

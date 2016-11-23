@@ -32,7 +32,7 @@ export class CostInfoService {
   }
    
 
-  sendUserInput(userInput:{originLat:Number, originLng:Number, destinationLat:Number, destinationLng:Number, originDriveLatitude:Number, originDriveLongitude:Number, destinationDriveLatitude:Number, destinationDriveLongitude:Number, travelers:Number, date:string, originAirportCode:string, destinationAirportCode:string}) {
+  sendUserInput(userInput:{originLat:Number, originLng:Number, destinationLat:Number, destinationLng:Number, originDriveLatitude:Number, originDriveLongitude:Number, destinationDriveLatitude:Number, destinationDriveLongitude:Number, travelers:Number, date:string, originAirportCode:string, destinationAirportCode:string, tripType:string}) {
     return new Observable(observer => {
 
       console.log(userInput);
@@ -45,6 +45,24 @@ export class CostInfoService {
     })
   }
 
+  getDistance(coor1:number[], coor2:number[]) {
+    let [lat1, lon1] = coor1;
+    let [lat2, lon2] = coor2;
+    let R = 3959; // miles
+    let φ1 = lat1 * Math.PI / 180;
+    let φ2 = lat2 * Math.PI / 180;
+    let Δφ = (lat2-lat1) * Math.PI / 180;
+    let Δλ = (lon2-lon1) * Math.PI / 180;
+
+    let a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+            Math.cos(φ1) * Math.cos(φ2) *
+            Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    let distance = R * c;
+    return distance
+  }
+
   getCosts() { return Observable.forkJoin(
       this.http.get(this.transitUrl),
       this.http.get(this.carInfoUrl),
@@ -53,7 +71,7 @@ export class CostInfoService {
     )
     .map(results => results.map(res => res.json()))
     .map(result => {
-      console.log('the result is: ', result)
+      this.travelInfo = [];
       this.travelInfo.push({
         data: [result[0].car.cost, result[0].car.time, result[0].car.emissions],
         label: result[0].car.mode
@@ -72,7 +90,7 @@ export class CostInfoService {
       }
       this.normalizedData = this.travelInfo.map(travelMethod => {
         let travelData: any[] = travelMethod.data.map((item, i) => {
-          return item / this.averageData.data[i]
+          return (item / this.averageData.data[i]).toFixed(2)
         })
         return {
           data: travelData,
