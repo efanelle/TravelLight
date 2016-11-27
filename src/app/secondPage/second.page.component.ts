@@ -13,5 +13,6 @@ export class ResultsComponent {
   public sliderValue: number;
   ngOnInit() {
     this.costData = this.sendCostDataService.dataStore[0];
+    console.log('cost data: ', this.costData)
   }
 }

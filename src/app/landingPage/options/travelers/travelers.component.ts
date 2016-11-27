@@ -5,7 +5,7 @@ import { Component, OnInit, EventEmitter, Output, DoCheck } from '@angular/core'
   template: `
     <div class="form-group travelers">
       <label for="travelers">Travelers</label>
-      <input [(ngModel)]="numTravelers" type="number" class="form-control" id="travelers" min="1" value="1">
+      <input [(ngModel)]="numTravelers" type="number" min="1" class="form-control" id="travelers">
     </div>
   `,
   styles: [`
@@ -16,7 +16,7 @@ import { Component, OnInit, EventEmitter, Output, DoCheck } from '@angular/core'
 })
 export class TravelersComponent {
   @Output() travelersNotify: EventEmitter<number> = new EventEmitter<number>();
-  private numTravelers: number;
+  private numTravelers: number = 1;
   ngDoCheck() {
     this.travelersNotify.emit(this.numTravelers)
   }

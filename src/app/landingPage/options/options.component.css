@@ -11,6 +11,18 @@
   box-shadow: -4px 3px 5px -3px rgba(98,89,73,1);
 }
 
+.date, .travelers {
+  display: inline-block;
+  width: 40%;
+}
+
+#additional-inputs {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .popup:hover {
   color: #625949;
   background-color: #ede6e1;

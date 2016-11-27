@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, DoCheck, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, DoCheck, Input, Output, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AirportLocationService } from '../../airport-location.service';
 import { MapsAPILoader } from 'angular2-google-maps/core';
@@ -23,13 +23,16 @@ export class DriveLocInputComponent implements OnInit {
     this.driveLocNotify.emit(this.information)
   }
 
+
   public searchControlOrigin: FormControl;
   public searchControlDestination: FormControl;
 
   public information:{originDriveLatitude: number, originDriveLongitude: number, destinationDriveLatitude: number, destinationDriveLongitude: number} = <any>{};
   
-  public constructor(private airportLocationService: AirportLocationService, 
-  private mapsAPILoader: MapsAPILoader) {}
+  public constructor(
+    private airportLocationService: AirportLocationService, 
+    private mapsAPILoader: MapsAPILoader,
+    public zone:NgZone) {}
 
   ngOnInit() {
     this.searchControlOrigin = new FormControl()
@@ -41,6 +44,9 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.originDriveLatitude = place.geometry.location.lat();
         this.information.originDriveLongitude = place.geometry.location.lng();
+        this.zone.run(() => {
+          this.driveLocNotify.emit(this.information)
+        })
       })
     });
     this.searchControlDestination = new FormControl()
@@ -52,6 +58,9 @@ export class DriveLocInputComponent implements OnInit {
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         this.information.destinationDriveLatitude = place.geometry.location.lat();
         this.information.destinationDriveLongitude = place.geometry.location.lng();
+        this.zone.run(() => {
+          this.driveLocNotify.emit(this.information)
+        })
       })
     });
   }

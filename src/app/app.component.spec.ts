@@ -2,9 +2,9 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './firstPage/header/header.component';
-import { SloganComponent } from './firstPage/slogan/slogan.component';
-import { OptionsComponent } from './firstPage/options/options.component';
+import { HeaderComponent } from './landingPage/header/header.component';
+import { SloganComponent } from './landingPage/slogan/slogan.component';
+import { OptionsComponent } from './landingPage/options/options.component';
 
 describe('App: TravelLight', () => {
   beforeEach(() => {
