@@ -35,7 +35,7 @@ export class LocInputComponent {
   public typeaheadDestinationLoading:boolean = false;
   public typeaheadDestinationNoResults:boolean = false;
 
-  public information:{date:string, travelers:number, originAirportCode:string, originLng:number, originLat:number, destinationAirportCode:string, destinationLat:number, destinationLng:number} = <any>{};
+  public information:{date:string, travelers:number, originAirportCode:string, originCity:string, originLng:number, originLat:number, destinationAirportCode:string, destinationCity:string, destinationLat:number, destinationLng:number} = <any>{};
 
   public constructor(private airportLocationService: AirportLocationService) {
     this.dataSource1 = Observable.create((observer:any) => {
@@ -95,13 +95,15 @@ export class LocInputComponent {
   public typeaheadOnSelect(e:TypeaheadMatch):void {
     let type:string;
     if (e.value === this.originAirport) {
-      this.information.originAirportCode = e.item.FAA_IATA
-      this.information.originLat = e.item.Latitude
-      this.information.originLng = e.item.Longitude
+      this.information.originAirportCode = e.item.FAA_IATA;
+      this.information.originCity = e.item.City;
+      this.information.originLat = e.item.Latitude;
+      this.information.originLng = e.item.Longitude;
     } else if (e.value === this.destinationAirport) {
-      this.information.destinationAirportCode = e.item.FAA_IATA
-      this.information.destinationLat = e.item.Latitude
-      this.information.destinationLng = e.item.Longitude
+      this.information.destinationAirportCode = e.item.FAA_IATA;
+      this.information.destinationCity = e.item.City;
+      this.information.destinationLat = e.item.Latitude;
+      this.information.destinationLng = e.item.Longitude;
     }
   }
 }
