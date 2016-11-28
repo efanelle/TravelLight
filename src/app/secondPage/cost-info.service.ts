@@ -13,6 +13,7 @@ export class CostInfoService {
   private averagesBaseUrl = 'http://localhost:1337/api/normalizers';
   private carBaseUrl = 'http://localhost:1337/api/cars';
   private transitBaseUrl = 'http://localhost:1337/api/transit';
+  private trainsBaseUrl = 'http://localhost:1337/api/trains';
   private travelInfo: TravelInfo[] = [];
   private averageData: { data: any[], distance: number };
   private normalizedData: TravelInfo[];
@@ -21,6 +22,7 @@ export class CostInfoService {
   private averagesUrl: string;
   private carInfoUrl: string;
   private transitUrl:string;
+  private trainsUrl:string;
 
   constructor(private http: Http, private _ngZone:NgZone) { }
 
@@ -33,7 +35,7 @@ export class CostInfoService {
   }
 
 
-  sendUserInput(userInput:{originLat:Number, originLng:Number, destinationLat:Number, destinationLng:Number, originDriveLatitude:Number, originDriveLongitude:Number, destinationDriveLatitude:Number, destinationDriveLongitude:Number, travelers:Number, date:string, originAirportCode:string, destinationAirportCode:string, tripType:string}) {
+  sendUserInput(userInput:{originLat:number, originLng:number, destinationLat:number, destinationLng:number, originDriveLatitude:number, originDriveLongitude:number, destinationDriveLatitude:number, destinationDriveLongitude:number, travelers:number, date:string, originAirportCode:string, destinationAirportCode:string, tripType:string}) {
     return new Observable(observer => {
 
       console.log(userInput);
@@ -41,9 +43,10 @@ export class CostInfoService {
       this.averagesUrl = this.averagesBaseUrl + `/${userInput.travelers}/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}`;
       this.carInfoUrl = this.carBaseUrl + `/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
       this.transitUrl = this.transitBaseUrl + `/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
+      this.trainsUrl = this.trainsBaseUrl + `/${userInput.originAirportCode}/${userInput.destinationAirportCode}/${userInput.travelers}/${userInput.date}/${this.getDistance([userInput.originLat, userInput.originLng],[userInput.destinationLat, userInput.destinationLng])}`
       let urlArray = [];
       if (userInput.tripType === 'distant') {
-        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.planeInfoUrl), this.http.get(this.averagesUrl))
+        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.planeInfoUrl), this.http.get(this.trainsUrl), this.http.get(this.averagesUrl))
       } else if (userInput.tripType === 'local') {
         urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.transitUrl), this.http.get(this.averagesUrl))
       }
@@ -86,9 +89,10 @@ export class CostInfoService {
         data: [result[0].carToAir.cost + result[1].cost, result[0].carToAir.time + result[1].time, result[0].carToAir.emissions + result[1].emissions],
         label: result[1].mode
       })
-      // this.travelInfo.push({
-      //   data:[result]
-      // })
+      this.travelInfo.push({
+        data: [result[2].cost, result[2].time, result[2].emissions],
+        label: result[2].mode
+      })
       let averages = result[result.length - 1]
       this.averageData = {
         distance: averages.distance,

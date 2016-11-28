@@ -70,6 +70,7 @@ export class OptionsComponent {
     this.costInfoService.sendUserInput(this.information)
     //this.costInfoService.sendStubData()
     .subscribe(results => {
+      console.log('recieved ' + results)
       this.sendCostDataService.sendData(results)
       this.router.navigate(['results'])
     })
