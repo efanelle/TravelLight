@@ -9,6 +9,7 @@ import { ButtonsModule } from 'ng2-bootstrap/components/buttons'
 import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 import { AgmCoreModule } from 'angular2-google-maps/core'
 import { MdSliderModule } from '@angular2-material/slider'
+import { CarouselModule } from 'ng2-bootstrap/components/carousel';
 
 // App Root
 import { AppComponent } from './app.component';
@@ -51,6 +52,10 @@ import { SendCostDataService } from './send-cost-data.service'
 import { AppRoutingModule } from './app-routing.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PassDataService } from './pass-data.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CarouselComponent } from './landingPage/carousel/carousel.component';
+import { AboutComponent } from './landingPage/about/about.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +84,11 @@ import { PassDataService } from './pass-data.service';
     CardsComponent,
     TravelpathComponent,
     ComparisonCardComponent,
-    DriveLocInputComponent
+    DriveLocInputComponent,
+    NavbarComponent,
+    CarouselComponent,
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     HttpModule,
@@ -93,6 +102,7 @@ import { PassDataService } from './pass-data.service';
     AppRoutingModule,
     ChartsModule,
     MdSliderModule,
+    CarouselModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDeVMNxaPKG4Z9pzCGVf0FVOUmSGYXhTEs',
       libraries: ['places']

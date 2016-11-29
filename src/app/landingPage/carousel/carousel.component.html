@@ -1,0 +1,12 @@
+<div class="row">
+  <carousel [interval]="5000" [noWrap]="false">
+    <slide *ngFor="let slide of slides; let index=index"
+            [active]="slide.active">
+      <img [src]="slide.image" style="margin:auto;">
+
+      <div class="carousel-caption">
+        <!--<p>{{slide.text}}</p>-->
+      </div>
+    </slide>
+  </carousel>
+</div>
