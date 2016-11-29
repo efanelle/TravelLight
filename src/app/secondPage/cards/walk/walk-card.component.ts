@@ -26,7 +26,7 @@ export class WalkCardComponent implements OnChanges {
       let averageData: any[] = this.costData.normalizedData
       let index: number = 0;
       for (var i = 0; i < averageData.length; i++) {
-        if (averageData[i].label === 'walk') {
+        if (averageData[i].label === 'walking') {
           index = i;
           break;
         }

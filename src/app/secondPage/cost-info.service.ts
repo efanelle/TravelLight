@@ -122,7 +122,7 @@ export class CostInfoService {
         }
       })
       console.log('should return ' + {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames})
-      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames}
+      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames, tripType:this.tripType}
     })
   }
 }

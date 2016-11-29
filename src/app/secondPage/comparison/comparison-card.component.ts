@@ -38,6 +38,7 @@ export class ComparisonCardComponent implements OnChanges {
     let planeIndex: number = 0;
     let carIndex: number = 0;
     let trainIndex: number = 0;
+    let walkingIndex: number = 0;
     
     for (var i = 0; i < averageData.length; i++) {
       if (averageData[i].label === 'plane') {
@@ -46,8 +47,11 @@ export class ComparisonCardComponent implements OnChanges {
       if (averageData[i].label === 'car') {
         carIndex = i;
       }
-      if (averageData[i].label === 'train') {
+      if (averageData[i].label === 'train' || averageData[i] === 'transit') {
         trainIndex = i;
+      } 
+      if (averageData[i].label === 'walking') {
+        walkingIndex = i;
       }
     }
     let scores = averageData.map(methodData => 

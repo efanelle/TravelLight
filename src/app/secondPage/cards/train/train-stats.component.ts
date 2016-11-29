@@ -35,7 +35,8 @@ export class TrainStatsComponent implements OnChanges {
       let data: any[] = this.costData.data
       let index: number = 0;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].label === 'train') {
+        if (data[i].label === 'train' || data[i].label === 'transit') {
+          console.log(data[i].label)
           index = i;
           break;
         }
