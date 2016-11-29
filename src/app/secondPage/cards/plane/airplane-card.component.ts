@@ -5,9 +5,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-airplane-card',
   template: `
     <div class = 'outer'>
-     <div *ngIf="ranking===1">
-        <img src="../../../assets/trophy.png">
-        </div>
+      <i class="ionicons ion-ribbon-b {{ place }}"></i>
       <div [class]="stats">
       <h3> Travel by Plane</h3>
         <app-plane-stats 
@@ -22,6 +20,7 @@ export class AirplaneCardComponent implements OnChanges {
   constructor() { }
   @Input() costData: any;
   ranking: number = 0;
+  place: string='';
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
@@ -43,7 +42,15 @@ export class AirplaneCardComponent implements OnChanges {
         return rank;
       })
       this.ranking = rankings[index]
-      console.log('plane', this.ranking)
+      if (this.ranking === 1) {
+        this.place = 'gold';
+      }
+      if (this.ranking === 2) {
+        this.place = 'silver';
+      }
+      if (this.ranking === 3) {
+        this.place = 'bronze';
+      }
     }
   }
 

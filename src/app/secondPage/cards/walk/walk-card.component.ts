@@ -5,6 +5,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-walk-card',
   template: `
     <div class = 'outer'>
+      <i class="ionicons ion-ribbon-b {{ place }}"></i>
       <div [class]="stats">
         <h3> Travel by Foot</h3>
         <app-walk-stats 
@@ -15,11 +16,14 @@ import { Component, Input, OnChanges } from '@angular/core';
   `,
   styleUrls: ['./walk-card.component.css']
 })
+// <img src="../../../assets/trophy.png">
+
 export class WalkCardComponent implements OnChanges {
   constructor() { }
 
   @Input() costData: any;
   ranking: number = 0;
+  place: string = '';
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
@@ -41,6 +45,15 @@ export class WalkCardComponent implements OnChanges {
         return rank;
       })
       this.ranking = rankings[index]
+      if (this.ranking === 1) {
+        this.place = 'gold';
+      }
+      if (this.ranking === 2) {
+        this.place = 'silver';
+      }
+      if (this.ranking === 3) {
+        this.place = 'bronze';
+      }
     }
   }
 
