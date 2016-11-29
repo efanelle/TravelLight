@@ -35,3 +35,9 @@
   position:absolute;
   z-index:100;
 }
+img {
+  height:30px;
+  width:30px;
+  float:left;
+  margin: 0;
+}

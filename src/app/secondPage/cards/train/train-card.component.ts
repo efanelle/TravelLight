@@ -5,11 +5,14 @@ import { Component, Input, OnChanges, AfterViewInit } from '@angular/core';
   selector: 'app-train-card',
   template: `
     <div class = 'outer'>
-    <div [class]="stats">
-        <h3> Travel by Train</h3>
-        <app-train-stats
-        [costData]="costData">
-        </app-train-stats>
+      <div *ngIf="ranking===1">
+        <img src="../../../assets/trophy.png">
+        </div>
+      <div [class]="stats">
+          <h3> Travel by Train</h3>
+          <app-train-stats
+          [costData]="costData">
+          </app-train-stats>
       </div>
     </div>
   `,
@@ -22,6 +25,7 @@ export class TrainCardComponent implements OnChanges {
   @Input() costData: any;
   ranking: number = 0;
   ngOnChanges() {
+    console.log('costdata', this.costData)
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
       let averageData: any[] = this.costData.normalizedData

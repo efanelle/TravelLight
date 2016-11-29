@@ -5,6 +5,9 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-car-card',
   template: `
     <div class = 'outer'>
+     <div *ngIf="ranking===1">
+        <img src="../../../assets/trophy.png">
+        </div>
       <div [class]="stats">
         <h3> Travel by Car</h3>
         <app-car-stats
@@ -40,6 +43,7 @@ export class CarCardComponent implements OnChanges {
         return rank;
       })
       this.ranking = rankings[index]
+      console.log('car', this.ranking)
     }
   }
 
