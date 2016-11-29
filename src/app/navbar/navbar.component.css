@@ -1,0 +1,29 @@
+nav {
+  background-color: white;
+  display: inline-block;
+  padding: 10px;
+}
+
+p {
+  margin: 0;
+  font-size: 1.8em;
+  font-family: Courgette;
+  color: #333;
+}
+
+ul {
+  display: inline-block;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.btn {
+  background-color: #9c27b0;
+  color: white;
+  display: inline-block;
+  /*border-radius: 10px;*/
+}
+/* #9c27b0 - purple from second page*/

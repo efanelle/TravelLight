@@ -9,6 +9,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CostInfoService {
+
+  private walkingBaseUrl = 'http://localhost:1337/api/walking';
   private planeBaseUrl = 'http://localhost:1337/api/planes';
   private averagesBaseUrl = 'http://localhost:1337/api/normalizers';
   private carBaseUrl = 'http://localhost:1337/api/cars';
@@ -18,11 +20,13 @@ export class CostInfoService {
   private averageData: { data: any[], distance: number };
   private normalizedData: TravelInfo[];
   private cityNames: {destination: string, origin:string};
+  private tripType: string
   private planeInfoUrl: string;
   private averagesUrl: string;
   private carInfoUrl: string;
   private transitUrl:string;
   private trainsUrl:string;
+  private walkingInfoUrl:string;
 
   constructor(private http: Http, private _ngZone:NgZone) { }
 
@@ -39,16 +43,18 @@ export class CostInfoService {
     return new Observable(observer => {
 
       console.log(userInput);
+      this.tripType = userInput.tripType
       this.planeInfoUrl = this.planeBaseUrl + `/${userInput.originAirportCode}/${userInput.destinationAirportCode}/${userInput.date}/${userInput.travelers}/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}`;
-      this.averagesUrl = this.averagesBaseUrl + `/${userInput.travelers}/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}`;
+      this.averagesUrl = this.averagesBaseUrl + `/${userInput.travelers}/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}/${userInput.tripType}`;
       this.carInfoUrl = this.carBaseUrl + `/${userInput.originLat}/${userInput.originLng}/${userInput.destinationLat}/${userInput.destinationLng}/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
-      this.transitUrl = this.transitBaseUrl + `/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
+      this.transitUrl = this.transitBaseUrl + `/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}/${userInput.travelers}`;
       this.trainsUrl = this.trainsBaseUrl + `/${userInput.originAirportCode}/${userInput.destinationAirportCode}/${userInput.travelers}/${userInput.date}/${this.getDistance([userInput.originLat, userInput.originLng],[userInput.destinationLat, userInput.destinationLng])}`
+      this.walkingInfoUrl = this.walkingBaseUrl + `/${userInput.originDriveLatitude}/${userInput.originDriveLongitude}/${userInput.destinationDriveLatitude}/${userInput.destinationDriveLongitude}`;
       let urlArray = [];
       if (userInput.tripType === 'distant') {
         urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.planeInfoUrl), this.http.get(this.trainsUrl), this.http.get(this.averagesUrl))
       } else if (userInput.tripType === 'local') {
-        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.transitUrl), this.http.get(this.averagesUrl))
+        urlArray.push(this.http.get(this.carInfoUrl), this.http.get(this.transitUrl), this.http.get(this.walkingInfoUrl), this.http.get(this.averagesUrl))
       }
       console.log(urlArray)
       this.getCosts(urlArray)
@@ -76,23 +82,31 @@ export class CostInfoService {
 
   getCosts(urlArray:any[]) {
     return Observable.forkJoin(urlArray)
-    .map(results => results.map(res => res.json()))
+    .map(results => results.map(<Response>(res) => res.json()))
     .map(result => {
       console.log(result)
-      this.cityNames = result[0].tripInfo
+      this.cityNames = result[0].tripInfo 
       this.travelInfo = [];
       this.travelInfo.push({
         data: [result[0].car.cost, result[0].car.time, result[0].car.emissions],
         label: result[0].car.mode
       })
-      this.travelInfo.push({
-        data: [result[0].carToAir.cost + result[1].cost, result[0].carToAir.time + result[1].time, result[0].carToAir.emissions + result[1].emissions],
-        label: result[1].mode
-      })
+      if (this.tripType === 'distant') {
+        this.travelInfo.push({
+          data: [result[0].carToAir.cost + result[1].cost, result[0].carToAir.time + result[1].time, result[0].carToAir.emissions + result[1].emissions],
+          label: result[1].mode
+        })
+      } else if (this.tripType === 'local') {
+        this.travelInfo.push({
+          data: [result[1].cost, result[1].time, result[1].emissions],
+          label: result[1].mode
+        })
+      }
       this.travelInfo.push({
         data: [result[2].cost, result[2].time, result[2].emissions],
         label: result[2].mode
       })
+      console.log('Travel info array: ' + this.travelInfo)
       let averages = result[result.length - 1]
       this.averageData = {
         distance: averages.distance,
@@ -107,6 +121,7 @@ export class CostInfoService {
           label: travelMethod.label
         }
       })
+      console.log('should return ' + {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames})
       return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames}
     })
   }
