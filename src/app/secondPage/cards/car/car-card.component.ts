@@ -3,29 +3,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-car-card',
-  template: `
-    <div class = 'outer'>
-      <div class = 'icons'>
-        <i class="ionicons ion-ribbon-b {{ place }}"></i>
-        <div *ngIf="costData.bestCost === method"> 
-          <i class="glyphicon glyphicon-usd"></i>
-        </div>
-        <div *ngIf="costData.bestTime === method">
-          <i class="glyphicon glyphicon-time"></i>
-        </div>
-        <div *ngIf="costData.bestEmissions === method">
-          <i class="glyphicon glyphicon-tree-deciduous"></i>
-        </div>
-      </div>
-      <br />
-      <div [class]="stats">
-        <h3> Travel by Car</h3>
-        <app-car-stats
-        [costData]="costData">
-        </app-car-stats>
-      </div>
-    </div>
-  `,
+  templateUrl: './car-card.component.html',
   styleUrls: ['./car-card.component.css']
 })
 export class CarCardComponent implements OnChanges {
