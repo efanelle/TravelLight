@@ -5,13 +5,18 @@ import { Component, Input, OnChanges } from '@angular/core';
   selector: 'app-airplane-card',
   template: `
     <div class = 'outer'>
-      <i class="ionicons ion-ribbon-b {{ place }}"></i>
-      <div *ngIf="cost"> 
-            <i class="glyphicon glyphicon-usd"></i>
-          </div>
-          <div *ngIf="time">
-            <i class="glyphicon glyphicon-time"></i>
-          </div>
+      <div class = 'icons'>
+        <i class="ionicons ion-ribbon-b {{ place }}"></i>
+        <div *ngIf="costData.bestCost === method"> 
+          <i class="glyphicon glyphicon-usd"></i>
+        </div>
+        <div *ngIf="costData.bestTime === method">
+          <i class="glyphicon glyphicon-time"></i>
+        </div>
+        <div *ngIf="costData.bestEmissions === method">
+          <i class="glyphicon glyphicon-tree-deciduous"></i>
+         </div>
+      </div>
       <br />
       <div [class]="stats">
       <h3> Travel by Plane</h3>
@@ -28,8 +33,7 @@ export class AirplaneCardComponent implements OnChanges {
   @Input() costData: any;
   ranking: number = 0;
   place: string='';
-  cost: boolean=false;
-  time: boolean=false;
+  method: string='';
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
@@ -37,6 +41,7 @@ export class AirplaneCardComponent implements OnChanges {
       let index: number = 0;
       for (var i = 0; i < averageData.length; i++) {   
         if (averageData[i].label === 'plane') {
+          this.method = averageData[i].label;
           index = i;
           break;
         }

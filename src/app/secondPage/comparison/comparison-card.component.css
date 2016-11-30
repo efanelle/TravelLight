@@ -41,10 +41,10 @@ app-preference-slider-container {
 /*.stats, .ranks, */
 .sliders {
   width: 100% !important;
-  border: solid 1px #625949;
+  /* border: solid 1px #625949; */
   border-radius: 10px;
   padding-bottom: 15px;
-  margin-top: 3%
+  margin-top: -5%;
 }
 .flex-item {
   align-self: center;
@@ -54,9 +54,9 @@ app-preference-slider-container {
   margin-top: 3%;
 }*/
 
-.sliders:hover {
+/*.sliders:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
+}*/
 
 ol {
   font-size: 1.35em;

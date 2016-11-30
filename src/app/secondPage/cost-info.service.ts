@@ -135,18 +135,15 @@ export class CostInfoService {
 //getting best cost  
       if (this.travelInfo[0].data[0] < this.travelInfo[1].data[0] &&
         this.travelInfo[0].data[0] < this.travelInfo[2].data[0]) {
-        this.bestCost = this.travelInfo[0].label;
-        
+        this.bestCost = this.travelInfo[0].label; 
       }
       if (this.travelInfo[1].data[0] < this.travelInfo[0].data[0] &&
         this.travelInfo[1].data[0] < this.travelInfo[2].data[0]) {
         this.bestCost = this.travelInfo[1].label;
-    
       }
       if (this.travelInfo[2].data[0] < this.travelInfo[0].data[0] &&
         this.travelInfo[2].data[0] < this.travelInfo[1].data[0]) {
         this.bestCost = this.travelInfo[2].label;
-    
       }
 //getting best time
       if (this.travelInfo[0].data[1] < this.travelInfo[1].data[1] &&

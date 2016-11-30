@@ -3,48 +3,7 @@ import { Component, Input, OnChanges, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-train-card',
-  template: `
-    
-      <div *ngIf="method==='transit'">
-        <div class = 'outer'>
-        <i class="ionicons ion-ribbon-b {{ place }}"></i>
-        <div *ngIf="cost"> 
-            <i class="glyphicon glyphicon-usd"></i>
-          </div>
-          <div *ngIf="time">
-            <i class="glyphicon glyphicon-time"></i>
-          </div>
-        <br />
-          <div [class]="stats">
-              <h3> Travel by Public Transit</h3>
-              <app-train-stats
-              [costData]="costData">
-              </app-train-stats>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="method ==='train'">
-        <div class = 'outer'>
-        <i class="ionicons ion-ribbon-b {{ place }}"></i>
-        <div *ngIf="cost"> 
-            <i class="glyphicon glyphicon-usd"></i>
-          </div>
-          <div *ngIf="time">
-            <i class="glyphicon glyphicon-time"></i>
-          </div>
-        <br />
-          <div [class]="stats">
-              <h3> Travel by Train or Bus</h3>
-              <app-train-stats
-              [costData]="costData">
-              </app-train-stats>
-          </div>
-        </div>
-      </div>
-
-    
-  `,
+  templateUrl:'./train-card.component.html',
   styleUrls: ['./train-card.component.css']
 })
 export class TrainCardComponent implements OnChanges {
@@ -55,8 +14,6 @@ export class TrainCardComponent implements OnChanges {
   ranking: number = 0;
   method: string = '';
   place: string = '';
-  cost: boolean=false;
-  time: boolean=false;
   ngOnChanges() {
     if (this.costData) {
       let averageData: any[] = this.costData.normalizedData

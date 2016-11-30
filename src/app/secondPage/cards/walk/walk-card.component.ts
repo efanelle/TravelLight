@@ -4,8 +4,19 @@ import { Component, Input, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-walk-card',
   template: `
-    <div class = 'outer'>
-      <i class="ionicons ion-ribbon-b {{ place }}"></i>
+      <div class = 'outer'>
+          <div class = 'icons'>
+            <i class="ionicons ion-ribbon-b {{ place }}"></i>
+            <div *ngIf="costData.bestCost === method"> 
+              <i class="glyphicon glyphicon-usd"></i>
+            </div>
+            <div *ngIf="costData.bestTime === method">
+              <i class="glyphicon glyphicon-time"></i>
+            </div>
+            <div *ngIf="costData.bestEmissions === method">
+              <i class="glyphicon glyphicon-tree-deciduous"></i>
+            </div>
+          </div>
       <br />
       <div [class]="stats">
         <h3> Travel by Foot</h3>
@@ -17,7 +28,6 @@ import { Component, Input, OnChanges } from '@angular/core';
   `,
   styleUrls: ['./walk-card.component.css']
 })
-// <img src="../../../assets/trophy.png">
 
 export class WalkCardComponent implements OnChanges {
   constructor() { }
@@ -25,6 +35,7 @@ export class WalkCardComponent implements OnChanges {
   @Input() costData: any;
   ranking: number = 0;
   place: string = '';
+  method: string = '';
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
@@ -32,6 +43,7 @@ export class WalkCardComponent implements OnChanges {
       let index: number = 0;
       for (var i = 0; i < averageData.length; i++) {
         if (averageData[i].label === 'walking') {
+          this.method = averageData[i].label;
           index = i;
           break;
         }
