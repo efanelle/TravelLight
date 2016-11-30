@@ -2,11 +2,12 @@
   <carousel [interval]="5000" [noWrap]="false">
     <slide *ngFor="let slide of slides; let index=index"
             [active]="slide.active">
-      <img [src]="slide.image" style="margin:auto;">
+      <img class="img-fluid" [src]="slide.image" style="margin: 0 auto;">
 
       <div class="carousel-caption">
-        <!--<p>{{slide.text}}</p>-->
+        <h4> For those who want to travel with awareness </h4>
       </div>
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
     </slide>
   </carousel>
 </div>

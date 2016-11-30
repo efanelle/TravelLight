@@ -8,15 +8,27 @@ import { Component } from '@angular/core';
 export class CarouselComponent {
   public slides:Array<any> = [
     {
-      image: `../../../assets/TravelLight.jpg`,
+      image: `../../../assets/redbike.jpg`,
       text: `TravelLight!`
     },
+
     {
-      image: `../../../assets/drive.jpeg`,
+      image: `../../../assets/redbike2.jpg`,
+      text: `TravelLight!`
+    },
+
+    {
+      image: `../../../assets/planewing.jpg`,
       text: `Driving! Woo!`
     },
+
     {
-      image: `../../../assets/walking.jpeg`,
+      image: `../../../assets/bluecar.jpg`,
+      text: `Walking! Aww yeah!`
+    },
+
+    {
+      image: `../../../assets/canyonbus2.jpg`,
       text: `Walking! Aww yeah!`
     }
   ];
