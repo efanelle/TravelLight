@@ -36,6 +36,7 @@ export class WalkCardComponent implements OnChanges {
         return rank;
       })
       this.ranking = rankings[index]
+      console.log(this.ranking);
       if (this.ranking === 1) {
         this.place = 'gold';
       }
