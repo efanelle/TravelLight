@@ -18,17 +18,17 @@ import { TravelInfo } from '../../travelInfo';
     </div>
   `,
   styles: [`
-    div {
-      margin-top: 2%;
-    }
-    canvas {
-      width: 80% !important;
-      height: 80% !important;
-      margin-bottom: -18%;
-      margin-left: 10%;
-    }
   `]
 })
+    // div {
+    //   margin-top: 2%;
+    // }
+    // canvas {
+    //   width: 80% !important;
+    //   height: 80% !important;
+    //   margin-bottom: -18%;
+    //   margin-left: 10%;
+    // }
 export class RadarChartComponent {
 
   constructor() {}

@@ -28,6 +28,10 @@ export class CostInfoService {
   private trainsUrl:string;
   private walkingInfoUrl:string;
 
+  private bestCost:string = '';
+  private bestTime: string= '';
+  private bestEmissions: string='';
+
   constructor(private http: Http, private _ngZone:NgZone) { }
 
   // Get stub data
@@ -121,8 +125,56 @@ export class CostInfoService {
           label: travelMethod.label
         }
       })
+      this.getRankings();
       console.log('should return ' + {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames})
-      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames}
+      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames, tripType:this.tripType, bestCost:this.bestCost, bestTime:this.bestTime, bestEmissions:this.bestEmissions}
     })
   }
+
+  getRankings() {
+//getting best cost  
+      if (this.travelInfo[0].data[0] < this.travelInfo[1].data[0] &&
+        this.travelInfo[0].data[0] < this.travelInfo[2].data[0]) {
+        this.bestCost = this.travelInfo[0].label; 
+      }
+      if (this.travelInfo[1].data[0] < this.travelInfo[0].data[0] &&
+        this.travelInfo[1].data[0] < this.travelInfo[2].data[0]) {
+        this.bestCost = this.travelInfo[1].label;
+      }
+      if (this.travelInfo[2].data[0] < this.travelInfo[0].data[0] &&
+        this.travelInfo[2].data[0] < this.travelInfo[1].data[0]) {
+        this.bestCost = this.travelInfo[2].label;
+      }
+//getting best time
+      if (this.travelInfo[0].data[1] < this.travelInfo[1].data[1] &&
+        this.travelInfo[0].data[1] < this.travelInfo[2].data[1]) {
+        this.bestTime = this.travelInfo[0].label;
+
+      }
+      if (this.travelInfo[1].data[1] < this.travelInfo[0].data[1] &&
+        this.travelInfo[1].data[1] < this.travelInfo[2].data[1]) {
+        this.bestTime = this.travelInfo[1].label;   
+      }
+      if (this.travelInfo[2].data[1] < this.travelInfo[0].data[1] &&
+        this.travelInfo[2].data[1] < this.travelInfo[1].data[1]) {
+        this.bestTime = this.travelInfo[2].label;
+      }
+//getting best emissions
+      if (this.travelInfo[0].data[2] < this.travelInfo[1].data[2] &&
+        this.travelInfo[0].data[2] < this.travelInfo[2].data[2]) {
+        this.bestEmissions = this.travelInfo[0].label;
+      }
+      if (this.travelInfo[1].data[2] < this.travelInfo[0].data[2] &&
+        this.travelInfo[1].data[2] < this.travelInfo[2].data[2]) {
+        this.bestEmissions = this.travelInfo[1].label;
+      }
+      if (this.travelInfo[2].data[2] < this.travelInfo[0].data[2] &&
+        this.travelInfo[2].data[2] < this.travelInfo[1].data[2]) {
+        this.bestEmissions = this.travelInfo[2].label;
+      }
+  }
+
+
+
+
 }
