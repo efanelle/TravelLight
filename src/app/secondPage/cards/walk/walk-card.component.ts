@@ -6,6 +6,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   template: `
     <div class = 'outer'>
       <i class="ionicons ion-ribbon-b {{ place }}"></i>
+      <br />
       <div [class]="stats">
         <h3> Travel by Foot</h3>
         <app-walk-stats 

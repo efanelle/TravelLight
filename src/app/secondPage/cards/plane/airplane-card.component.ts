@@ -6,6 +6,13 @@ import { Component, Input, OnChanges } from '@angular/core';
   template: `
     <div class = 'outer'>
       <i class="ionicons ion-ribbon-b {{ place }}"></i>
+      <div *ngIf="cost"> 
+            <i class="glyphicon glyphicon-usd"></i>
+          </div>
+          <div *ngIf="time">
+            <i class="glyphicon glyphicon-time"></i>
+          </div>
+      <br />
       <div [class]="stats">
       <h3> Travel by Plane</h3>
         <app-plane-stats 
@@ -21,12 +28,14 @@ export class AirplaneCardComponent implements OnChanges {
   @Input() costData: any;
   ranking: number = 0;
   place: string='';
+  cost: boolean=false;
+  time: boolean=false;
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
       let averageData: any[] = this.costData.normalizedData
       let index: number = 0;
-      for (var i = 0; i < averageData.length; i++) {
+      for (var i = 0; i < averageData.length; i++) {   
         if (averageData[i].label === 'plane') {
           index = i;
           break;

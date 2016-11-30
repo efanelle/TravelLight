@@ -35,6 +35,9 @@
   position:absolute;
   z-index:100;
 }
+h3 {
+  margin-top: 0;
+}
 .ion-ribbon-b {
   width:30px;
   font-size:1.25em;
