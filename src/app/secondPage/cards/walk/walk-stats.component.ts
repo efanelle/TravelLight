@@ -30,6 +30,7 @@ export class WalkStatsComponent implements OnChanges {
   private hours: number;
   private minutes: number;
   private emissions: number;
+  private trees: any;
 
   ngOnChanges() {
     if (this.costData) {
@@ -46,6 +47,10 @@ export class WalkStatsComponent implements OnChanges {
       this.minutes = Math.floor((data[index].data[1] % 1)*60) 
       this.emissions = data[index].data[2].toFixed(2)
     }
+    this.trees = Math.round(this.emissions/48 * 2)/2;
+    console.log(this.trees);
+    
+
   }
 
 }
