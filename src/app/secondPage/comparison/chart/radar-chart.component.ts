@@ -34,6 +34,7 @@ export class RadarChartComponent {
   constructor() {}
   @Input() costData: any;
   @Input() transportMode: string;
+  @Input() changes: Boolean;
   public radarChartData: TravelInfo[] = [{data: [0, 0, 0], label: ''}];
   public toolTipData: TravelInfo[];
 
@@ -115,6 +116,7 @@ export class RadarChartComponent {
       })
       // Set chart data, and display data for info / tooltip
       this.radarChartData = normalizedData;
+      console.log('chart data' + this.radarChartData)
       this.toolTipData = sortedData;
     }
   }

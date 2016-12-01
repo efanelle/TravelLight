@@ -3,7 +3,9 @@
     <h3>At A Glance</h3>
     <app-radar-chart 
       [costData]="costData"
-      [transportMode]="travelMode" class = "flex-item">
+      [transportMode]="travelMode" 
+      [changes]="changes"
+      class = "flex-item">
     </app-radar-chart>
     <div class="sliders flex-item">
       <h3>Travel Light on...</h3>
@@ -30,6 +32,12 @@
         <li (click)="toSecond()" class="rank-item">{{this.second}}</li>
       </ol>
     </div>-->
-    <app-cards [costData]="costData"></app-cards>
+    <app-cards [costData]="costData" 
+    [changes]="changes"
+    [planeRank]="planeRank"
+    [carRank]="carRank"
+    [trainRank]="trainRank"
+    [walkingRank]="walkingRank">
+    </app-cards>
   </div>
 </div>

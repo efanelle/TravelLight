@@ -11,6 +11,7 @@ export class ResultsComponent {
   constructor(private sendCostDataService: SendCostDataService) {}
   private costData: Object;
   public sliderValue: number;
+  public changeNotify:Boolean = false;
   ngOnInit() {
     if (!this.costData) {
       this.costData = this.sendCostDataService.initialDataStore[0];
@@ -20,6 +21,7 @@ export class ResultsComponent {
       console.log('observed change ' + data)
       this.costData = data;
       console.log(this.costData)
+      this.changeNotify = !this.changeNotify;
     })
   }
 }

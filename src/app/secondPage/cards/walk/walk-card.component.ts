@@ -11,32 +11,15 @@ export class WalkCardComponent implements OnChanges {
   constructor() { }
 
   @Input() costData: any;
+  @Input() changes: Boolean;
+  @Input() rank: number;
   ranking: number = 0;
   place: string = '';
-  method: string = '';
+  method: string = 'walking';
   ngOnChanges() {
     // TODO: Ivey factor this out into it's own function
     if (this.costData) {
-      let averageData: any[] = this.costData.normalizedData
-      let index: number = 0;
-      for (var i = 0; i < averageData.length; i++) {
-        if (averageData[i].label === 'walking') {
-          this.method = averageData[i].label;
-          index = i;
-          break;
-        }
-      }
-      let scores = averageData.map(methodData => 
-        methodData.data.reduce((a, b) => a + b))
-      let rankings = scores.map(score => {
-        let rank = 1;
-        scores.forEach(compScore => {
-          if (compScore < score) rank++;
-        })
-        return rank;
-      })
-      this.ranking = rankings[index]
-      console.log(this.ranking);
+      this.ranking = this.rank;
       if (this.ranking === 1) {
         this.place = 'gold';
       }
