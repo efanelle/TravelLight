@@ -1,0 +1,48 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.where {
+  background-color: white;
+  width: 100%;
+}
+
+.team {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: 2em;
+}
+
+img {
+  width: 180px;
+  height: 180px;
+}
+
+.dev {
+  width: 32%;
+}
+
+.fa_custom {
+  color: #0099CC
+}
+
+.fa:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+a {
+  text-decoration: none;
+  border: none;
+  color: black;
+}
