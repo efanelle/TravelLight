@@ -13,6 +13,7 @@ export class AdvancedOptionsComponent implements OnInit {
   public distantOptionsForm: FormGroup;
   public localOptionsForm: FormGroup;
   private currentData:{data:{data:number[]}[], normalizedData:{data:number[]}[]};
+  private showHelpInfo: Boolean = false;
 
   constructor(private sendCostDataService: SendCostDataService,
               private _fb: FormBuilder) { }
@@ -22,17 +23,17 @@ export class AdvancedOptionsComponent implements OnInit {
     this.distantOptionsForm = this._fb.group({
       carHours: Math.floor(this.costData.data[0].data[1]),
       carMins: Math.floor(60 * (this.costData.data[0].data[1] % 1)),
-      flightCost: this.costData.data[1].data[0],
+      flightCost: Math.floor(this.costData.data[1].data[0]),
       flightHours: Math.floor(this.costData.data[1].data[1]),
       flightMins: Math.floor(60 * (this.costData.data[1].data[1] % 1)),
-      trainCost: this.costData.data[2].data[0],
+      trainCost: Math.floor(this.costData.data[2].data[0]),
       trainHours: Math.floor(this.costData.data[2].data[1]),
       trainMins: Math.floor(60 * (this.costData.data[2].data[1] % 1))
     })
     this.localOptionsForm = this._fb.group({
       carHours: Math.floor(this.costData.data[0].data[1]),
       carMins: Math.floor(60 * (this.costData.data[0].data[1] % 1)),
-      trainCost: this.costData.data[1].data[0],
+      trainCost: Math.floor(this.costData.data[1].data[0]),
       trainHours: Math.floor(this.costData.data[1].data[1]),
       trainMins: Math.floor(60 * (this.costData.data[1].data[1] % 1)),
       walkingPace: 3
@@ -66,6 +67,15 @@ export class AdvancedOptionsComponent implements OnInit {
  
   public hideChildModal():void {
     this.childModal.hide();
+  }
+
+  public showPopUpInfo() {
+    console.log('mouseover')
+    this.showHelpInfo = true;
+  }
+
+  public hidePopUpInfo() {
+    this.showHelpInfo = false;
   }
 
   recalculateAverages(info:{data:Object[]}) {

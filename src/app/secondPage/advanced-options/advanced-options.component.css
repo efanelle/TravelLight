@@ -1,15 +1,23 @@
 .glyphicon.glyphicon-plus-sign {
-  font-size: 35px;
+  font-size: 25px;
 }
+
+.ion-help-circled {
+  font-size: 25px;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.form-column {
-  width: 32%;
+.form-column.center {
+  border-left: 1px solid gainsboro;
+  border-right: 1px solid gainsboro;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
 input.cost {
@@ -19,3 +27,32 @@ input.cost {
 input.time {
   width: 40px;
 }
+
+.info {
+    position: absolute;
+    background-color: whitesmoke;
+    z-index: 1;
+    display: inline-grid;
+    top: 10px;
+    left: 235px;
+    padding: 5px;
+    width: 320px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: .9em;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.time {
+    width: 90px;
+    display: inline-table;
+}
+
+input {
+  border-color: gainsboro;
+  border-radius: 3px;
+}
+
+/*h4 {
+  text-align: center;
+}*/
