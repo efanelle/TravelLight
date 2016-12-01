@@ -16,6 +16,7 @@
               <label for="car-time">Time: </label>
               <input type="number" [formControl]="distantOptionsForm.controls['carHours']" class="time"> hours, 
               <input type="number" [formControl]="distantOptionsForm.controls['carMins']" class="time"> min
+              <app-car-input (carNotify)='onCarNotify($event)'></app-car-input>
             </div>
             <div class="form-column">
               <h5>Flight Info</h5>
@@ -52,6 +53,7 @@
               <label for="car-time">Time: </label>
               <input type="number" [formControl]="localOptionsForm.controls['carHours']" class="time"> hours,
               <input type="number" [formControl]="localOptionsForm.controls['carMins']" class="time"> min
+              <app-car-input (carNotify)='onCarNotify($event)'></app-car-input>
             </div>
             <div class="form-column">
               <h5>Train / Bus Info</h5>

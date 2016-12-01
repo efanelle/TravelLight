@@ -21,7 +21,7 @@ export class CarInputComponent{
 
   public stateCtrl:FormControl = new FormControl();
 
-  public myForm:FormGroup = new FormControl({
+  public myForm:FormGroup = new FormGroup({
     state: this.stateCtrl
   });
 
@@ -51,8 +51,8 @@ export class CarInputComponent{
       .subscribe((result:any) => {
         observer.next(result.filter(item => {
           let query = new RegExp(this.carSearch, 'ig');
-          if(!!item.Make && !!item.CarModel && !!item.Year){
-            return item.Make.match(query) || item.CarModel.match(query) || item.Year.match(query)
+          if(!!item.FullName){
+            return item.FullName.match(query)
           }
         }))
       })
@@ -72,7 +72,7 @@ export class CarInputComponent{
     if(e.value === this.carSearch){
       this.information.EPM = e.item.EPM;
       this.information.MPG = e.item.MPG;
-      this.information.Car = e.item.Year + ' ' + e.item.Make + ' ' + e.item.CarModel
+      this.information.Car = e.item.FullName
     }
   }
 

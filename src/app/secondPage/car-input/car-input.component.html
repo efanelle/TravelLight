@@ -1,3 +1,24 @@
-<p>
-  car-input works!
-</p>
+<div class="flex-container">
+ <div class="origin flex-item">
+  <label for="origin">Type Of Car</label>
+  <input [(ngModel)]="carSearch"
+        [typeahead]="dataSource"
+        [typeaheadOptionField]="'FullName'"
+        [typeaheadOptionsLimit]="7"
+        [typeaheadItemTemplate]="customItemTemplate"
+        (typeaheadLoading)="changeTypeaheadCarSearchLoading($event)"
+        (typeaheadNoResults)="changeTypeaheadCarSearchNoResults($event)"
+        (typeaheadOnSelect)="typeaheadOnSelect($event)"
+        [typeaheadWaitMs]="300"
+        placeholder="What car will you take?"
+        class="form-control"
+        id="origin">
+  <div class="icons">
+    <div *ngIf="typeaheadCarSearchLoading===true">
+      <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+    </div>
+    <div *ngIf="typeaheadSearchNoResults===true" class="" style="">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+  </div>
+</div>
