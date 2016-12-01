@@ -45,12 +45,13 @@ import { CardsComponent } from './secondPage/cards/cards.component';
 import { TravelpathComponent } from './secondPage/path/travelpath.component';
 import { ComparisonCardComponent } from './secondPage/comparison/comparison-card.component';
 import { AdvancedOptionsComponent } from './secondPage/advanced-options/advanced-options.component';
-
+import { CarInputComponent } from './secondPage/car-input/car-input.component';
 
 // Services
 import { CostInfoService } from './secondPage/cost-info.service';
 import { AirportLocationService } from './landingPage/airport-location.service';
 import { SendCostDataService } from './send-cost-data.service'
+import { CarInfoService } from './secondPage/car-info.service'
 import { AppRoutingModule } from './app-routing.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PassDataService } from './pass-data.service';
@@ -91,7 +92,8 @@ import { FooterComponent } from './footer/footer.component';
     CarouselComponent,
     AboutComponent,
     FooterComponent,
-    AdvancedOptionsComponent
+    AdvancedOptionsComponent,
+    CarInputComponent
   ],
   imports: [
     HttpModule,
@@ -116,6 +118,7 @@ import { FooterComponent } from './footer/footer.component';
     AirportLocationService,
     PassDataService,
     SendCostDataService,
+    CarInfoService,
     {provide:LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
