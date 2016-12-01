@@ -1,14 +1,12 @@
 .popup {
   position: absolute;
-  top: 50%;
+  top: 300px;
   left: 50%;
-  margin-left: -68.54px;
-  color: #625949;
-  background-color: #FBF3EC;
-  border: none;
-  -webkit-box-shadow: -4px 3px 5px -3px rgba(98,89,73,1);
-  -moz-box-shadow: -4px 3px 5px -3px rgba(98,89,73,1);
-  box-shadow: -4px 3px 5px -3px rgba(98,89,73,1);
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2.5px solid white;
+  border-radius: 2px;
+  color: white; font-size: 2em;
 }
 
 .date, .travelers {

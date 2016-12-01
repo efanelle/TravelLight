@@ -1,5 +1,8 @@
-slide {
+/*carousel {
   height: 500px;
+}*/
+slide {
+  height: 100%;
 }
 
 slide img {
