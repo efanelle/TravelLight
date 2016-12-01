@@ -24,6 +24,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class PlaneStatsComponent implements OnChanges {
   constructor() {}
   @Input() costData: any;
+  @Input() changes: Boolean;
   private cost: number;
   private hours: number;
   private minutes: number;

@@ -48,11 +48,11 @@ export class AdvancedOptionsComponent implements OnInit {
       this.currentData.data[0].data[1] = input.carHours + input.carMins / 60;
       this.currentData.data[1].data[0] = input.trainCost;
       this.currentData.data[1].data[1] = input.trainHours + input.trainMins / 60;
-      this.currentData.data[2].data[1] = this.costData.data[2].data[1] * input.walkingPace / 3
+      this.currentData.data[2].data[1] = this.costData.distance / input.walkingPace
     })
   }
 
-  @Input() costData:{data:{data:number[]}[], normalizedData:{data:number[]}[]};
+  @Input() costData:{data:{data:number[]}[], normalizedData:{data:number[]}[], distance:number};
 
   @ViewChild('childModal') public childModal:ModalDirective;
  

@@ -7,16 +7,20 @@ import { RadarChartComponent } from './chart/radar-chart.component';
   styleUrls: ['./comparison-card.component.css']
 })
 export class ComparisonCardComponent implements OnChanges {
-  constructor() { }
+  constructor() {
+   }
   @Input() costData: any;
+  @Input() changes: Boolean;
+
   planeRank: number = 0;
   carRank: number = 0;
   trainRank: number = 0;
+  walkingRank: number = 0;
   
   first: string = '';
   second: string = '';
   third: string = '';
-  travelMode:string = '';
+  travelMode: string = '';
   private preferenceArray: number[] = [1/3, 1/3, 1/3]
 
   onPreferenceNotify(payload:number[]) {
@@ -34,7 +38,7 @@ export class ComparisonCardComponent implements OnChanges {
   }
   
   private calculateBestChoice() {
-    let averageData: any[] = this.costData.normalizedData
+    let averageData: any[] = this.costData.normalizedData;
     let planeIndex: number = 0;
     let carIndex: number = 0;
     let trainIndex: number = 0;
@@ -47,13 +51,14 @@ export class ComparisonCardComponent implements OnChanges {
       if (averageData[i].label === 'car') {
         carIndex = i;
       }
-      if (averageData[i].label === 'train' || averageData[i] === 'transit') {
+      if (averageData[i].label === 'train' || averageData[i].label === 'transit') {
         trainIndex = i;
       } 
       if (averageData[i].label === 'walking') {
         walkingIndex = i;
       }
     }
+    console.log(carIndex, trainIndex, walkingIndex)
     let scores = averageData.map(methodData => 
       methodData.data.reduce((a, b, i) => a + b * this.preferenceArray[i], 0))
     let rankings = scores.map(score => {
@@ -63,16 +68,72 @@ export class ComparisonCardComponent implements OnChanges {
       })
       return rank;
     })
-    this.planeRank = rankings[planeIndex];
+    if (this.costData.tripType === 'distant') {
+      this.planeRank = rankings[planeIndex];
+    } else {
+      this.walkingRank = rankings[walkingIndex]
+    }
     this.carRank = rankings[carIndex];
     this.trainRank = rankings[trainIndex];
-    console.log(this.planeRank, this.carRank, this.trainRank);
-    if (this.planeRank < this.carRank) {
-      this.first = 'plane';
-      this.second = 'car';
+    console.log(this.walkingRank, this.carRank, this.trainRank);
+    if (this.costData.tripType === 'distant') {
+      if (this.planeRank === 1) {
+        this.first = 'plane';
+        if (this.carRank === 2) {
+          this.second = 'car';
+          this.third = 'train';
+        } else {
+          this.second = 'train';
+          this.third = 'car';
+        }
+      } else if (this.planeRank === 2) {
+        this.second = 'plane';
+        if (this.carRank === 1) {
+          this.first = 'car';
+          this.third = 'train';
+        } else {
+          this.first = 'train';
+          this.third = 'car'
+        }
+      } else {
+        this.third = 'plane';
+        if (this.carRank === 1) {
+          this.first = 'car';
+          this.second = 'train';
+        } else {
+          this.first = 'train';
+          this.second = 'car'
+        }
+      }
     } else {
-      this.first = 'car';
-      this.second = 'plane';
+      if (this.walkingRank === 1) {
+        this.first = 'walking';
+        if (this.carRank === 2) {
+          this.second = 'car';
+          this.third = 'transit';
+        } else {
+          this.second = 'transit';
+          this.third = 'car';
+        }
+      } else if (this.walkingRank === 2) {
+        this.second = 'walking';
+        if (this.carRank === 1) {
+          this.first = 'car';
+          this.third = 'transit';
+        } else {
+          this.first = 'transit';
+          this.third = 'car'
+        }
+      } else {
+        this.third = 'walking';
+        if (this.carRank === 1) {
+          this.first = 'car';
+          this.second = 'transit';
+        } else {
+          this.first = 'transit';
+          this.second = 'car'
+        }
+      }
     }
   }
 

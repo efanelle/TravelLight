@@ -23,12 +23,14 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class CarStatsComponent implements OnChanges {
   constructor() {}
   @Input() costData: any;
+  @Input() changes: Boolean;
   private cost: number;
   private hours: number;
   private minutes: number;
   private emissions: number;
 
   ngOnChanges() {
+    console.log('change noted from car stats Component')
     if (this.costData) {
       let data: any[] = this.costData.data
       let index: number = 0;

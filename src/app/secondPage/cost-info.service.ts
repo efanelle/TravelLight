@@ -38,7 +38,7 @@ export class CostInfoService {
   sendStubData() {
     return new Observable(observer => {
       console.log({data: TRAVELDATA, normalizedData: NORMALIZERS})
-      observer.next({data: TRAVELDATA, normalizedData: NORMALIZERS})
+      observer.next({data: TRAVELDATA, normalizedData: NORMALIZERS, cities: {origin: 'ATL', destination: 'PHL'}, tripType: 'local'})
     })
   }
 
@@ -127,7 +127,7 @@ export class CostInfoService {
       })
       this.getRankings();
       console.log('should return ' + {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames})
-      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames, tripType:this.tripType, bestCost:this.bestCost, bestTime:this.bestTime, bestEmissions:this.bestEmissions}
+      return {data: this.travelInfo, normalizedData: this.normalizedData, cities: this.cityNames, tripType:this.tripType, distance: this.averageData.distance, bestCost:this.bestCost, bestTime:this.bestTime, bestEmissions:this.bestEmissions}
     })
   }
 

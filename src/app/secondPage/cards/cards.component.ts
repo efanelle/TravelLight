@@ -9,17 +9,17 @@ import { SendCostDataService } from '../../send-cost-data.service'
 
     <div *ngIf="costData.tripType==='local'">
       <div class='cards flex-container'>
-        <app-car-card class="flex-item" [costData]="costData"></app-car-card>
-        <app-train-card class="flex-item" [costData]="costData"></app-train-card>
-        <app-walk-card class="flex-item" [costData]="costData"></app-walk-card>
+        <app-car-card class="flex-item" [costData]="costData" [rank]="carRank" [changes]="changes"></app-car-card>
+        <app-train-card class="flex-item" [costData]="costData" [rank]="trainRank" [changes]="changes"></app-train-card>
+        <app-walk-card class="flex-item" [costData]="costData" [rank]="walkingRank" [changes]="changes"></app-walk-card>
       </div>
     </div>
 
     <div *ngIf="costData.tripType==='distant'">
       <div class='cards flex-container'>
-        <app-car-card class="flex-item" [costData]="costData"></app-car-card>
-        <app-airplane-card class="flex-item" [costData]="costData"></app-airplane-card>
-        <app-train-card class="flex-item" [costData]="costData"></app-train-card>
+        <app-car-card class="flex-item" [costData]="costData" [rank]="carRank" [changes]="changes"></app-car-card>
+        <app-airplane-card class="flex-item" [costData]="costData" [rank]="planeRank" [changes]="changes"></app-airplane-card>
+        <app-train-card class="flex-item" [costData]="costData" [rank]="trainRank" [changes]="changes"></app-train-card>
       </div>
     </div>
 
@@ -28,6 +28,13 @@ import { SendCostDataService } from '../../send-cost-data.service'
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent {
-  constructor(private sendCostDataService: SendCostDataService) {}
+  constructor(private sendCostDataService: SendCostDataService) {
+    setTimeout(()=>console.log('car ', this.carRank, 'plane ', this.planeRank, 'train ', this.trainRank), 1000)
+  }
     @Input() costData: any;
+    @Input() changes: Boolean;
+    @Input() planeRank: number;
+    @Input() carRank: number;
+    @Input() trainRank: number;
+    @Input() walkingRank: number;
 }
