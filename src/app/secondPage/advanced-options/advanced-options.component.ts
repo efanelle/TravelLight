@@ -54,6 +54,10 @@ export class AdvancedOptionsComponent implements OnInit {
 
   @Input() costData:{data:{data:number[]}[], normalizedData:{data:number[]}[], distance:number};
 
+  onCarNotify(payload:Object){
+    console.log('the payload of the on car notification in advanced options is:', payload)
+  }
+
   @ViewChild('childModal') public childModal:ModalDirective;
  
   public showChildModal():void {
