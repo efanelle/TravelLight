@@ -1,12 +1,13 @@
 <div class="row">
-  <carousel [interval]="5000" [noWrap]="false">
+  <carousel [interval]="5000" [noWrap]="false" (click)="mdModal.show()">
     <slide *ngFor="let slide of slides; let index=index"
             [active]="slide.active">
-      <img [src]="slide.image" style="margin:auto;">
+      <img class="img-fluid" [src]="slide.image" style="margin: 0 auto;">
 
       <div class="carousel-caption">
-        <!--<p>{{slide.text}}</p>-->
+       <i class="glyphicon-chevron-down" aria-hidden="true"></i>
       </div>
+
     </slide>
   </carousel>
 </div>
