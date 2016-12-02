@@ -41,3 +41,12 @@ li {
   flex-direction: row;
   justify-content: space-around;
 }
+
+.center {
+  display: inline-block;
+  left: 0;
+  right: 0;
+  text-align:center;
+  width:70%;
+  margin-left: 4%;
+}

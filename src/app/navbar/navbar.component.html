@@ -1,38 +1,37 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <p class="pull-left">Travel Light</p>
-
+  <i class="fa fa-compass fa-2x   center" aria-hidden="true"></i>
   <ul class="pull-right">
     <li>
       <button type="button" class="btn" (click)="showModal()">Start A New Journey</button>
     </li>
   </ul>
-
-  <div bsModal #mdModal="bs-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="myMediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" style="min-height: 1000px;">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" (click)="mdModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title">Journey Details</h4>
-        </div>
-        <form>
-          <div class="modal-body" >
-            <app-drive-loc-input (driveLocNotify)='onDriveLocNotify($event)'></app-drive-loc-input>
-            <app-loc-input *ngIf="showAirportFields" (locNotify)='onLocNotify($event)'></app-loc-input>
-            <div *ngIf="showLocalFields" class="flex-container" id="additional-inputs">
-              <app-date-input class="date flex-item" (dateNotify)='onDateNotify($event)'></app-date-input>
-              <app-travelers class="travelers flex-item" (travelersNotify)='onTravelersNotify($event)'></app-travelers>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" [disabled]="!valid" (click)="mdModal.hide(); onClick($event)">
-              Submit
-            </button>
-          </div>
-        </form>
+</nav>
+  
+<div bsModal #mdModal="bs-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="myMediumModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" style="min-height: 1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="mdModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Journey Details</h4>
       </div>
+      <form>
+        <div class="modal-body" >
+          <app-drive-loc-input (driveLocNotify)='onDriveLocNotify($event)'></app-drive-loc-input>
+          <app-loc-input *ngIf="showAirportFields" (locNotify)='onLocNotify($event)'></app-loc-input>
+          <div *ngIf="showLocalFields" class="flex-container" id="additional-inputs">
+            <app-date-input class="date flex-item" (dateNotify)='onDateNotify($event)'></app-date-input>
+            <app-travelers class="travelers flex-item" (travelersNotify)='onTravelersNotify($event)'></app-travelers>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" [disabled]="!valid" (click)="mdModal.hide(); onClick($event)">
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   </div>
-
-</nav>
+</div>
