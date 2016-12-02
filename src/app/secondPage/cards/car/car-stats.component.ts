@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, Directive, Output } from '@angular/core';
-import { ChangeDetectionStrategy} from '@angular/core';
 
 
 @Component({
@@ -19,8 +18,8 @@ import { ChangeDetectionStrategy} from '@angular/core';
           {{hours}} hours, {{ minutes }} minutes
           </p>
           <p>
-          {{emissions}} lbs CO<sub>2</sub>
-          <a href="#" [tooltipHtml]="htmlTooltip" (tooltipStateChanged)="tooltipStateChanged($event)">
+          {{emissions}} lbs CO<sub>2 </sub>
+          <a href="#/results" [tooltipHtml]="htmlTooltip" (tooltipStateChanged)="tooltipStateChanged($event)">
           <i class="fa fa-info-circle" aria-hidden="true"></i>
           </a>
           </p>
@@ -28,7 +27,6 @@ import { ChangeDetectionStrategy} from '@angular/core';
     </div>
   `,
   styleUrls: ['./car-stats.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CarStatsComponent implements OnChanges {
@@ -45,25 +43,13 @@ export class CarStatsComponent implements OnChanges {
   trees: any=[];
   public numTrees:number=0;
 
-  public dynamicTooltip:string = 'Hello, World!';
-  public dynamicTooltipText:string = 'dynamic';
   public htmlTooltip:string = '';
-  public tooltipModel:any = {text: 'foo', index: 1};
- 
   public tooltipStateChanged(state: boolean):void {
     console.log(`Tooltip is open: ${state}`);
   }
+  @Input('tooltipHtml') public htmlContent:string;
+  
 
-  @Input('tooltip') public content:string;
-  @Input('tooltipHtml') public htmlContent:string | TemplateRef<any>;
-  @Input('tooltipPlacement') private placement:string = 'top';
-  @Input('tooltipIsOpen') private isOpen:boolean;
-  @Input('tooltipEnable') private enable:boolean;
-  @Input('tooltipAppendToBody') private appendToBody:boolean;
-  @Input('tooltipClass') public popupClass:string;
-  @Input('tooltipContext') public tooltipContext:any;
-  @Input('tooltipPopupDelay') public delay:number = 0;
-  @Output() public tooltipStateChanged:EventEmitter<boolean>;
 
   ngOnChanges() {
     if (this.costData) {
@@ -77,26 +63,24 @@ export class CarStatsComponent implements OnChanges {
     if (this.ranking === 3) {
       this.place = 'bronze';
     }
-    console.log('change noted from car stats Component')
-    if (this.costData) {
-      let data: any[] = this.costData.data
-      let index: number = 0;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].label === 'car') {
-          index = i;
-          break;
-        }
+
+    let data: any[] = this.costData.data
+    let index: number = 0;
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].label === 'car') {
+        index = i;
+        break;
       }
-      this.cost = data[index].data[0].toFixed(2)
-      this.hours = Math.floor(data[index].data[1])
-      this.minutes = Math.floor((data[index].data[1] % 1)*60) 
-      this.emissions = data[index].data[2].toFixed(2)
     }
+    this.cost = data[index].data[0].toFixed(2)
+    this.hours = Math.floor(data[index].data[1])
+    this.minutes = Math.floor((data[index].data[1] % 1)*60) 
+    this.emissions = data[index].data[2].toFixed(2)
 
     this.numTrees = Math.round(this.emissions/48 * 2)/2;
     console.log(this.numTrees);
     this.htmlTooltip = 'You would need to plant ' + this.numTrees + ' trees to account for the emissions during this trip'
 
+    }
   }
 }
-
