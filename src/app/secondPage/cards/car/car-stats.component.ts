@@ -3,20 +3,47 @@ import { Component, Input, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-car-stats',
   template: `
-    <div>
-      <p>
-        Cost: $ {{cost}}
-        <br />
-        Time: {{hours}} hours, {{ minutes }} minutes
-        <br />
-        Emissions: {{emissions}} lbs CO<sub>2</sub>
-      </p>
+    <div class='info'>
+      <div class='price'>
+        <p>
+          $ {{cost}}
+        </p>
+      </div>
+      <div class='left'>
+        <h3>Car</h3>
+          <p>
+          {{hours}} hours, {{ minutes }} minutes
+          </p>
+          <p>
+          {{emissions}} lbs CO<sub>2</sub>
+          </p>
+        </div>
     </div>
   `,
   styles: [`
-    div {
+    .info {
       width: 100%;
       border-radius: 10px;
+      height: 100%;
+      padding-top:1%;
+    }
+    .price {
+      float:right;
+      font-weight:bold;
+      padding-right:2%;
+    }
+    .left {
+      float:left;
+      text-align:left;
+      padding-left:2%;
+
+    }
+    p {
+      margin:0;
+    }
+    h3{
+      margin-top:0;
+      margin-bottom:0;
     }
   `]
 })
