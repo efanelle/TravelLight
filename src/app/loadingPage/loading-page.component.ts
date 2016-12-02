@@ -12,12 +12,18 @@ export class LoadingPageComponent implements OnInit {
     'Crunching Data...',
     'Coloring Triangles...',
     'Counting Trees...',
-    'Calculating Path...'
+    'Calculating Path...',
+    'Making Medals...',
+    'Accessing Data...',
+    'Checking Available Tickets...',
+    'Assessing Walking Feasability...'
   ];
 
   private currentStatement:string;
-  private getCurrentStatement = () => { 
-    this.currentStatement = this.statementArray.shift() 
+  private getCurrentStatement = () => {
+    console.log(this.statementArray.length)
+    this.currentStatement = this.statementArray.splice(Math.floor(Math.random()*this.statementArray.length), 1)[0]
+    console.log(this.currentStatement)
   };
   constructor() {
    }
