@@ -81,6 +81,16 @@ export class PlaneStatsComponent implements OnChanges {
     this.htmlTooltip = 'You would need to plant ' + this.numTrees + ' trees to account for the emissions during this trip'
 
     }
+
+    this.numTrees = Math.round(this.emissions/48 * 2)/2;
+    console.log(this.trees);
+
+    for (var i = 0; i < Math.floor(this.numTrees); i++) {
+      this.trees.push(this.fulltree);
+    }
+    if (this.numTrees % 1 !== 0) {
+      this.trees.push(this.halftree);
+    }
   }
 
 }

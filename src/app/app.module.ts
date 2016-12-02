@@ -100,9 +100,13 @@ import { LoadingPageComponent } from './loadingPage/loading-page.component';
     FooterComponent,
     AdvancedOptionsComponent,
     CarInputComponent,
+<<<<<<< HEAD
     LoadingPageComponent,
     Card
 
+=======
+    Card,
+>>>>>>> c7b460880ab3ac1ce1fff64b527417dc940aed31
   ],
   imports: [
     HttpModule,

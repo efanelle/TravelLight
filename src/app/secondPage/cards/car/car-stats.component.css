@@ -16,11 +16,14 @@
 }
 a {
   color: whitesmoke;
+<<<<<<< HEAD
   margin-left: 5%;
   font-size: .75em;
 }
 i {
   margin-bottom: 5%;
+=======
+>>>>>>> c7b460880ab3ac1ce1fff64b527417dc940aed31
 }
 p {
   margin:0;
@@ -31,7 +34,10 @@ h3{
 }
 .gold {
   color: gold;
+<<<<<<< HEAD
   animation: badge-rotate 2s both 1.5;
+=======
+>>>>>>> c7b460880ab3ac1ce1fff64b527417dc940aed31
 }
 .silver {
   color:silver;
@@ -41,6 +47,7 @@ h3{
 }
 .ion-ribbon-b{
   font-size:2.5em;
+<<<<<<< HEAD
   padding-top:5%;
 }
 
@@ -54,4 +61,7 @@ h3{
   100% {
     transform: rotateY(0deg);
   }
+=======
+  padding-top:5%
+>>>>>>> c7b460880ab3ac1ce1fff64b527417dc940aed31
 }

@@ -77,5 +77,9 @@ export class WalkStatsComponent implements OnChanges {
       console.log(this.numTrees);
       this.htmlTooltip = 'You would need to plant ' + this.numTrees + ' trees to account for the emissions during this trip'
     }
+    this.trees = Math.round(this.emissions/48 * 2)/2;
+    console.log(this.trees);
+    
+
   }
 }

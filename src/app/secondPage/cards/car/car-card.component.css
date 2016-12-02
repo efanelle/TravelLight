@@ -23,7 +23,11 @@
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.5)));
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
   z-index: 100;
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> c7b460880ab3ac1ce1fff64b527417dc940aed31
 .stats {
   height:100%;
   width:100%;
