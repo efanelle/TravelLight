@@ -28,6 +28,7 @@ app-preference-slider-container {
   border-radius: 10px;
   float: left;
   justify-content: flex-end;
+  height:100%
 }
 
 .right {
@@ -43,8 +44,7 @@ app-preference-slider-container {
   width: 100% !important;
   /* border: solid 1px #625949; */
   border-radius: 10px;
-  padding-bottom: 15px;
-  margin-top: -5%;
+
 }
 .flex-item {
   align-self: center;
