@@ -10,6 +10,7 @@ import { ChartsModule } from '../../node_modules/ng2-charts/ng2-charts';
 import { AgmCoreModule } from 'angular2-google-maps/core'
 import { MdSliderModule } from '@angular2-material/slider'
 import { CarouselModule } from 'ng2-bootstrap/components/carousel';
+import { TooltipModule } from 'ng2-bootstrap/components/tooltip';
 
 // App Root
 import { AppComponent } from './app.component';
@@ -48,11 +49,6 @@ import { AdvancedOptionsComponent } from './secondPage/advanced-options/advanced
 import { CarInputComponent } from './secondPage/car-input/car-input.component';
 import { Card } from '../../node_modules/ng2-card/ng2-card'
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Fix conflict
 
 
 
@@ -107,7 +103,6 @@ import { LoadingPageComponent } from './loadingPage/loading-page.component';
     LoadingPageComponent,
     Card
 
-
   ],
   imports: [
     HttpModule,
@@ -122,6 +117,7 @@ import { LoadingPageComponent } from './loadingPage/loading-page.component';
     ChartsModule,
     MdSliderModule,
     CarouselModule,
+    TooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDeVMNxaPKG4Z9pzCGVf0FVOUmSGYXhTEs',
       libraries: ['places']
