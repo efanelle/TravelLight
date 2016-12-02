@@ -1,5 +1,11 @@
 <div class="main">
   <div class="left">
+    <div class="sliders flex-item">
+    <h3>Travel Light on...</h3>
+    <app-preference-slider-container 
+      class="flex-container"
+      (preferenceNotify)="onPreferenceNotify($event)"></app-preference-slider-container>
+    </div>
     <h3>At A Glance</h3>
     <app-radar-chart 
       [costData]="costData"
@@ -7,14 +13,9 @@
       [changes]="changes"
       class = "flex-item">
     </app-radar-chart>
-    <div class="sliders flex-item">
-      <h3>Travel Light on...</h3>
-      <app-preference-slider-container 
-        class="flex-container"
-        (preferenceNotify)="onPreferenceNotify($event)"></app-preference-slider-container>
-    </div>
   </div>
   <div class="right">
+
     <!--<div class="stats">
       <div *ngIf="travelMode==='plane'" class="info">
         <h3><img src="../../assets/airplaneIcon.png" alt="Plane"> Your Flight</h3>

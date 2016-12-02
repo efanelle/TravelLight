@@ -16,6 +16,8 @@ export class TrainCardComponent implements OnChanges {
   ranking: number = 0;
   method: string = '';
   place: string = '';
+  trees: any=[];
+  numTrees:number=0;
   ngOnChanges() {
     if (this.costData) {
       let averageData: any[] = this.costData.normalizedData
@@ -27,16 +29,17 @@ export class TrainCardComponent implements OnChanges {
           break;
         }
       }
-      this.ranking = this.rank
-      if (this.ranking === 1) {
-        this.place = 'gold';
-      }
-      if (this.ranking === 2) {
-        this.place = 'silver';
-      }
-      if (this.ranking === 3) {
-        this.place = 'bronze';
-      }
+    //   this.ranking = this.rank
+    //   if (this.ranking === 1) {
+    //     this.place = 'gold';
+    //   }
+    //   if (this.ranking === 2) {
+    //     this.place = 'silver';
+    //   }
+    //   if (this.ranking === 3) {
+    //     this.place = 'bronze';
+    //   }
+    // }
     }
   }
 

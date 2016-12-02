@@ -8,7 +8,7 @@ import { SendCostDataService } from '../../send-cost-data.service'
     
 
     <div *ngIf="costData.tripType==='local'">
-      <div class='cards flex-container'>
+      <div class='flex-container'>
         <app-car-card class="flex-item" [costData]="costData" [rank]="carRank" [changes]="changes"></app-car-card>
         <app-train-card class="flex-item" [costData]="costData" [rank]="trainRank" [changes]="changes"></app-train-card>
         <app-walk-card class="flex-item" [costData]="costData" [rank]="walkingRank" [changes]="changes"></app-walk-card>
