@@ -1,14 +1,11 @@
 <div class="row">
-  <carousel [interval]="5000" [noWrap]="false" (click)="mdModal.show()">
+  <carousel [interval]="5000" [noWrap]="false">
     <slide *ngFor="let slide of slides; let index=index"
             [active]="slide.active">
       <img class="img-fluid" [src]="slide.image" style="margin: 0 auto;">
-
       <div class="carousel-caption">
-       <i class="glyphicon-chevron-down" aria-hidden="true"></i>
        <h3>For those who want to travel with awareness</h3>
       </div>
-
     </slide>
   </carousel>
 </div>

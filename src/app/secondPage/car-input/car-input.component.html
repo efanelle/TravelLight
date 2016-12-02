@@ -1,6 +1,6 @@
 <div class="flex-container">
  <div class="origin flex-item">
-  <label for="origin">Type Of Car</label>
+  <label for="origin">Type Of Car: </label><span class="optional"> (Optional)</span><br />
   <input [(ngModel)]="carSearch"
         [typeahead]="dataSource"
         [typeaheadOptionField]="'FullName'"
@@ -10,8 +10,8 @@
         (typeaheadNoResults)="changeTypeaheadCarSearchNoResults($event)"
         (typeaheadOnSelect)="typeaheadOnSelect($event)"
         [typeaheadWaitMs]="300"
-        placeholder="Year Make Model"
         class="form-control"
+        placeholder="Year Make Model"
         id="origin">
   <div class="icons">
     <div *ngIf="typeaheadCarSearchLoading===true">

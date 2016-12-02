@@ -13,6 +13,8 @@ export class AdvancedOptionsComponent implements OnInit {
   public distantOptionsForm: FormGroup;
   public localOptionsForm: FormGroup;
   private currentData:{data:{data:number[]}[], normalizedData:{data:number[]}[]};
+  private showHelpInfo: Boolean = false;
+  private showCar: Boolean = false;
 
   constructor(private sendCostDataService: SendCostDataService,
               private _fb: FormBuilder) { }
@@ -22,17 +24,17 @@ export class AdvancedOptionsComponent implements OnInit {
     this.distantOptionsForm = this._fb.group({
       carHours: Math.floor(this.costData.data[0].data[1]),
       carMins: Math.floor(60 * (this.costData.data[0].data[1] % 1)),
-      flightCost: this.costData.data[1].data[0],
+      flightCost: this.costData.data[1].data[0].toFixed(2),
       flightHours: Math.floor(this.costData.data[1].data[1]),
       flightMins: Math.floor(60 * (this.costData.data[1].data[1] % 1)),
-      trainCost: this.costData.data[2].data[0],
+      trainCost: this.costData.data[2].data[0].toFixed(2),
       trainHours: Math.floor(this.costData.data[2].data[1]),
       trainMins: Math.floor(60 * (this.costData.data[2].data[1] % 1))
     })
     this.localOptionsForm = this._fb.group({
       carHours: Math.floor(this.costData.data[0].data[1]),
       carMins: Math.floor(60 * (this.costData.data[0].data[1] % 1)),
-      trainCost: this.costData.data[1].data[0],
+      trainCost: this.costData.data[1].data[0].toFixed(2),
       trainHours: Math.floor(this.costData.data[1].data[1]),
       trainMins: Math.floor(60 * (this.costData.data[1].data[1] % 1)),
       walkingPace: 3
@@ -54,8 +56,13 @@ export class AdvancedOptionsComponent implements OnInit {
 
   @Input() costData:{data:{data:number[]}[], normalizedData:{data:number[]}[], distance:number};
 
-  onCarNotify(payload:Object){
-    console.log('the payload of the on car notification in advanced options is:', payload)
+  onCarNotify(payload:{EPM?:number, MPG?:number, Car?:string}){
+    console.log(payload)
+    if (payload.EPM !== undefined && payload.MPG !== undefined) {
+      console.log(this.currentData.data[0])
+      this.currentData.data[0].data[2] = payload.EPM * this.costData.distance;
+      this.currentData.data[0].data[0] = this.costData.distance / payload.MPG * 2.15;
+    }
   }
 
   @ViewChild('childModal') public childModal:ModalDirective;
@@ -68,6 +75,15 @@ export class AdvancedOptionsComponent implements OnInit {
     this.childModal.hide();
   }
 
+  public showPopUpInfo() {
+    this.showHelpInfo = true;
+  }
+
+  public hidePopUpInfo() {
+    this.showHelpInfo = false;
+  }
+
+
   recalculateAverages(info:{data:Object[]}) {
     let totals:number[] = [0, 0, 0]
     this.currentData.data.forEach(point => {
@@ -76,13 +92,10 @@ export class AdvancedOptionsComponent implements OnInit {
       })
     })
     let averages:number[] = totals.map(num => num / 3)
-    console.log(averages)
     this.currentData.normalizedData.forEach((point, i) => {
       point.data = this.currentData.data[i].data.map((number, j) => {
-        console.log(number, averages[j])
         return number / averages[j];
       });
-      console.log(point.data)
     });
   }
 

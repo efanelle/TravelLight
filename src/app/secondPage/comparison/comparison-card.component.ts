@@ -58,7 +58,6 @@ export class ComparisonCardComponent implements OnChanges {
         walkingIndex = i;
       }
     }
-    console.log(carIndex, trainIndex, walkingIndex)
     let scores = averageData.map(methodData => 
       methodData.data.reduce((a, b, i) => a + b * this.preferenceArray[i], 0))
     let rankings = scores.map(score => {
@@ -75,7 +74,6 @@ export class ComparisonCardComponent implements OnChanges {
     }
     this.carRank = rankings[carIndex];
     this.trainRank = rankings[trainIndex];
-    console.log(this.walkingRank, this.carRank, this.trainRank);
     if (this.costData.tripType === 'distant') {
       if (this.planeRank === 1) {
         this.first = 'plane';
