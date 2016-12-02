@@ -18,7 +18,7 @@
         <div class="modal-body" >
           <div class="flex-container">
             <div class="form-column">
-              <h4>Car Info</h4>
+              <img src="../../../assets/carIcon.png">
               <label for="car-time">Time: </label>
               <div class="time">
                 <input type="number" [formControl]="distantOptionsForm.controls['carHours']" class="time"> hours 
@@ -27,17 +27,17 @@
               <app-car-input (carNotify)='onCarNotify($event)'></app-car-input>
             </div>
             <div class="form-column center">
-              <h4>Flight Info</h4>
+              <img src="../../../assets/airplaneIcon.png">
               <label for="plane-cost">Cost: </label> $ 
               <input type="number" [formControl]="distantOptionsForm.controls['flightCost']" class="cost"><br />
               <label for="plane-time">Time: </label>
               <div class="time">
-                <input type="number" [formControl]="distantOptionsForm.controls['flightHours']" class="time"> hours 
+                <input type="number" [formControl]="distantOptionsForm.controls['flightHours']" class="time"> hours
                 <input type="number" [formControl]="distantOptionsForm.controls['flightMins']" class="time"> min
               </div>
             </div>
             <div class="form-column">
-              <h4>Train / Bus Info</h4>
+              <img src="../../../assets/train.png">
               <label for="train-cost">Cost: </label> $
               <input type="number" [formControl]="distantOptionsForm.controls['trainCost']" class="cost"><br />
               <label for="train-time">Time: </label>
@@ -49,6 +49,7 @@
           </div>
         </div>
         <div class="modal-footer">
+          <div class="note">*<span class="color">Blue </span> text is editable</div>
           <button class="btn btn-default" type="button" [disabled]="!true" (click)="mdModal.hide()">
             Cancel
           </button>
@@ -61,32 +62,33 @@
         <div class="modal-body" >
           <div class="flex-container">
             <div class="form-column">
-              <h4>Car Info</h4>
+              <img src="../../../assets/carIcon.png">
               <label for="car-time">Time: </label>
               <div class="time">
-                <input type="number" [formControl]="localOptionsForm.controls['carHours']" class="time"> hours<br />
+                <input type="number" [formControl]="localOptionsForm.controls['carHours']" class="time"> hours
                 <input type="number" [formControl]="localOptionsForm.controls['carMins']" class="time"> min
               </div>
               <app-car-input (carNotify)='onCarNotify($event)'></app-car-input>
             </div>
             <div class="form-column center">
-              <h4>Train / Bus Info</h4>
+              <img src="../../../assets/train.png">
               <label for="train-cost">Cost: </label> $
               <input type="number" [formControl]="localOptionsForm.controls['trainCost']" class="cost"><br />
               <label for="train-time">Time: </label>
               <div class="time">
-                <input type="number" [formControl]="localOptionsForm.controls['trainHours']" class="time"> hours<br /> 
+                <input type="number" [formControl]="localOptionsForm.controls['trainHours']" class="time"> hours 
                 <input type="number" [formControl]="localOptionsForm.controls['trainMins']" class="time"> min
               </div>
             </div>
             <div class="form-column">
-              <h4>Walking Info</h4>
+              <img src="../../../assets/walk.png">
               <label for="walking-pace">Walking Speed: </label>
               <input type="number" [formControl]="localOptionsForm.controls['walkingPace']" class="time"> mph
             </div>
           </div>
         </div>
         <div class="modal-footer">
+          <div class="note">*<span class="color">Blue </span> text is editable</div>
           <button class="btn btn-default" type="button" [disabled]="!true" (click)="mdModal.hide()">
             Cancel
           </button>
