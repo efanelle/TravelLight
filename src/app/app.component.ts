@@ -2,6 +2,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 import { CostInfoService } from './secondPage/cost-info.service';
 import 'rxjs/add/operator/map';
 
+
 @Component({
   selector: 'app-root',
   templateUrl:
