@@ -82,15 +82,6 @@ export class PlaneStatsComponent implements OnChanges {
 
     }
 
-    this.numTrees = Math.round(this.emissions/48 * 2)/2;
-    console.log(this.trees);
-
-    for (var i = 0; i < Math.floor(this.numTrees); i++) {
-      this.trees.push(this.fulltree);
-    }
-    if (this.numTrees % 1 !== 0) {
-      this.trees.push(this.halftree);
-    }
   }
 
 }
