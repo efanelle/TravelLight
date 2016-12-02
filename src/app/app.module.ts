@@ -54,6 +54,8 @@ import { Card } from '../../node_modules/ng2-card/ng2-card'
 =======
 >>>>>>> Fix conflict
 
+
+
 // Services
 import { CostInfoService } from './secondPage/cost-info.service';
 import { AirportLocationService } from './landingPage/airport-location.service';
@@ -102,6 +104,7 @@ import { FooterComponent } from './footer/footer.component';
     AdvancedOptionsComponent,
     CarInputComponent,
     Card
+
 
   ],
   imports: [
