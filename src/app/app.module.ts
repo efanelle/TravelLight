@@ -48,8 +48,11 @@ import { AdvancedOptionsComponent } from './secondPage/advanced-options/advanced
 import { CarInputComponent } from './secondPage/car-input/car-input.component';
 import { Card } from '../../node_modules/ng2-card/ng2-card'
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Fix conflict
 
 // Services
 import { CostInfoService } from './secondPage/cost-info.service';
@@ -98,7 +101,7 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     AdvancedOptionsComponent,
     CarInputComponent,
-
+    Card
 
   ],
   imports: [
