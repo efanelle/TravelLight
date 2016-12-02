@@ -1,13 +1,39 @@
-nav {
-  display: inline-block;
-  width: 100%;
+footer {
+  background-color: white;
 }
 
-ul {
+nav {
+  width: 100%;
+  background-color: white;
+}
+
+nav, ul, li {
   display: inline-block;
 }
 
 li {
   list-style: none;
-  display: inline-block;
+  margin-right: 1em;
+  font-size: 0.85em;
+  color: #3d3d3d;
+}
+
+a, li, small {
+  color: #3d3d3d;
+}
+
+a:hover {
+  text-decoration: none
+}
+
+small, ul {
+  margin-top: 15px;
+}
+
+small {
+  margin-left: 2em;
+}
+
+ul {
+  margin-right: 1em;
 }

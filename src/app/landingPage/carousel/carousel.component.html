@@ -1,5 +1,5 @@
 <div class="row">
-  <carousel [interval]="5000" [noWrap]="false">
+  <carousel [interval]="5000" [noWrap]="false" id="home">
     <slide *ngFor="let slide of slides; let index=index"
             [active]="slide.active">
       <img class="img-fluid" [src]="slide.image" style="margin: 0 auto;">
