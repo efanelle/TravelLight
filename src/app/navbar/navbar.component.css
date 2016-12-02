@@ -24,6 +24,20 @@ li {
   background-color: #9c27b0;
   color: white;
   display: inline-block;
-  /*border-radius: 10px;*/
 }
-/* #9c27b0 - purple from second page*/
+
+.modal-header, .modal-footer {
+  text-align: center;
+}
+
+.date, .travelers {
+  display: inline-block;
+  width: 40%;
+}
+
+#additional-inputs {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
