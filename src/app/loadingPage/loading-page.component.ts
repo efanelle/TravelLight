@@ -8,15 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LoadingPageComponent implements OnInit {
   
   private statementArray:string[] = [
-    'Planning Your Trip...',
+    // 'Planning Your Trip...',
     'Crunching Data...',
     'Coloring Triangles...',
     'Counting Trees...',
     'Calculating Path...',
     'Making Medals...',
-    'Accessing Data...',
+    // 'Accessing Data...',
     'Checking Available Tickets...',
-    'Assessing Walking Feasability...'
+    'Assessing Walking Feasibility...'
   ];
 
   private currentStatement:string;
